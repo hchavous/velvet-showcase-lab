@@ -7,7 +7,7 @@ interface Experience {
   period: string;
   location: string;
   highlights: string[];
-  isCurrent?: boolean;
+  badge?: string;
 }
 
 const experiences: Experience[] = [
@@ -16,7 +16,7 @@ const experiences: Experience[] = [
     role: "Senior Business Intelligence Architect",
     period: "03/2025 – Present",
     location: "Berwyn, PA",
-    isCurrent: true,
+    badge: "Contract",
     highlights: [
       "Designed and built secure web-based analytics portal with backend database infrastructure",
       "Developed AI-integrated document management platform for complex legal documents",
@@ -142,9 +142,9 @@ const Experience = () => {
                       <div className="flex items-center gap-2 text-primary mb-1 flex-wrap">
                         <Building2 className="h-4 w-4" />
                         <span className="font-semibold">{exp.company}</span>
-                        {exp.isCurrent && (
+                        {exp.badge && (
                           <span className="px-2 py-0.5 text-xs bg-primary/20 text-primary rounded-full">
-                            Current
+                            {exp.badge}
                           </span>
                         )}
                       </div>
