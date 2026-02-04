@@ -11,7 +11,7 @@ const About = () => {
             {/* Header */}
             <div className="text-center mb-12 animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                About <span className="gradient-text">Me</span>
+                Haven A. <span className="gradient-text">Chavous</span>
               </h1>
               <p className="text-xl text-muted-foreground">
                 Bridging traditional finance with modern AI solutions
