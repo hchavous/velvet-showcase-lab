@@ -1,51 +1,60 @@
 
 
-# Add Professional Headshot to About Page
+## Replace Favicon and Add Icon Files
 
-Adding your headshot photo to create a more personal and professional About page.
-
----
-
-## Implementation
-
-### 1. Copy Image to Project
-- Copy `user-uploads://HAC_Headshot2.JPG` to `src/assets/headshot.jpg`
-- Using src/assets allows proper bundling and optimization
-
-### 2. Update About Page Layout
-- Redesign the header section to include your photo alongside the title
-- Create a two-column layout on larger screens: photo on one side, intro text on the other
-- On mobile, stack vertically with photo centered above the text
-
-### 3. Photo Styling
-- Circular crop with a subtle electric blue glow/border to match the site theme
-- Professional sizing (around 200-250px diameter)
-- Smooth fade-in animation consistent with the rest of the page
+This plan will update your site's favicon and add all the necessary icon files for complete browser and device support.
 
 ---
 
-## Visual Layout
+### What Will Be Done
 
-```text
-+------------------------------------------+
-|              About Me                     |
-|  Bridging traditional finance with AI    |
-+------------------------------------------+
-|                                          |
-|    +----------+    Professional Summary  |
-|    |          |    -------------------- |
-|    |  [PHOTO] |    With over 15 years   |
-|    |          |    of experience...     |
-|    +----------+                          |
-|                                          |
-+------------------------------------------+
+**1. Copy Icon Files to Public Directory**
+
+The following 6 uploaded icon files will be copied to the `public/` folder:
+
+| File | Purpose |
+|------|---------|
+| `favicon.ico` | Main browser favicon (replaces existing) |
+| `favicon-16x16.png` | Small favicon for browser tabs |
+| `favicon-32x32.png` | Standard favicon for browser tabs |
+| `apple-touch-icon.png` | iOS home screen icon |
+| `android-chrome-192x192.png` | Android home screen icon (small) |
+| `android-chrome-512x512.png` | Android home screen icon (large) |
+
+**2. Update index.html**
+
+Add proper link tags in the `<head>` section to reference all icons:
+
+```html
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+```
+
+**3. Create Web App Manifest (site.webmanifest)**
+
+Add a manifest file for Android/PWA support that references the Chrome icons:
+
+```json
+{
+  "name": "Haven Chavous",
+  "short_name": "HC",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone"
+}
 ```
 
 ---
 
-## Technical Details
+### Files to Create/Modify
 
-- Import the image using ES6 module syntax: `import headshot from "@/assets/headshot.jpg"`
-- Use the existing Avatar component or a styled `<img>` tag with rounded-full class
-- Add a gradient border effect using ring utilities and the primary color
+- **Copy**: 6 icon files to `public/`
+- **Create**: `public/site.webmanifest`
+- **Modify**: `index.html` (add icon link tags and manifest reference)
 
