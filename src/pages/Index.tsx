@@ -85,7 +85,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <Link
               to="/experience"
               className="group p-6 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:glow-sm"
@@ -105,17 +105,6 @@ const Index = () => {
               <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Projects</h3>
               <p className="text-muted-foreground text-sm">
                 Analytics platforms, AI integrations, and data transformation solutions.
-              </p>
-            </Link>
-
-            <Link
-              to="/skills"
-              className="group p-6 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:glow-sm"
-            >
-              <LineChart className="h-8 w-8 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Skills</h3>
-              <p className="text-muted-foreground text-sm">
-                Python, Excel, SQL, JavaScript, and deep expertise in financial modeling.
               </p>
             </Link>
           </div>
