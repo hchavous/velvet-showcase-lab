@@ -1,5 +1,6 @@
 import { GraduationCap, Heart, Target, Zap } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import headshot from "@/assets/headshot.jpg";
 
 const About = () => {
   return (
@@ -8,7 +9,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Header */}
-            <div className="text-center mb-16 animate-fade-in">
+            <div className="text-center mb-12 animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 About <span className="gradient-text">Me</span>
               </h1>
@@ -17,25 +18,43 @@ const About = () => {
               </p>
             </div>
 
-            {/* Professional Summary */}
+            {/* Professional Summary with Photo */}
             <div className="mb-16 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
-                <h2 className="text-2xl font-semibold mb-4 flex items-center gap-3">
-                  <Target className="h-6 w-6 text-primary" />
-                  Professional Summary
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  With over 15 years of experience in financial modeling and quantitative analysis, 
-                  I've dedicated my career to transforming how organizations leverage data and technology 
-                  to make better decisions. My journey has taken me from traditional investment analysis 
-                  at DuPont to building cutting-edge AI-powered platforms at Hearthfire Holdings.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  I specialize in bridging the gap between complex financial concepts and practical, 
-                  technology-driven solutions. Whether it's automating 90% of reporting workflows, 
-                  developing investment modeling platforms, or integrating AI into document management, 
-                  I thrive at the intersection of finance and innovation.
-                </p>
+                <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                  {/* Photo */}
+                  <div className="flex-shrink-0">
+                    <div className="relative">
+                      <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden ring-4 ring-primary/30 glow-sm">
+                        <img 
+                          src={headshot} 
+                          alt="Haven Chavous headshot" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Summary Text */}
+                  <div className="flex-1 text-center md:text-left">
+                    <h2 className="text-2xl font-semibold mb-4 flex items-center justify-center md:justify-start gap-3">
+                      <Target className="h-6 w-6 text-primary" />
+                      Professional Summary
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      With over 15 years of experience in financial modeling and quantitative analysis, 
+                      I've dedicated my career to transforming how organizations leverage data and technology 
+                      to make better decisions. My journey has taken me from traditional investment analysis 
+                      at DuPont to building cutting-edge AI-powered platforms at Hearthfire Holdings.
+                    </p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      I specialize in bridging the gap between complex financial concepts and practical, 
+                      technology-driven solutions. Whether it's automating 90% of reporting workflows, 
+                      developing investment modeling platforms, or integrating AI into document management, 
+                      I thrive at the intersection of finance and innovation.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
