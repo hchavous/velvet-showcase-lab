@@ -1,4 +1,4 @@
-import { GraduationCap, Heart, Target, Zap } from "lucide-react";
+import { Brain, GraduationCap, Target, Zap } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import headshot from "@/assets/headshot.jpg";
 
@@ -62,7 +62,7 @@ const About = () => {
             <div className="mb-16 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
                 <h2 className="text-2xl font-semibold mb-4 flex items-center gap-3">
-                  <Heart className="h-6 w-6 text-primary" />
+                  <Brain className="h-6 w-6 text-primary" />
                   My Philosophy
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
