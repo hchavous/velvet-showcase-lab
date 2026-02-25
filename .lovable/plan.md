@@ -1,60 +1,86 @@
 
 
-## Replace Favicon and Add Icon Files
+## Update Projects Page: Quanthaven.ai Card
 
-This plan will update your site's favicon and add all the necessary icon files for complete browser and device support.
+### Overview
 
----
+Transform the first project card to link to quanthaven.ai with a site thumbnail/preview, updated description, tags, and highlights based on the actual live site content.
 
-### What Will Be Done
+### What Will Change
 
-**1. Copy Icon Files to Public Directory**
+**1. Update the Project interface** to support external links and optional thumbnail images:
 
-The following 6 uploaded icon files will be copied to the `public/` folder:
-
-| File | Purpose |
-|------|---------|
-| `favicon.ico` | Main browser favicon (replaces existing) |
-| `favicon-16x16.png` | Small favicon for browser tabs |
-| `favicon-32x32.png` | Standard favicon for browser tabs |
-| `apple-touch-icon.png` | iOS home screen icon |
-| `android-chrome-192x192.png` | Android home screen icon (small) |
-| `android-chrome-512x512.png` | Android home screen icon (large) |
-
-**2. Update index.html**
-
-Add proper link tags in the `<head>` section to reference all icons:
-
-```html
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-```
-
-**3. Create Web App Manifest (site.webmanifest)**
-
-Add a manifest file for Android/PWA support that references the Chrome icons:
-
-```json
-{
-  "name": "Haven Chavous",
-  "short_name": "HC",
-  "icons": [
-    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
-  ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone"
+```ts
+interface Project {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  tags: string[];
+  highlights: string[];
+  url?: string;          // external link
+  thumbnail?: string;    // preview image URL or screenshot path
 }
 ```
 
----
+**2. Replace the first project entry** ("Hearthfire Analytics Portal") with Quanthaven Labs:
 
-### Files to Create/Modify
+| Field | Value |
+|-------|-------|
+| Title | Quanthaven Labs |
+| Description | Professional financial modeling platform with free and premium calculators for investment analysis, valuation, and capital structuring. |
+| Icon | `LineChart` (keep) |
+| URL | `https://quanthaven.ai` |
+| Tags | `React`, `TypeScript`, `Financial Modeling`, `SaaS` |
+| Highlights | 8+ professional financial calculators (IRR, WACC, Cap Rate, DSCR, etc.) |
+| | Capital stack and PE waterfall distribution modeling |
+| | Formula-based Excel exports with no account required |
+| | Real estate unit mix optimizer with interactive visualizations |
 
-- **Copy**: 6 icon files to `public/`
-- **Create**: `public/site.webmanifest`
-- **Modify**: `index.html` (add icon link tags and manifest reference)
+**3. Add a site thumbnail/preview** to the card using an Open Graph screenshot. We'll store a screenshot of quanthaven.ai in `public/projects/` and reference it in the card. The image will appear at the top of the card inside an `AspectRatio` container.
+
+**4. Update the card rendering** to include:
+- A clickable thumbnail preview at the top of each card (when a thumbnail exists)
+- An external link icon + "Visit Site" button in the card footer (when a URL exists)
+- The entire card will be clickable, opening the external URL in a new tab
+
+### Files to Modify
+- `src/pages/Projects.tsx` — update interface, first project data, and card rendering
+
+### Files to Create
+- `public/projects/quanthaven.png` — screenshot of quanthaven.ai homepage (copied from fetched screenshot)
+
+### Technical Details
+
+The card layout will change from:
+
+```
+┌──────────────────────┐
+│ [icon]               │
+│ Title                │
+│ Description          │
+│ [tags]               │
+│ • highlight 1        │
+│ • highlight 2        │
+└──────────────────────┘
+```
+
+To:
+
+```
+┌──────────────────────┐
+│ ┌──────────────────┐ │
+│ │   thumbnail      │ │
+│ │   preview        │ │
+│ └──────────────────┘ │
+│ [icon]               │
+│ Title                │
+│ Description          │
+│ [tags]               │
+│ • highlight 1        │
+│ • highlight 2        │
+│ Visit Site →         │
+└──────────────────────┘
+```
+
+Cards without a URL will render exactly as they do today.
 
