@@ -1,39 +1,37 @@
 
 
-## Update Projects Page: Self Storage Rental Rates Card
+## Update Projects Page: XL Shortcuts Card
 
 ### Overview
 
-Replace the "AI Document Management Platform" card (2nd project) with a new card linking to selfstoragerentalrates.com, including a screenshot thumbnail and updated content based on the live site.
+Replace the "Investment Returns Modeling Platform" card (3rd project) with a new card linking to xlshortcuts.com, including a screenshot thumbnail and updated content.
 
 ### What Will Change
 
-**1. Save a screenshot** of selfstoragerentalrates.com to `public/projects/selfstoragerentalrates.png`.
+**1. Save a screenshot** of xlshortcuts.com to `public/projects/xlshortcuts.png`.
 
-**2. Replace the 2nd project entry** with:
+**2. Replace the 3rd project entry** (lines 46-57 in `Projects.tsx`) with:
 
 | Field | Value |
 |-------|-------|
-| Title | Self Storage Rental Rates |
-| Description | Comprehensive self storage data platform tracking 1,500+ CubeSmart facilities and 23K+ rate records across 48 states, updated daily. |
-| Icon | `Database` (already imported) |
-| URL | `https://selfstoragerentalrates.com` |
-| Thumbnail | `/projects/selfstoragerentalrates.png` |
-| Tags | `React`, `Data Platform`, `Web Scraping`, `Real Estate` |
-| Highlights | 1,500+ facilities tracked with daily rate updates |
-| | 23K+ rental rate records across 48 states + DC |
-| | Interactive regional map with facility filtering |
-| | Facility-level and market-level rate analytics |
-
-**3. Add `MapPin` icon import** from lucide-react (optional, or keep `Database` which fits well for a data platform).
+| Title | XL Shortcuts |
+| Description | Interactive Excel keyboard shortcuts cheat sheet with a visual keyboard layout, category filtering, and downloadable PDF for Windows and Mac. |
+| Icon | `FileSpreadsheet` (already imported) |
+| URL | `https://xlshortcuts.com` |
+| Thumbnail | `/projects/xlshortcuts.png` |
+| Tags | `React`, `Excel`, `Developer Tools`, `UI/UX` |
+| Highlights | Interactive keyboard visualization highlighting shortcut keys |
+| | 51+ shortcuts across Navigation, Editing, Formatting, Selection, Formulas, and Data categories |
+| | Windows and Mac toggle support |
+| | Downloadable PDF cheat sheet |
 
 ### Files to Create
-- `public/projects/selfstoragerentalrates.png` — screenshot of the homepage
+- `public/projects/xlshortcuts.png` — screenshot of the homepage
 
 ### Files to Modify
-- `src/pages/Projects.tsx` — replace 2nd project entry (lines 32-43)
+- `src/pages/Projects.tsx` — replace 3rd project entry (lines 46-57)
 
 ### Technical Details
 
-No structural changes needed — the card rendering logic already supports `url` and `thumbnail` from the Quanthaven implementation. This is purely a data swap for the 2nd entry in the `projects` array.
+No structural changes needed. The card rendering logic already supports `url` and `thumbnail`. This is a data swap only.
 
