@@ -39,6 +39,7 @@ const projects: Project[] = [
       "23K+ rental rate records across 48 states + DC",
       "Interactive regional map with facility filtering",
       "Facility-level and market-level rate analytics",
+      "Pro Dashboard with interactive charts, trend analysis, and market comparisons",
     ],
     url: "https://selfstoragerentalrates.com",
     thumbnail: "/projects/selfstoragerentalrates.png",
