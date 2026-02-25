@@ -1,86 +1,39 @@
 
 
-## Update Projects Page: Quanthaven.ai Card
+## Update Projects Page: Self Storage Rental Rates Card
 
 ### Overview
 
-Transform the first project card to link to quanthaven.ai with a site thumbnail/preview, updated description, tags, and highlights based on the actual live site content.
+Replace the "AI Document Management Platform" card (2nd project) with a new card linking to selfstoragerentalrates.com, including a screenshot thumbnail and updated content based on the live site.
 
 ### What Will Change
 
-**1. Update the Project interface** to support external links and optional thumbnail images:
+**1. Save a screenshot** of selfstoragerentalrates.com to `public/projects/selfstoragerentalrates.png`.
 
-```ts
-interface Project {
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  tags: string[];
-  highlights: string[];
-  url?: string;          // external link
-  thumbnail?: string;    // preview image URL or screenshot path
-}
-```
-
-**2. Replace the first project entry** ("Hearthfire Analytics Portal") with Quanthaven Labs:
+**2. Replace the 2nd project entry** with:
 
 | Field | Value |
 |-------|-------|
-| Title | Quanthaven Labs |
-| Description | Professional financial modeling platform with free and premium calculators for investment analysis, valuation, and capital structuring. |
-| Icon | `LineChart` (keep) |
-| URL | `https://quanthaven.ai` |
-| Tags | `React`, `TypeScript`, `Financial Modeling`, `SaaS` |
-| Highlights | 8+ professional financial calculators (IRR, WACC, Cap Rate, DSCR, etc.) |
-| | Capital stack and PE waterfall distribution modeling |
-| | Formula-based Excel exports with no account required |
-| | Real estate unit mix optimizer with interactive visualizations |
+| Title | Self Storage Rental Rates |
+| Description | Comprehensive self storage data platform tracking 1,500+ CubeSmart facilities and 23K+ rate records across 48 states, updated daily. |
+| Icon | `Database` (already imported) |
+| URL | `https://selfstoragerentalrates.com` |
+| Thumbnail | `/projects/selfstoragerentalrates.png` |
+| Tags | `React`, `Data Platform`, `Web Scraping`, `Real Estate` |
+| Highlights | 1,500+ facilities tracked with daily rate updates |
+| | 23K+ rental rate records across 48 states + DC |
+| | Interactive regional map with facility filtering |
+| | Facility-level and market-level rate analytics |
 
-**3. Add a site thumbnail/preview** to the card using an Open Graph screenshot. We'll store a screenshot of quanthaven.ai in `public/projects/` and reference it in the card. The image will appear at the top of the card inside an `AspectRatio` container.
-
-**4. Update the card rendering** to include:
-- A clickable thumbnail preview at the top of each card (when a thumbnail exists)
-- An external link icon + "Visit Site" button in the card footer (when a URL exists)
-- The entire card will be clickable, opening the external URL in a new tab
-
-### Files to Modify
-- `src/pages/Projects.tsx` — update interface, first project data, and card rendering
+**3. Add `MapPin` icon import** from lucide-react (optional, or keep `Database` which fits well for a data platform).
 
 ### Files to Create
-- `public/projects/quanthaven.png` — screenshot of quanthaven.ai homepage (copied from fetched screenshot)
+- `public/projects/selfstoragerentalrates.png` — screenshot of the homepage
+
+### Files to Modify
+- `src/pages/Projects.tsx` — replace 2nd project entry (lines 32-43)
 
 ### Technical Details
 
-The card layout will change from:
-
-```
-┌──────────────────────┐
-│ [icon]               │
-│ Title                │
-│ Description          │
-│ [tags]               │
-│ • highlight 1        │
-│ • highlight 2        │
-└──────────────────────┘
-```
-
-To:
-
-```
-┌──────────────────────┐
-│ ┌──────────────────┐ │
-│ │   thumbnail      │ │
-│ │   preview        │ │
-│ └──────────────────┘ │
-│ [icon]               │
-│ Title                │
-│ Description          │
-│ [tags]               │
-│ • highlight 1        │
-│ • highlight 2        │
-│ Visit Site →         │
-└──────────────────────┘
-```
-
-Cards without a URL will render exactly as they do today.
+No structural changes needed — the card rendering logic already supports `url` and `thumbnail` from the Quanthaven implementation. This is purely a data swap for the 2nd entry in the `projects` array.
 
