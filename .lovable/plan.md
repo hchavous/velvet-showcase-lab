@@ -1,43 +1,32 @@
 
 
-## Add Tabs to Experience Page: Full Time + Consulting
+## Style Consulting Client Names as Badges
 
-### Overview
-Add a tabbed interface to the Experience page with two tabs: **Full Time** (current content) and **Consulting Clients** (new section).
+### Approach
+Separate the first highlight (intro text) from the remaining highlights (client names). Render the intro as a paragraph and the client names as a wrapped grid of styled badges.
 
-### Changes
+### Changes in `src/pages/Experience.tsx`
 
-**`src/pages/Experience.tsx`**
-1. Import `Tabs, TabsList, TabsTrigger, TabsContent` from `@/components/ui/tabs`
-2. Add a `consultingClients` data array (same `Experience` interface) — I'll need you to provide the client names, roles, periods, and highlights. For now I can stub it with the existing "Self-Employed / Financial Consultant" entry and any clients you'd like to list.
-3. Wrap the experience cards in a `<Tabs defaultValue="fulltime">` component:
-   - Tab triggers: "Full Time" and "Consulting Clients"
-   - Each tab renders its respective card list using the same card component
+1. Add a `isConsulting` flag to the `ExperienceItem` interface (or detect based on whether the first highlight ends with `:`)
+2. Update `ExperienceCard` to check if the first highlight ends with `:` — if so:
+   - Render it as a `<p>` paragraph
+   - Render remaining highlights as Badge components in a flex-wrap layout
+3. Otherwise, keep the existing checkmark bullet rendering
 
-### Layout
+### Rendering logic
 ```text
-┌─────────────────────────────────────┐
-│   Professional Experience           │
-│   15+ years of finance...           │
-│                                     │
-│   [ Full Time ]  [ Consulting ]     │
-│                                     │
-│   ┌─────────────────────────────┐   │
-│   │  Experience Card            │   │
-│   └─────────────────────────────┘   │
-│   ┌─────────────────────────────┐   │
-│   │  Experience Card            │   │
-│   └─────────────────────────────┘   │
-└─────────────────────────────────────┘
+// If first highlight ends with ":"
+<p className="text-sm text-muted-foreground mb-3">
+  {highlights[0]}
+</p>
+<div className="flex flex-wrap gap-2">
+  {highlights.slice(1).map(name => (
+    <Badge variant="secondary">{name}</Badge>
+  ))}
+</div>
+
+// Otherwise: existing checkmark grid
 ```
 
-### What I need from you
-Before implementing, could you share the consulting clients you want listed? For each, I'd need:
-- Client/company name
-- Your role/title
-- Date range
-- Location
-- Key highlights/bullets
-
-I can also move the existing "Self-Employed / Financial Consultant" entry to the Consulting tab if that makes sense.
+Import `Badge` from `@/components/ui/badge`.
 
