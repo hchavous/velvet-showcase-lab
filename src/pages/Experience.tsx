@@ -107,10 +107,20 @@ const consultingExperiences: ExperienceItem[] = [
   {
     company: "Self-Employed / Financial Consultant",
     role: "Financial Consultant",
-    period: "06/2020 – 01/2022",
+    period: "01/2018 – Present",
     location: "Wilmington, DE",
     highlights: [
-      "Provided financial modeling and analytics consulting for clients including Source Renewables, LLC and VisualDx",
+      "Provided financial modeling and analytics consulting for clients including:",
+      "Source Renewables",
+      "VisualDx",
+      "Glasspoint Inc",
+      "National Apartment Flooring",
+      "CDW",
+      "IPM Foods",
+      "Evalla Advisors",
+      "Voltage Venture Capital",
+      "Harvard Business School",
+      "Cinnaire",
     ],
   },
 ];
