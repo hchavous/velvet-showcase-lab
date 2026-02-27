@@ -14,7 +14,7 @@ const experiences: Experience[] = [
   {
     company: "Hearthfire Holdings",
     role: "Senior Business Intelligence Architect",
-    period: "03/2025 – Present",
+    period: "03/2025 – 12/2025",
     location: "Berwyn, PA",
     
     highlights: [
