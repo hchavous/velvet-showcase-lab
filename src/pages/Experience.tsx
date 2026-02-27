@@ -1,6 +1,7 @@
 import { Building2, Calendar, CheckCircle2 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 
 interface ExperienceItem {
   company: string;
@@ -149,14 +150,25 @@ const ExperienceCard = ({ exp, index }: { exp: ExperienceItem; index: number }) 
           <span>{exp.location}</span>
         </div>
       </div>
-      <ul className="grid md:grid-cols-2 gap-2">
-        {exp.highlights.map((highlight, hIndex) => (
-          <li key={hIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
-            <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-            <span>{highlight}</span>
-          </li>
-        ))}
-      </ul>
+      {exp.highlights[0]?.endsWith(":") ? (
+        <>
+          <p className="text-sm text-muted-foreground mb-3">{exp.highlights[0]}</p>
+          <div className="flex flex-wrap gap-2">
+            {exp.highlights.slice(1).map((name, hIndex) => (
+              <Badge key={hIndex} variant="secondary">{name}</Badge>
+            ))}
+          </div>
+        </>
+      ) : (
+        <ul className="grid md:grid-cols-2 gap-2">
+          {exp.highlights.map((highlight, hIndex) => (
+            <li key={hIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+              <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </div>
 );
