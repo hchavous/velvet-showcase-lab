@@ -1,7 +1,8 @@
 import { Building2, Calendar, CheckCircle2 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
-interface Experience {
+interface ExperienceItem {
   company: string;
   role: string;
   period: string;
@@ -10,13 +11,12 @@ interface Experience {
   badge?: string;
 }
 
-const experiences: Experience[] = [
+const fullTimeExperiences: ExperienceItem[] = [
   {
     company: "Hearthfire Holdings",
     role: "Senior Business Intelligence Architect",
     period: "03/2025 – 12/2025",
     location: "Berwyn, PA",
-    
     highlights: [
       "Designed and built secure web-based analytics portal with backend database infrastructure",
       "Developed AI-integrated document management platform for complex legal documents",
@@ -35,15 +35,6 @@ const experiences: Experience[] = [
       "Developed proprietary Python/HTML analytics platform for deal pipeline management",
       "Automated institutional investor reporting workflows, reducing report generation time by 90%",
       "Managed complex fund modeling including IRR calculations and waterfall distributions",
-    ],
-  },
-  {
-    company: "Self-Employed / Financial Consultant",
-    role: "Financial Consultant",
-    period: "06/2020 – 01/2022",
-    location: "Wilmington, DE",
-    highlights: [
-      "Provided financial modeling and analytics consulting for clients including Source Renewables, LLC and VisualDx",
     ],
   },
   {
@@ -112,67 +103,91 @@ const experiences: Experience[] = [
   },
 ];
 
+const consultingExperiences: ExperienceItem[] = [
+  {
+    company: "Self-Employed / Financial Consultant",
+    role: "Financial Consultant",
+    period: "06/2020 – 01/2022",
+    location: "Wilmington, DE",
+    highlights: [
+      "Provided financial modeling and analytics consulting for clients including Source Renewables, LLC and VisualDx",
+    ],
+  },
+];
+
+const ExperienceCard = ({ exp, index }: { exp: ExperienceItem; index: number }) => (
+  <div
+    className="animate-fade-in-up"
+    style={{ animationDelay: `${0.1 * index}s` }}
+  >
+    <div className="p-6 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:glow-sm">
+      <div className="mb-4">
+        <div className="flex items-center gap-2 text-primary mb-1 flex-wrap">
+          <Building2 className="h-4 w-4" />
+          <span className="font-semibold">{exp.company}</span>
+          {exp.badge && (
+            <span className="px-2 py-0.5 text-xs bg-primary/20 text-primary rounded-full">
+              {exp.badge}
+            </span>
+          )}
+        </div>
+        <h3 className="text-xl font-semibold text-foreground">{exp.role}</h3>
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1 flex-wrap">
+          <Calendar className="h-3 w-3" />
+          <span>{exp.period}</span>
+          <span>•</span>
+          <span>{exp.location}</span>
+        </div>
+      </div>
+      <ul className="grid md:grid-cols-2 gap-2">
+        {exp.highlights.map((highlight, hIndex) => (
+          <li key={hIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+            <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
 const Experience = () => {
   return (
     <Layout>
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            {/* Header */}
             <div className="text-center mb-16 animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Full Time Professional <span className="gradient-text">Experience</span>
+                Professional <span className="gradient-text">Experience</span>
               </h1>
               <p className="text-xl text-muted-foreground">
                 15+ years of finance, analytics, and technology innovation
               </p>
             </div>
 
-            {/* Experience Cards */}
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <div
-                  key={`${exp.company}-${exp.period}`}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${0.1 * index}s` }}
-                >
-                  <div className="p-6 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:glow-sm">
-                    {/* Header */}
-                    <div className="mb-4">
-                      <div className="flex items-center gap-2 text-primary mb-1 flex-wrap">
-                        <Building2 className="h-4 w-4" />
-                        <span className="font-semibold">{exp.company}</span>
-                        {exp.badge && (
-                          <span className="px-2 py-0.5 text-xs bg-primary/20 text-primary rounded-full">
-                            {exp.badge}
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="text-xl font-semibold text-foreground">{exp.role}</h3>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1 flex-wrap">
-                        <Calendar className="h-3 w-3" />
-                        <span>{exp.period}</span>
-                        <span>•</span>
-                        <span>{exp.location}</span>
-                      </div>
-                    </div>
+            <Tabs defaultValue="fulltime" className="w-full">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+                <TabsTrigger value="fulltime">Full Time</TabsTrigger>
+                <TabsTrigger value="consulting">Consulting Clients</TabsTrigger>
+              </TabsList>
 
-                    {/* Highlights */}
-                    <ul className="grid md:grid-cols-2 gap-2">
-                      {exp.highlights.map((highlight, hIndex) => (
-                        <li
-                          key={hIndex}
-                          className="flex items-start gap-2 text-sm text-muted-foreground"
-                        >
-                          <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <TabsContent value="fulltime">
+                <div className="space-y-8">
+                  {fullTimeExperiences.map((exp, index) => (
+                    <ExperienceCard key={`${exp.company}-${exp.period}`} exp={exp} index={index} />
+                  ))}
                 </div>
-              ))}
-            </div>
+              </TabsContent>
+
+              <TabsContent value="consulting">
+                <div className="space-y-8">
+                  {consultingExperiences.map((exp, index) => (
+                    <ExperienceCard key={`${exp.company}-${exp.period}`} exp={exp} index={index} />
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </section>
