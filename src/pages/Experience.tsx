@@ -16,7 +16,7 @@ const experiences: Experience[] = [
     role: "Senior Business Intelligence Architect",
     period: "03/2025 – Present",
     location: "Berwyn, PA",
-    badge: "Contract",
+    
     highlights: [
       "Designed and built secure web-based analytics portal with backend database infrastructure",
       "Developed AI-integrated document management platform for complex legal documents",
