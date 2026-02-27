@@ -121,7 +121,7 @@ const Experience = () => {
             {/* Header */}
             <div className="text-center mb-16 animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Professional <span className="gradient-text">Experience</span>
+                Full Time Professional <span className="gradient-text">Experience</span>
               </h1>
               <p className="text-xl text-muted-foreground">
                 15+ years of finance, analytics, and technology innovation
