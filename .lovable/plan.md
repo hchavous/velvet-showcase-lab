@@ -1,37 +1,43 @@
 
 
-## Update Projects Page: XL Shortcuts Card
+## Add Tabs to Experience Page: Full Time + Consulting
 
 ### Overview
+Add a tabbed interface to the Experience page with two tabs: **Full Time** (current content) and **Consulting Clients** (new section).
 
-Replace the "Investment Returns Modeling Platform" card (3rd project) with a new card linking to xlshortcuts.com, including a screenshot thumbnail and updated content.
+### Changes
 
-### What Will Change
+**`src/pages/Experience.tsx`**
+1. Import `Tabs, TabsList, TabsTrigger, TabsContent` from `@/components/ui/tabs`
+2. Add a `consultingClients` data array (same `Experience` interface) — I'll need you to provide the client names, roles, periods, and highlights. For now I can stub it with the existing "Self-Employed / Financial Consultant" entry and any clients you'd like to list.
+3. Wrap the experience cards in a `<Tabs defaultValue="fulltime">` component:
+   - Tab triggers: "Full Time" and "Consulting Clients"
+   - Each tab renders its respective card list using the same card component
 
-**1. Save a screenshot** of xlshortcuts.com to `public/projects/xlshortcuts.png`.
+### Layout
+```text
+┌─────────────────────────────────────┐
+│   Professional Experience           │
+│   15+ years of finance...           │
+│                                     │
+│   [ Full Time ]  [ Consulting ]     │
+│                                     │
+│   ┌─────────────────────────────┐   │
+│   │  Experience Card            │   │
+│   └─────────────────────────────┘   │
+│   ┌─────────────────────────────┐   │
+│   │  Experience Card            │   │
+│   └─────────────────────────────┘   │
+└─────────────────────────────────────┘
+```
 
-**2. Replace the 3rd project entry** (lines 46-57 in `Projects.tsx`) with:
+### What I need from you
+Before implementing, could you share the consulting clients you want listed? For each, I'd need:
+- Client/company name
+- Your role/title
+- Date range
+- Location
+- Key highlights/bullets
 
-| Field | Value |
-|-------|-------|
-| Title | XL Shortcuts |
-| Description | Interactive Excel keyboard shortcuts cheat sheet with a visual keyboard layout, category filtering, and downloadable PDF for Windows and Mac. |
-| Icon | `FileSpreadsheet` (already imported) |
-| URL | `https://xlshortcuts.com` |
-| Thumbnail | `/projects/xlshortcuts.png` |
-| Tags | `React`, `Excel`, `Developer Tools`, `UI/UX` |
-| Highlights | Interactive keyboard visualization highlighting shortcut keys |
-| | 51+ shortcuts across Navigation, Editing, Formatting, Selection, Formulas, and Data categories |
-| | Windows and Mac toggle support |
-| | Downloadable PDF cheat sheet |
-
-### Files to Create
-- `public/projects/xlshortcuts.png` — screenshot of the homepage
-
-### Files to Modify
-- `src/pages/Projects.tsx` — replace 3rd project entry (lines 46-57)
-
-### Technical Details
-
-No structural changes needed. The card rendering logic already supports `url` and `thumbnail`. This is a data swap only.
+I can also move the existing "Self-Employed / Financial Consultant" entry to the Consulting tab if that makes sense.
 
