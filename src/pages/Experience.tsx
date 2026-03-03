@@ -3,6 +3,11 @@ import Layout from "@/components/layout/Layout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 
+interface ClientCategory {
+  category: string;
+  clients: string[];
+}
+
 interface ExperienceItem {
   company: string;
   role: string;
@@ -10,6 +15,8 @@ interface ExperienceItem {
   location: string;
   highlights: string[];
   badge?: string;
+  intro?: string;
+  categories?: ClientCategory[];
 }
 
 const fullTimeExperiences: ExperienceItem[] = [
@@ -110,18 +117,15 @@ const consultingExperiences: ExperienceItem[] = [
     role: "Financial Consultant",
     period: "01/2018 – Present",
     location: "Wilmington, DE",
-    highlights: [
-      "Provided financial modeling and analytics consulting for clients including:",
-      "Source Renewables",
-      "VisualDx",
-      "Glasspoint Inc",
-      "National Apartment Flooring",
-      "CDW",
-      "IPM Foods",
-      "Evalla Advisors",
-      "Voltage Venture Capital",
-      "Harvard Business School",
-      "Cinnaire",
+    highlights: [],
+    intro: "Provided financial modeling and analytics consulting for clients including:",
+    categories: [
+      { category: "Energy & Sustainability", clients: ["Source Renewables", "Glasspoint Inc"] },
+      { category: "Financial Services & Investment", clients: ["Evalla Advisors", "Voltage Venture Capital", "Cinnaire"] },
+      { category: "Technology & Healthcare", clients: ["VisualDx", "CDW"] },
+      { category: "Real Estate & Construction", clients: ["National Apartment Flooring"] },
+      { category: "Education", clients: ["Harvard Business School"] },
+      { category: "Consumer & Industrial", clients: ["IPM Foods"] },
     ],
   },
 ];
@@ -150,12 +154,19 @@ const ExperienceCard = ({ exp, index }: { exp: ExperienceItem; index: number }) 
           <span>{exp.location}</span>
         </div>
       </div>
-      {exp.highlights[0]?.endsWith(":") ? (
+      {exp.categories ? (
         <>
-          <p className="text-sm text-muted-foreground mb-3">{exp.highlights[0]}</p>
-          <div className="flex flex-wrap gap-2">
-            {exp.highlights.slice(1).map((name, hIndex) => (
-              <Badge key={hIndex} variant="secondary">{name}</Badge>
+          {exp.intro && <p className="text-sm text-muted-foreground mb-4">{exp.intro}</p>}
+          <div className="space-y-3">
+            {exp.categories.map((cat, cIndex) => (
+              <div key={cIndex}>
+                <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-1.5">{cat.category}</p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.clients.map((client, clIndex) => (
+                    <Badge key={clIndex} variant="secondary">{client}</Badge>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </>
