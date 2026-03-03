@@ -10,12 +10,8 @@ const About = () => {
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="text-center mb-12 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Haven A. Chavous
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                Bridging traditional finance with modern AI solutions
-              </p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Haven A. Chavous</h1>
+              <p className="text-xl text-muted-foreground">Bridging traditional finance with modern AI solutions</p>
             </div>
 
             {/* Professional Summary with Photo */}
@@ -26,15 +22,11 @@ const About = () => {
                   <div className="flex-shrink-0">
                     <div className="relative">
                       <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden ring-4 ring-primary/30 glow-sm">
-                        <img 
-                          src={headshot} 
-                          alt="Haven Chavous headshot" 
-                          className="w-full h-full object-cover"
-                        />
+                        <img src={headshot} alt="Haven Chavous headshot" className="w-full h-full object-cover" />
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Summary Text */}
                   <div className="flex-1 text-center md:text-left">
                     <h2 className="text-2xl font-semibold mb-4 flex items-center justify-center md:justify-start gap-3">
@@ -42,16 +34,16 @@ const About = () => {
                       Professional Summary
                     </h2>
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      With over 15 years of experience in financial modeling and quantitative analysis, 
-                      I've dedicated my career to transforming how organizations leverage data and technology 
-                      to make better decisions. My journey has taken me from traditional investment analysis 
-                      at DuPont to building cutting-edge AI-powered platforms at Hearthfire Holdings.
+                      With over 15 years of experience in financial modeling and quantitative analysis, I've dedicated
+                      my career to transforming how organizations leverage data and technology to make better decisions.
+                      My journey has taken me from traditional investment analysis to building cutting-edge AI-powered
+                      platforms.
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      I specialize in bridging the gap between complex financial concepts and practical, 
-                      technology-driven solutions. Whether it's automating 90% of reporting workflows, 
-                      developing investment modeling platforms, or integrating AI into document management, 
-                      I thrive at the intersection of finance and innovation.
+                      I specialize in bridging the gap between complex financial concepts and practical,
+                      technology-driven solutions. Whether it's automating 90% of reporting workflows, developing
+                      investment modeling platforms, or integrating AI into document management, I thrive at the
+                      intersection of finance and innovation.
                     </p>
                   </div>
                 </div>
@@ -69,29 +61,29 @@ const About = () => {
                   <div>
                     <h3 className="font-semibold mb-2 text-foreground">Data-Driven Decisions</h3>
                     <p className="text-muted-foreground text-sm">
-                      Every business decision should be grounded in solid data and rigorous analysis. 
-                      I build systems that surface insights clearly and actionably.
+                      Every business decision should be grounded in solid data and rigorous analysis. I build systems
+                      that surface insights clearly and actionably.
                     </p>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-2 text-foreground">Automation First</h3>
                     <p className="text-muted-foreground text-sm">
-                      Repetitive tasks drain organizational energy. I identify and automate these 
-                      processes so teams can focus on strategic, high-value work.
+                      Repetitive tasks drain organizational energy. I identify and automate these processes so teams can
+                      focus on strategic, high-value work.
                     </p>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-2 text-foreground">Bridge Builder</h3>
                     <p className="text-muted-foreground text-sm">
-                      I translate between technical and business teams, ensuring technology 
-                      solutions truly serve organizational goals.
+                      I translate between technical and business teams, ensuring technology solutions truly serve
+                      organizational goals.
                     </p>
                   </div>
                   <div>
                     <h3 className="font-semibold mb-2 text-foreground">Continuous Learning</h3>
                     <p className="text-muted-foreground text-sm">
-                      The intersection of finance and AI evolves rapidly. I stay current with 
-                      emerging tools and methodologies to deliver cutting-edge solutions.
+                      The intersection of finance and AI evolves rapidly. I stay current with emerging tools and
+                      methodologies to deliver cutting-edge solutions.
                     </p>
                   </div>
                 </div>
@@ -106,11 +98,10 @@ const About = () => {
                   What Drives Me
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  I'm passionate about the transformative potential of combining quantitative 
-                  finance expertise with modern AI capabilities. The ability to turn complex data 
-                  into clear insights, automate tedious processes, and build tools that genuinely 
-                  improve how people work — that's what gets me excited every day. I believe we're 
-                  at an inflection point where finance professionals who embrace technology can 
+                  I'm passionate about the transformative potential of combining quantitative finance expertise with
+                  modern AI capabilities. The ability to turn complex data into clear insights, automate tedious
+                  processes, and build tools that genuinely improve how people work — that's what gets me excited every
+                  day. I believe we're at an inflection point where finance professionals who embrace technology can
                   deliver exponentially more value to their organizations.
                 </p>
               </div>
@@ -127,7 +118,9 @@ const About = () => {
                   <div className="flex gap-4">
                     <div className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-foreground">Master of Business Administration (MBA) in Finance</h3>
+                      <h3 className="font-semibold text-foreground">
+                        Master of Business Administration (MBA) in Finance
+                      </h3>
                       <p className="text-primary">University of Delaware</p>
                       <p className="text-sm text-muted-foreground">
                         Advanced coursework in corporate finance, investment analysis, and quantitative methods
@@ -137,7 +130,9 @@ const About = () => {
                   <div className="flex gap-4">
                     <div className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-foreground">Bachelor of Business Administration (BBA) in Finance</h3>
+                      <h3 className="font-semibold text-foreground">
+                        Bachelor of Business Administration (BBA) in Finance
+                      </h3>
                       <p className="text-primary">Augusta State University</p>
                       <p className="text-sm text-muted-foreground">
                         Foundation in financial principles, accounting, and business strategy
