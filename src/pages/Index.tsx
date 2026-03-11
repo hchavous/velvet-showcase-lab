@@ -13,6 +13,30 @@ import {
 import Layout from "@/components/layout/Layout";
 import headshot from "@/assets/headshot.jpg";
 
+const featuredProjects = [
+  {
+    title: "Quanthaven Labs",
+    description: "Professional financial modeling platform with free and premium calculators for investment analysis.",
+    tags: ["React", "TypeScript", "Financial Modeling", "SaaS"],
+    url: "https://quanthaven.ai",
+    thumbnail: "/projects/quanthaven.png",
+  },
+  {
+    title: "Self Storage Rental Rates",
+    description: "Self storage data platform tracking 1,500+ CubeSmart facilities and 23K+ rate records across 48 states.",
+    tags: ["React", "Data Platform", "Web Scraping", "Real Estate"],
+    url: "https://selfstoragerentalrates.com",
+    thumbnail: "/projects/selfstoragerentalrates.png",
+  },
+  {
+    title: "XL Shortcuts",
+    description: "Interactive Excel keyboard shortcuts cheat sheet with visual keyboard layout and downloadable PDF.",
+    tags: ["React", "Excel", "Developer Tools", "UI/UX"],
+    url: "https://xlshortcuts.com",
+    thumbnail: "/projects/xlshortcuts.png",
+  },
+];
+
 const About = () => {
   return (
     <Layout>
