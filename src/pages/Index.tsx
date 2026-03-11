@@ -141,6 +141,19 @@ const About = () => {
                   </div>
                 </div>
               </div>
+            {/* Availability */}
+            <div className="mt-12 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+              <div className="p-6 rounded-xl bg-primary/10 border border-primary/20">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+                  <span className="font-semibold text-primary">Available for Opportunities</span>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  I'm currently open to consulting projects, full-time roles, and interesting collaborations
+                  in finance, data analytics, and AI.
+                </p>
+              </div>
+            </div>
             </div>
           </div>
         </div>
