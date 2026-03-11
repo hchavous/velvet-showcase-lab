@@ -153,7 +153,68 @@ const About = () => {
               </div>
             </div>
 
-            {/* Education */}
+            {/* Featured Projects Carousel */}
+            <div className="mb-16 animate-fade-in" style={{ animationDelay: "0.35s" }}>
+              <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
+                <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+                  <Layers className="h-6 w-6 text-primary" />
+                  Featured Projects
+                </h2>
+                <div className="relative px-12">
+                  <Carousel setApi={setCarouselApi} opts={{ loop: true }}>
+                    <CarouselContent>
+                      {featuredProjects.map((project) => (
+                        <CarouselItem key={project.title}>
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block group"
+                          >
+                            <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-lg border border-border/30 mb-4">
+                              <img
+                                src={project.thumbnail}
+                                alt={`${project.title} preview`}
+                                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                              />
+                            </AspectRatio>
+                            <div className="flex items-center justify-between mb-2">
+                              <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                                {project.title}
+                              </h3>
+                              <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
+                            <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tags.map((tag) => (
+                                <Badge key={tag} variant="secondary" className="text-xs">
+                                  {tag}
+                                </Badge>
+                              ))}
+                            </div>
+                          </a>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                  {/* Dot indicators */}
+                  <div className="flex justify-center gap-2 mt-4">
+                    {featuredProjects.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => carouselApi?.scrollTo(i)}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          i === currentSlide ? "bg-primary" : "bg-muted-foreground/30"
+                        }`}
+                        aria-label={`Go to slide ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
                 <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
