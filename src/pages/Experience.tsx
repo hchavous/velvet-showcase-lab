@@ -21,6 +21,19 @@ interface ExperienceItem {
 
 const fullTimeExperiences: ExperienceItem[] = [
   {
+    company: "Quanthaven Labs, LLC",
+    role: "Financial Consultant",
+    period: "01/2026 – Present",
+    location: "Wilmington, DE",
+    highlights: [
+      "Providing financial modeling and analytics consulting for Voltage Venture Capital (healthcare VC) and Evalla Advisors (Private Equity)",
+      "Constructed institutional-grade Excel financial models for Voltage Venture Capital encompassing fund-level IRR analysis, portfolio company performance tracking, and multi-scenario cash flow projections",
+      "Developed interactive web-based financial modeling application for Voltage to support investor presentations and deal analysis workflows",
+      "Delivering fund-level and deal-level financial modeling for Evalla Advisors, including fully integrated 3-statement pro formas and reporting structures aligned with institutional PE standards",
+      "Architecting scalable Excel frameworks for Evalla that translate complex financial inputs into structured, presentation-ready analytical outputs",
+    ],
+  },
+  {
     company: "Hearthfire Holdings",
     role: "Senior Business Intelligence Architect",
     period: "03/2025 – 12/2025",
