@@ -1,4 +1,15 @@
-import { Brain, GraduationCap, Target, Zap } from "lucide-react";
+import * as React from "react";
+import { Brain, GraduationCap, Target, Zap, ExternalLink, Layers } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import Layout from "@/components/layout/Layout";
 import headshot from "@/assets/headshot.jpg";
 
