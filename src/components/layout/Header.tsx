@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -48,6 +48,14 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="/Haven_Chavous_Resume.docx"
+              download
+              className="ml-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-secondary inline-flex items-center gap-1.5"
+            >
+              <Download className="h-3.5 w-3.5" />
+              Resume
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -80,6 +88,15 @@ const Header = () => {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href="/Haven_Chavous_Resume.docx"
+                download
+                onClick={() => setIsMenuOpen(false)}
+                className="px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-secondary inline-flex items-center gap-1.5"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Resume
+              </a>
             </div>
           </nav>
         )}
