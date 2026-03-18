@@ -50,7 +50,13 @@ const Header = () => {
             ))}
             <a
               href="/Haven_Chavous_Resume.docx"
-              download
+              download="Haven_Chavous_Resume.docx"
+              target="_self"
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.location.href = "/Haven_Chavous_Resume.docx";
+              }}
               className="ml-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-secondary inline-flex items-center gap-1.5"
             >
               <Download className="h-3.5 w-3.5" />
