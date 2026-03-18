@@ -1,54 +1,13 @@
 
 
-## Organize Consulting Clients by Industry Category
+## Fix Resume Download Link
 
-### Concept
-Group the 10 clients into industry categories, each with a label and its associated client badges beneath. This creates a clean, scannable layout.
+### Problem
+The resume file at `public/Haven_Chavous_Resume.docx` appears to be empty/corrupted from a previous copy attempt. When users click "Resume" in the header, the request falls through to the SPA router instead of serving the actual file.
 
-### Proposed Categories
+### Fix
+1. **Copy the newly uploaded resume** (`user-uploads://Haven_Chavous_Resume_Mar_2026-2.docx`) to `public/Haven_Chavous_Resume.docx`, replacing the broken file
+2. **No code changes needed** — the header already references the correct path (`/Haven_Chavous_Resume.docx`) with the `download` attribute in both desktop and mobile navigation
 
-| Category | Clients |
-|---|---|
-| **Energy & Sustainability** | Source Renewables, Glasspoint Inc |
-| **Financial Services & Investment** | Evalla Advisors, Voltage Venture Capital, Cinnaire |
-| **Technology & Healthcare** | VisualDx, CDW |
-| **Real Estate & Construction** | National Apartment Flooring |
-| **Education** | Harvard Business School |
-| **Consumer & Industrial** | IPM Foods |
-
-### Layout
-```text
-┌─────────────────────────────────────────────┐
-│ Self-Employed / Financial Consultant        │
-│ 01/2018 – Present · Wilmington, DE         │
-│                                             │
-│ Provided financial modeling and analytics   │
-│ consulting for clients including:           │
-│                                             │
-│ Energy & Sustainability                     │
-│ [Source Renewables]  [Glasspoint Inc]       │
-│                                             │
-│ Financial Services & Investment             │
-│ [Evalla Advisors] [Voltage VC] [Cinnaire]  │
-│                                             │
-│ Technology & Healthcare                     │
-│ [VisualDx]  [CDW]                          │
-│                                             │
-│ Real Estate & Construction                  │
-│ [National Apartment Flooring]              │
-│                                             │
-│ Education                                   │
-│ [Harvard Business School]                  │
-│                                             │
-│ Consumer & Industrial                       │
-│ [IPM Foods]                                │
-└─────────────────────────────────────────────┘
-```
-
-### Changes in `src/pages/Experience.tsx`
-
-1. Replace the flat `highlights` array with a new structured data approach — define a `consultingCategories` array of `{ category: string, clients: string[] }` objects
-2. Update the `ExperienceCard` rendering logic: when the experience has categories (or a new flag), render each category as a labeled group with its client badges underneath
-3. Each category label rendered as a small semibold text, followed by a `flex flex-wrap gap-2` row of `Badge` components
-4. Keep the intro paragraph ("Provided financial modeling...") above all categories
+Single file operation — just replacing the broken binary with the real resume.
 
