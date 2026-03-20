@@ -21,6 +21,7 @@ const models = [
   {
     title: "Multifamily Returns Analyzer",
     category: "Real Estate",
+    thumbnail: thumbnailMultifamily,
     description:
       "14-unit multifamily investment returns tracker with NOI, cash flow, IRR, equity multiple, and annual performance summary.",
     file: "/models/Multifamily_Returns_Analyzer.xlsx",
