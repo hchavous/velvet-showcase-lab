@@ -63,6 +63,8 @@ const handleModelDownload = async (
 };
 
 const ExcelModels = () => {
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+
   return (
     <Layout>
       <section className="container mx-auto px-4 py-20">
