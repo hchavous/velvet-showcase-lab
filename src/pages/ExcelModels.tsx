@@ -3,7 +3,10 @@ import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Download, Lock, FileSpreadsheet } from "lucide-react";
+import { Download, Lock } from "lucide-react";
+import thumbnailAutoloan from "@/assets/thumbnail-autoloan.jpg";
+import thumbnailMultifamily from "@/assets/thumbnail-multifamily.jpg";
+import thumbnailBudget from "@/assets/thumbnail-budget.jpg";
 
 const models = [
   {
