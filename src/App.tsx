@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Experience from "./pages/Experience";
 
 import Contact from "./pages/Contact";
+import ExcelModels from "./pages/ExcelModels";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
