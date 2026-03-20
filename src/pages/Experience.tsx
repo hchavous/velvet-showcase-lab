@@ -202,9 +202,9 @@ const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) =
   </div>
 );
 
-const ExperienceCard = ({ exp, index }: { exp: ExperienceItem; index: number }) => (
+const ExperienceCard = ({ exp, index, isUmbrella }: { exp: ExperienceItem; index: number; isUmbrella?: boolean }) => (
   <div className="animate-fade-in-up" style={{ animationDelay: `${0.1 * index}s` }}>
-    <div className="p-6 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:glow-sm">
+    <div className={`rounded-xl transition-all duration-300 hover:glow-sm ${isUmbrella ? 'p-8 bg-card/70 border-2 border-primary/40 hover:border-primary/60' : 'p-6 bg-card/50 border border-border/50 hover:border-primary/50'}`}>
       <div className="mb-4">
         <div className="flex items-center gap-2 text-primary mb-1">
           <Building2 className="h-4 w-4" />
