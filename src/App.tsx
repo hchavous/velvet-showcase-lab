@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Experience from "./pages/Experience";
 
 import Contact from "./pages/Contact";
+import ExcelModels from "./pages/ExcelModels";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,7 +22,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/experience" element={<Experience />} />
           
-          <Route path="/contact" element={<Contact />} />
+           <Route path="/contact" element={<Contact />} />
+           <Route path="/excel-models" element={<ExcelModels />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
