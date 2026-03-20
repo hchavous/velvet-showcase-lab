@@ -1,58 +1,19 @@
 
 
-## Add "Excel Models" Page
+## Improve Quanthaven Client Hierarchy Visibility
 
-### Overview
-Create a new page showcasing three downloadable Excel models as cards with thumbnails, descriptions, and download buttons. The models are password-protected.
+### Problem
+Client sub-cards look too similar to standalone entries. A skimming reader may not realize they are consulting engagements under the Quanthaven umbrella.
 
-### Model Details
+### Changes to `src/pages/Experience.tsx`
 
-| Model | Description |
-|---|---|
-| **Auto Loan Underwriting Model** | Consumer credit risk assessment tool with borrower inputs, calculated risk metrics, approval scorecard, and full amortization schedule. |
-| **Multifamily Returns Analyzer** | 14-unit multifamily investment returns tracker with NOI, cash flow, IRR, equity multiple, and annual performance summary. |
-| **Personal Budget Dashboard** | Fiscal year budget dashboard with income/expense tracking, savings goals, and budget vs. actual variance analysis. |
+1. **Add a "Client Engagements" label** between the Quanthaven parent card and the client sub-cards — a small heading like "Client Engagements via Quanthaven Labs" with a `Users` icon, styled as a muted label with left-aligned positioning matching the client card indent.
 
-### Changes
+2. **Wrap client cards in a container** with a continuous left border connecting them visually to the parent — replace the per-card `border-l-2` with a single wrapper `div` that has `ml-4 md:ml-8 border-l-2 border-primary/30` and contains all client cards inside with `pl-4 md:pl-6 space-y-4`.
 
-**1. Create `src/pages/ExcelModels.tsx`**
-- Page with heading "Excel Models" and subtitle about password-protected downloadable templates
-- Grid of 3 cards, each with:
-  - Screenshot/thumbnail placeholder (we'll generate simple preview images from the parsed content or use a styled placeholder with an Excel icon)
-  - Model title
-  - Short description
-  - Category badge (e.g., "Consumer Lending", "Real Estate", "Personal Finance")
-  - Download button using the same blob-fetch pattern from the resume download
-  - Small note that models are password-protected
-- Matches existing page styling (Layout wrapper, fade-in animations, card styles)
+3. **Add a subtle "Consulting Client" badge** on each client card (top-right area, next to the date) to reinforce these are client relationships, not employers.
 
-**2. Copy the 3 .xlsx files to `public/models/`**
-- `AutoLoan_Underwriting_Model.xlsx`
-- `Multifamily_Returns_Analyzer.xlsx`
-- `Personal_Budget_Dashboard.xlsx`
+4. **Make the Quanthaven parent card slightly more prominent** — bump padding, add a subtle gradient or stronger border to differentiate it as the umbrella entity.
 
-**3. Update `src/App.tsx`**
-- Add `/excel-models` route
-
-**4. Update `src/components/layout/Header.tsx`**
-- Add `{ href: "/excel-models", label: "Excel Models" }` to `navLinks`
-
-### Card Layout
-```text
-┌──────────────────────────────────┐
-│  [Excel icon / styled preview]   │
-│                                  │
-│  Auto Loan Underwriting Model    │
-│  [Consumer Lending]              │
-│                                  │
-│  Consumer credit risk assessment │
-│  with approval scorecard and     │
-│  amortization schedule.          │
-│                                  │
-│  🔒 Password-protected           │
-│  [⬇ Download Model]             │
-└──────────────────────────────────┘
-```
-
-Four files modified/created total.
+These are all styling/layout tweaks within the single file — no data or structural changes needed.
 
