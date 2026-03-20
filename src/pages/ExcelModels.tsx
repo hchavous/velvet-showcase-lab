@@ -71,7 +71,7 @@ const ExcelModels = () => {
               Excel Models
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-pretty">
-              Downloadable financial models and dashboards. All models are
+              Downloadable financial models and dashboards as proof of concept and quality of work. All models are
               password-protected to preserve formula integrity.
             </p>
           </div>
