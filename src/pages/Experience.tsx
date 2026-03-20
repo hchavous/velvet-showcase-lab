@@ -171,7 +171,7 @@ const featuredProjects = [
 
 const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) => (
   <div
-    className="ml-4 md:ml-8 pl-4 md:pl-6 border-l-2 border-primary/30 animate-fade-in-up"
+    className="animate-fade-in-up"
     style={{ animationDelay: `${0.05 * index}s` }}
   >
     <div className="p-4 rounded-lg bg-secondary/30 border border-border/30 hover:border-primary/30 transition-all duration-300">
@@ -180,9 +180,14 @@ const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) =
           <h4 className="font-semibold text-foreground">{client.client}</h4>
           <span className="text-xs text-primary font-medium">{client.industry}</span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <Calendar className="h-3 w-3" />
-          <span>{client.period}</span>
+        <div className="flex items-center gap-3">
+          <Badge variant="outline" className="text-[10px] px-1.5 py-0 text-muted-foreground border-primary/20">
+            Consulting Client
+          </Badge>
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Calendar className="h-3 w-3" />
+            <span>{client.period}</span>
+          </div>
         </div>
       </div>
       <ul className="space-y-1 mt-2">
