@@ -12,6 +12,7 @@ const models = [
   {
     title: "Auto Loan Underwriting Model",
     category: "Consumer Lending",
+    thumbnail: thumbnailAutoloan,
     description:
       "Consumer credit risk assessment tool with borrower inputs, calculated risk metrics, approval scorecard, and full amortization schedule.",
     file: "/models/AutoLoan_Underwriting_Model.xlsx",
