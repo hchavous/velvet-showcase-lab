@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 
 const Contact = () => {
@@ -17,6 +17,18 @@ const Contact = () => {
           </div>
 
           <div className="max-w-xl mx-auto space-y-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            {/* Availability */}
+            <div className="p-6 rounded-xl bg-primary/10 border border-primary/20">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+                <span className="font-semibold text-primary">Available for Opportunities</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                I'm currently open to consulting projects, full-time roles, and interesting collaborations
+                in finance, data analytics, and AI.
+              </p>
+            </div>
+
             {/* Direct Contact */}
             <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
               <h2 className="text-2xl font-semibold mb-6">Direct Contact</h2>
@@ -59,43 +71,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Professional Links */}
-            <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
-              <h2 className="text-2xl font-semibold mb-6">Connect</h2>
-              <div className="flex gap-4">
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 p-4 rounded-lg bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-colors group"
-                >
-                  <Linkedin className="h-5 w-5" />
-                  <span className="font-medium">LinkedIn</span>
-                </a>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 p-4 rounded-lg bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-colors group"
-                >
-                  <Github className="h-5 w-5" />
-                  <span className="font-medium">GitHub</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Availability */}
-            <div className="p-6 rounded-xl bg-primary/10 border border-primary/20">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-                <span className="font-semibold text-primary">Available for Opportunities</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                I'm currently open to consulting projects, full-time roles, and interesting collaborations
-                in finance, data analytics, and AI.
-              </p>
             </div>
           </div>
         </div>

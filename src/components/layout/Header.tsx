@@ -142,6 +142,16 @@ const Header = () => {
                 <Download className="h-3.5 w-3.5" />
                 Resume
               </a>
+              <a
+                href="https://linkedin.com/in/havenchavous"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10 inline-flex items-center gap-1.5"
+              >
+                <Linkedin className="h-4 w-4" />
+                LinkedIn
+              </a>
             </div>
           </nav>
         )}
