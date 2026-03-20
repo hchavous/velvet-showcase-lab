@@ -248,11 +248,19 @@ const Experience = () => {
             </div>
 
             {/* Quanthaven umbrella */}
-            <div className="space-y-4 mb-8">
-              <ExperienceCard exp={quanthaven} index={0} />
-              {quanthaven.clients?.map((client, i) => (
-                <ClientCard key={client.client} client={client} index={i + 1} />
-              ))}
+            <div className="mb-8">
+              <ExperienceCard exp={quanthaven} index={0} isUmbrella />
+              
+              {/* Client engagements wrapper */}
+              <div className="ml-4 md:ml-8 mt-4 border-l-2 border-primary/30 pl-4 md:pl-6 space-y-4">
+                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground py-2">
+                  <Users className="h-4 w-4 text-primary" />
+                  <span>Client Engagements via Quanthaven Labs</span>
+                </div>
+                {quanthaven.clients?.map((client, i) => (
+                  <ClientCard key={client.client} client={client} index={i + 1} />
+                ))}
+              </div>
             </div>
 
             {/* Standalone roles */}
