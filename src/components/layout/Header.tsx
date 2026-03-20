@@ -89,6 +89,15 @@ const Header = () => {
               <Download className="h-3.5 w-3.5" />
               Resume
             </a>
+            <a
+              href="https://linkedin.com/in/havenchavous"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-1 p-2 rounded-lg transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
