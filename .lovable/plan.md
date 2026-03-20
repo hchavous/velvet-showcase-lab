@@ -1,54 +1,58 @@
 
 
-## Organize Consulting Clients by Industry Category
+## Add "Excel Models" Page
 
-### Concept
-Group the 10 clients into industry categories, each with a label and its associated client badges beneath. This creates a clean, scannable layout.
+### Overview
+Create a new page showcasing three downloadable Excel models as cards with thumbnails, descriptions, and download buttons. The models are password-protected.
 
-### Proposed Categories
+### Model Details
 
-| Category | Clients |
+| Model | Description |
 |---|---|
-| **Energy & Sustainability** | Source Renewables, Glasspoint Inc |
-| **Financial Services & Investment** | Evalla Advisors, Voltage Venture Capital, Cinnaire |
-| **Technology & Healthcare** | VisualDx, CDW |
-| **Real Estate & Construction** | National Apartment Flooring |
-| **Education** | Harvard Business School |
-| **Consumer & Industrial** | IPM Foods |
+| **Auto Loan Underwriting Model** | Consumer credit risk assessment tool with borrower inputs, calculated risk metrics, approval scorecard, and full amortization schedule. |
+| **Multifamily Returns Analyzer** | 14-unit multifamily investment returns tracker with NOI, cash flow, IRR, equity multiple, and annual performance summary. |
+| **Personal Budget Dashboard** | Fiscal year budget dashboard with income/expense tracking, savings goals, and budget vs. actual variance analysis. |
 
-### Layout
+### Changes
+
+**1. Create `src/pages/ExcelModels.tsx`**
+- Page with heading "Excel Models" and subtitle about password-protected downloadable templates
+- Grid of 3 cards, each with:
+  - Screenshot/thumbnail placeholder (we'll generate simple preview images from the parsed content or use a styled placeholder with an Excel icon)
+  - Model title
+  - Short description
+  - Category badge (e.g., "Consumer Lending", "Real Estate", "Personal Finance")
+  - Download button using the same blob-fetch pattern from the resume download
+  - Small note that models are password-protected
+- Matches existing page styling (Layout wrapper, fade-in animations, card styles)
+
+**2. Copy the 3 .xlsx files to `public/models/`**
+- `AutoLoan_Underwriting_Model.xlsx`
+- `Multifamily_Returns_Analyzer.xlsx`
+- `Personal_Budget_Dashboard.xlsx`
+
+**3. Update `src/App.tsx`**
+- Add `/excel-models` route
+
+**4. Update `src/components/layout/Header.tsx`**
+- Add `{ href: "/excel-models", label: "Excel Models" }` to `navLinks`
+
+### Card Layout
 ```text
-┌─────────────────────────────────────────────┐
-│ Self-Employed / Financial Consultant        │
-│ 01/2018 – Present · Wilmington, DE         │
-│                                             │
-│ Provided financial modeling and analytics   │
-│ consulting for clients including:           │
-│                                             │
-│ Energy & Sustainability                     │
-│ [Source Renewables]  [Glasspoint Inc]       │
-│                                             │
-│ Financial Services & Investment             │
-│ [Evalla Advisors] [Voltage VC] [Cinnaire]  │
-│                                             │
-│ Technology & Healthcare                     │
-│ [VisualDx]  [CDW]                          │
-│                                             │
-│ Real Estate & Construction                  │
-│ [National Apartment Flooring]              │
-│                                             │
-│ Education                                   │
-│ [Harvard Business School]                  │
-│                                             │
-│ Consumer & Industrial                       │
-│ [IPM Foods]                                │
-└─────────────────────────────────────────────┘
+┌──────────────────────────────────┐
+│  [Excel icon / styled preview]   │
+│                                  │
+│  Auto Loan Underwriting Model    │
+│  [Consumer Lending]              │
+│                                  │
+│  Consumer credit risk assessment │
+│  with approval scorecard and     │
+│  amortization schedule.          │
+│                                  │
+│  🔒 Password-protected           │
+│  [⬇ Download Model]             │
+└──────────────────────────────────┘
 ```
 
-### Changes in `src/pages/Experience.tsx`
-
-1. Replace the flat `highlights` array with a new structured data approach — define a `consultingCategories` array of `{ category: string, clients: string[] }` objects
-2. Update the `ExperienceCard` rendering logic: when the experience has categories (or a new flag), render each category as a labeled group with its client badges underneath
-3. Each category label rendered as a small semibold text, followed by a `flex flex-wrap gap-2` row of `Badge` components
-4. Keep the intro paragraph ("Provided financial modeling...") above all categories
+Four files modified/created total.
 
