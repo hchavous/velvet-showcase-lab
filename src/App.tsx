@@ -22,7 +22,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/experience" element={<Experience />} />
           
-          <Route path="/contact" element={<Contact />} />
+           <Route path="/contact" element={<Contact />} />
+           <Route path="/excel-models" element={<ExcelModels />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
