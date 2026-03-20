@@ -4,9 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Download, Lock } from "lucide-react";
-import thumbnailAutoloan from "@/assets/thumbnail-autoloan.jpg";
-import thumbnailMultifamily from "@/assets/thumbnail-multifamily.jpg";
-import thumbnailBudget from "@/assets/thumbnail-budget.jpg";
+import thumbnailAutoloan from "@/assets/thumbnail-autoloan.png";
+import thumbnailMultifamily from "@/assets/thumbnail-multifamily.png";
+import thumbnailBudget from "@/assets/thumbnail-budget.png";
 
 const models = [
   {
