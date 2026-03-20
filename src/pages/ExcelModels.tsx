@@ -1,8 +1,9 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Download, Lock } from "lucide-react";
 import thumbnailAutoloan from "@/assets/thumbnail-autoloan.png";
 import thumbnailMultifamily from "@/assets/thumbnail-multifamily.png";
@@ -62,6 +63,8 @@ const handleModelDownload = async (
 };
 
 const ExcelModels = () => {
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+
   return (
     <Layout>
       <section className="container mx-auto px-4 py-20">
@@ -83,12 +86,14 @@ const ExcelModels = () => {
                 className="bg-card/50 border-border/50 rounded-2xl overflow-hidden opacity-0 animate-fade-in-up flex flex-col"
                 style={{ animationDelay: `${0.15 + index * 0.1}s` }}
               >
-                {/* Thumbnail preview */}
-                <div className="aspect-[5/4] overflow-hidden border-b border-border/30">
+                <div
+                  className="aspect-[5/4] overflow-hidden border-b border-border/30 cursor-zoom-in"
+                  onClick={() => setLightboxSrc(model.thumbnail)}
+                >
                   <img
                     src={model.thumbnail}
                     alt={`${model.title} preview`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -128,6 +133,17 @@ const ExcelModels = () => {
           </div>
         </div>
       </section>
+      <Dialog open={!!lightboxSrc} onOpenChange={() => setLightboxSrc(null)}>
+        <DialogContent className="max-w-4xl p-2 bg-background/95 border-border/50">
+          {lightboxSrc && (
+            <img
+              src={lightboxSrc}
+              alt="Model preview"
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
