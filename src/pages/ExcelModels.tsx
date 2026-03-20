@@ -3,12 +3,16 @@ import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Download, Lock, FileSpreadsheet } from "lucide-react";
+import { Download, Lock } from "lucide-react";
+import thumbnailAutoloan from "@/assets/thumbnail-autoloan.jpg";
+import thumbnailMultifamily from "@/assets/thumbnail-multifamily.jpg";
+import thumbnailBudget from "@/assets/thumbnail-budget.jpg";
 
 const models = [
   {
     title: "Auto Loan Underwriting Model",
     category: "Consumer Lending",
+    thumbnail: thumbnailAutoloan,
     description:
       "Consumer credit risk assessment tool with borrower inputs, calculated risk metrics, approval scorecard, and full amortization schedule.",
     file: "/models/AutoLoan_Underwriting_Model.xlsx",
@@ -17,6 +21,7 @@ const models = [
   {
     title: "Multifamily Returns Analyzer",
     category: "Real Estate",
+    thumbnail: thumbnailMultifamily,
     description:
       "14-unit multifamily investment returns tracker with NOI, cash flow, IRR, equity multiple, and annual performance summary.",
     file: "/models/Multifamily_Returns_Analyzer.xlsx",
@@ -25,6 +30,7 @@ const models = [
   {
     title: "Personal Budget Dashboard",
     category: "Personal Finance",
+    thumbnail: thumbnailBudget,
     description:
       "Fiscal year budget dashboard with income/expense tracking, savings goals, and budget vs. actual variance analysis.",
     file: "/models/Personal_Budget_Dashboard.xlsx",
@@ -77,9 +83,14 @@ const ExcelModels = () => {
                 className="bg-card/50 border-border/50 rounded-2xl overflow-hidden opacity-0 animate-fade-in-up flex flex-col"
                 style={{ animationDelay: `${0.15 + index * 0.1}s` }}
               >
-                {/* Styled preview header */}
-                <div className="bg-secondary/60 flex items-center justify-center py-10 border-b border-border/30">
-                  <FileSpreadsheet className="h-16 w-16 text-primary/70" />
+                {/* Thumbnail preview */}
+                <div className="aspect-[5/4] overflow-hidden border-b border-border/30">
+                  <img
+                    src={model.thumbnail}
+                    alt={`${model.title} preview`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
 
                 <CardContent className="p-6 flex flex-col flex-1">
