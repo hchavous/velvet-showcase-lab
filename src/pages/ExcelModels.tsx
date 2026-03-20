@@ -133,6 +133,17 @@ const ExcelModels = () => {
           </div>
         </div>
       </section>
+      <Dialog open={!!lightboxSrc} onOpenChange={() => setLightboxSrc(null)}>
+        <DialogContent className="max-w-4xl p-2 bg-background/95 border-border/50">
+          {lightboxSrc && (
+            <img
+              src={lightboxSrc}
+              alt="Model preview"
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };
