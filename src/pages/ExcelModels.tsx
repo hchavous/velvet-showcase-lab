@@ -83,9 +83,14 @@ const ExcelModels = () => {
                 className="bg-card/50 border-border/50 rounded-2xl overflow-hidden opacity-0 animate-fade-in-up flex flex-col"
                 style={{ animationDelay: `${0.15 + index * 0.1}s` }}
               >
-                {/* Styled preview header */}
-                <div className="bg-secondary/60 flex items-center justify-center py-10 border-b border-border/30">
-                  <FileSpreadsheet className="h-16 w-16 text-primary/70" />
+                {/* Thumbnail preview */}
+                <div className="aspect-[5/4] overflow-hidden border-b border-border/30">
+                  <img
+                    src={model.thumbnail}
+                    alt={`${model.title} preview`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
 
                 <CardContent className="p-6 flex flex-col flex-1">
