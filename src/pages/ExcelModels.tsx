@@ -30,6 +30,7 @@ const models = [
   {
     title: "Personal Budget Dashboard",
     category: "Personal Finance",
+    thumbnail: thumbnailBudget,
     description:
       "Fiscal year budget dashboard with income/expense tracking, savings goals, and budget vs. actual variance analysis.",
     file: "/models/Personal_Budget_Dashboard.xlsx",
