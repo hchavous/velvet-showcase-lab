@@ -158,7 +158,7 @@ const About = () => {
               <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
                 <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
                   <Layers className="h-6 w-6 text-primary" />
-                  Featured Projects
+                  Featured Web-Based Projects
                 </h2>
                 <div className="relative px-12">
                   <Carousel setApi={setCarouselApi} opts={{ loop: true }}>
