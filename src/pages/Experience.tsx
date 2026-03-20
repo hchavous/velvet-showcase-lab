@@ -1,4 +1,4 @@
-import { Building2, Calendar, CheckCircle2, ExternalLink, Layers } from "lucide-react";
+import { Building2, Calendar, CheckCircle2, ExternalLink, Layers, Users } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -171,7 +171,7 @@ const featuredProjects = [
 
 const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) => (
   <div
-    className="ml-4 md:ml-8 pl-4 md:pl-6 border-l-2 border-primary/30 animate-fade-in-up"
+    className="animate-fade-in-up"
     style={{ animationDelay: `${0.05 * index}s` }}
   >
     <div className="p-4 rounded-lg bg-secondary/30 border border-border/30 hover:border-primary/30 transition-all duration-300">
@@ -180,9 +180,14 @@ const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) =
           <h4 className="font-semibold text-foreground">{client.client}</h4>
           <span className="text-xs text-primary font-medium">{client.industry}</span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <Calendar className="h-3 w-3" />
-          <span>{client.period}</span>
+        <div className="flex items-center gap-3">
+          <Badge variant="outline" className="text-[10px] px-1.5 py-0 text-muted-foreground border-primary/20">
+            Consulting Client
+          </Badge>
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Calendar className="h-3 w-3" />
+            <span>{client.period}</span>
+          </div>
         </div>
       </div>
       <ul className="space-y-1 mt-2">
@@ -197,9 +202,9 @@ const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) =
   </div>
 );
 
-const ExperienceCard = ({ exp, index }: { exp: ExperienceItem; index: number }) => (
+const ExperienceCard = ({ exp, index, isUmbrella }: { exp: ExperienceItem; index: number; isUmbrella?: boolean }) => (
   <div className="animate-fade-in-up" style={{ animationDelay: `${0.1 * index}s` }}>
-    <div className="p-6 rounded-xl bg-card/50 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:glow-sm">
+    <div className={`rounded-xl transition-all duration-300 hover:glow-sm ${isUmbrella ? 'p-8 bg-card/70 border-2 border-primary/40 hover:border-primary/60' : 'p-6 bg-card/50 border border-border/50 hover:border-primary/50'}`}>
       <div className="mb-4">
         <div className="flex items-center gap-2 text-primary mb-1">
           <Building2 className="h-4 w-4" />
@@ -243,11 +248,19 @@ const Experience = () => {
             </div>
 
             {/* Quanthaven umbrella */}
-            <div className="space-y-4 mb-8">
-              <ExperienceCard exp={quanthaven} index={0} />
-              {quanthaven.clients?.map((client, i) => (
-                <ClientCard key={client.client} client={client} index={i + 1} />
-              ))}
+            <div className="mb-8">
+              <ExperienceCard exp={quanthaven} index={0} isUmbrella />
+              
+              {/* Client engagements wrapper */}
+              <div className="ml-4 md:ml-8 mt-4 border-l-2 border-primary/30 pl-4 md:pl-6 space-y-4">
+                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground py-2">
+                  <Users className="h-4 w-4 text-primary" />
+                  <span>Client Engagements via Quanthaven Labs</span>
+                </div>
+                {quanthaven.clients?.map((client, i) => (
+                  <ClientCard key={client.client} client={client} index={i + 1} />
+                ))}
+              </div>
             </div>
 
             {/* Standalone roles */}
