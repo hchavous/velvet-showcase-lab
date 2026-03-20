@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -89,6 +89,15 @@ const Header = () => {
               <Download className="h-3.5 w-3.5" />
               Resume
             </a>
+            <a
+              href="https://linkedin.com/in/havenchavous"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-1 p-2 rounded-lg transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -132,6 +141,16 @@ const Header = () => {
               >
                 <Download className="h-3.5 w-3.5" />
                 Resume
+              </a>
+              <a
+                href="https://linkedin.com/in/havenchavous"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10 inline-flex items-center gap-1.5"
+              >
+                <Linkedin className="h-4 w-4" />
+                LinkedIn
               </a>
             </div>
           </nav>
