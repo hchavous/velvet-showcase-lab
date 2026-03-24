@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface ClientEntry {
   client: string;
@@ -20,6 +21,62 @@ interface ExperienceItem {
   highlights: string[];
   clients?: ClientEntry[];
 }
+
+const fullTimeExperiences: ExperienceItem[] = [
+  {
+    company: "Hearthfire Holdings",
+    role: "Senior Business Intelligence Architect",
+    period: "03/2025 – Present",
+    location: "Wilmington, DE",
+    highlights: [
+      "Designed and built secure web-based analytics portal with backend database infrastructure, delivering dynamic dashboards with interactive charts and real-time portfolio visualization for institutional investors",
+      "Developed AI-integrated document management platform featuring automated document summarization, intelligent search capabilities, and dynamic lending statistics visualizations",
+      "Transformed enterprise underwriting model from Excel to full-stack web application, maintaining complex financial logic while enhancing user experience through intuitive interface design and automated workflows",
+      "Engineered capital stack financing tools enabling multi-tier investment analysis, automated waterfall calculations, and scenario modeling across preferred equity, common equity, and debt structures",
+      "Developed Python-based data transformation pipelines to extract, process, and summarize complex datasets from multiple PDF and Excel sources into actionable analytics",
+      "Rebuilt existing Excel-based underwriting model to a more sophisticated, accurate, and user-friendly tool",
+    ],
+  },
+  {
+    company: "Top Hat CRE",
+    role: "Director, Investment Analytics",
+    period: "01/2022 – 12/2024",
+    location: "Wilmington, DE",
+    highlights: [
+      "Engineered comprehensive real estate investment models in Excel for institutional-grade underwriting, resulting in successful evaluation of 100+ commercial assets across multifamily, self-storage, and mixed-use sectors",
+      "Developed proprietary Python/HTML analytics platform for deal pipeline management, investment metrics tracking, and portfolio performance analysis",
+      "Automated institutional investor reporting workflows through Python scripting, reducing report generation time by 90% while enhancing data accuracy",
+      "Drove investment strategy through advanced financial modeling, sensitivity analysis, and risk assessment for institutional investors and board members",
+      "Managed complex fund modeling including IRR calculations, waterfall distributions, and investment performance metrics for institutional-quality assets",
+    ],
+  },
+  {
+    company: "OneMain Financial",
+    role: "Quantitative Analytics Lead",
+    period: "01/2017 – 12/2021",
+    location: "Wilmington, DE",
+    highlights: [
+      "Led quantitative analysis for $1B+ in portfolio acquisitions using statistical modeling and machine learning techniques",
+      "Implemented automated credit risk models in Excel achieving 90% accuracy in delinquency forecasting",
+      "Developed comprehensive profitability analysis framework incorporating risk-adjusted returns and portfolio optimization",
+      "Created predictive analytics models via Excel/Python to evaluate credit risk factors and borrower behavior patterns",
+      "Established enterprise-wide modeling standards for portfolio valuation and risk assessment",
+    ],
+  },
+  {
+    company: "Pro Capital, LLC",
+    role: "Senior Quantitative/Modeling Analyst",
+    period: "01/2015 – 01/2017",
+    location: "Philadelphia, PA",
+    highlights: [
+      "Sole source of financial modeling and analysis for a Private Equity Real Estate Investment firm managing six unique investment funds",
+      "Created complex five-year pro forma financials and multi-variable sensitivity analysis for each fund, anticipating changes in borrowing base, asset acquisition, and asset redemption",
+      "Engineered modeling breakthroughs to accurately forecast leverage based on targeted cash balance and automatically trigger fund sunset/redemption based on multiple variables",
+      "Presented fund performance to board members and investors on an ongoing basis; produced all presentation materials for the CEO",
+      "Created ad-hoc financial models and statistical analyses for lending banks, board members, and investors",
+    ],
+  },
+];
 
 const quanthaven: ExperienceItem = {
   company: "Quanthaven Labs, LLC",
@@ -48,19 +105,6 @@ const quanthaven: ExperienceItem = {
       ],
     },
     {
-      client: "Hearthfire Holdings",
-      industry: "Private Equity Real Estate",
-      period: "03/2025 – 12/2025",
-      highlights: [
-        "Designed and built secure web-based analytics portal with backend database infrastructure, delivering dynamic dashboards with interactive charts and real-time portfolio visualization",
-        "Developed AI-integrated document management platform featuring automated document summarization, intelligent search, and dynamic lending statistics visualizations",
-        "Transformed enterprise underwriting model from Excel to full-stack web application, maintaining complex financial logic while enhancing user experience",
-        "Engineered capital stack financing tools enabling multi-tier investment analysis, automated waterfall calculations, and scenario modeling",
-        "Developed Python-based data transformation pipelines to extract, process, and summarize complex datasets from multiple PDF and Excel sources",
-        "Rebuilt existing Excel-based underwriting model to a more sophisticated, accurate, and user-friendly tool",
-      ],
-    },
-    {
       client: "GlassPoint",
       industry: "Financial Advisory",
       period: "10/2023 – Present",
@@ -76,17 +120,6 @@ const quanthaven: ExperienceItem = {
       period: "01/2023 – 12/2023",
       highlights: [
         "Created advanced financial modeling curriculum materials for graduate-level coursework",
-      ],
-    },
-    {
-      client: "Top Hat CRE",
-      industry: "Commercial Real Estate Investments",
-      period: "01/2022 – 12/2024",
-      highlights: [
-        "Engineered comprehensive real estate investment models in Excel for institutional-grade underwriting, resulting in successful evaluation of 100+ commercial assets",
-        "Developed proprietary Python/HTML analytics platform for deal pipeline management, investment metrics tracking, and portfolio performance analysis",
-        "Automated institutional investor reporting workflows through Python scripting, reducing report generation time by 90%",
-        "Managed complex fund modeling including IRR calculations, waterfall distributions, and investment performance metrics",
       ],
     },
     {
@@ -116,35 +149,6 @@ const quanthaven: ExperienceItem = {
   ],
 };
 
-const standaloneExperiences: ExperienceItem[] = [
-  {
-    company: "OneMain Financial",
-    role: "Quantitative Analytics Lead",
-    period: "01/2017 – 12/2021",
-    location: "Wilmington, DE",
-    highlights: [
-      "Led quantitative analysis for $1B+ in portfolio acquisitions using statistical modeling and machine learning techniques",
-      "Implemented automated credit risk models in Excel achieving 90% accuracy in delinquency forecasting",
-      "Developed comprehensive profitability analysis framework incorporating risk-adjusted returns and portfolio optimization",
-      "Created predictive analytics models via Excel/Python to evaluate credit risk factors and borrower behavior patterns",
-      "Established enterprise-wide modeling standards for portfolio valuation and risk assessment",
-    ],
-  },
-  {
-    company: "Pro Capital, LLC",
-    role: "Senior Quantitative/Modeling Analyst",
-    period: "01/2015 – 01/2017",
-    location: "Philadelphia, PA",
-    highlights: [
-      "Sole source of financial modeling and financial analysis for Private Equity Real Estate Investment firm",
-      "Created complex, innovative financial models for 6 unique investment funds",
-      "Created five-year Pro-Forma financials and multi-variable sensitivity analysis for each fund",
-      "Created modeling mechanics breakthrough to accurately forecast leverage based on targeted cash balance",
-      "Presented Fund Performance to Board and Investors on an ongoing basis",
-    ],
-  },
-];
-
 const featuredProjects = [
   {
     title: "Quanthaven Labs",
@@ -170,10 +174,7 @@ const featuredProjects = [
 ];
 
 const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) => (
-  <div
-    className="animate-fade-in-up"
-    style={{ animationDelay: `${0.05 * index}s` }}
-  >
+  <div className="animate-fade-in-up" style={{ animationDelay: `${0.05 * index}s` }}>
     <div className="p-4 rounded-lg bg-secondary/30 border border-border/30 hover:border-primary/30 transition-all duration-300">
       <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
         <div>
@@ -247,28 +248,35 @@ const Experience = () => {
               </p>
             </div>
 
-            {/* Quanthaven umbrella */}
-            <div className="mb-8">
-              <ExperienceCard exp={quanthaven} index={0} isUmbrella />
-              
-              {/* Client engagements wrapper */}
-              <div className="ml-4 md:ml-8 mt-4 border-l-2 border-primary/30 pl-4 md:pl-6 space-y-4">
-                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground py-2">
-                  <Users className="h-4 w-4 text-primary" />
-                  <span>Client Engagements via Quanthaven Labs</span>
-                </div>
-                {quanthaven.clients?.map((client, i) => (
-                  <ClientCard key={client.client} client={client} index={i + 1} />
-                ))}
-              </div>
-            </div>
+            <Tabs defaultValue="full-time" className="mb-16">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+                <TabsTrigger value="full-time">Full-Time Experience</TabsTrigger>
+                <TabsTrigger value="consulting">Consulting</TabsTrigger>
+              </TabsList>
 
-            {/* Standalone roles */}
-            <div className="space-y-8 mb-16">
-              {standaloneExperiences.map((exp, index) => (
-                <ExperienceCard key={exp.company} exp={exp} index={index + 10} />
-              ))}
-            </div>
+              <TabsContent value="full-time">
+                <div className="space-y-8">
+                  {fullTimeExperiences.map((exp, index) => (
+                    <ExperienceCard key={exp.company} exp={exp} index={index} />
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="consulting">
+                <div className="mb-8">
+                  <ExperienceCard exp={quanthaven} index={0} isUmbrella />
+                  <div className="ml-4 md:ml-8 mt-4 border-l-2 border-primary/30 pl-4 md:pl-6 space-y-4">
+                    <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground py-2">
+                      <Users className="h-4 w-4 text-primary" />
+                      <span>Client Engagements via Quanthaven Labs</span>
+                    </div>
+                    {quanthaven.clients?.map((client, i) => (
+                      <ClientCard key={client.client} client={client} index={i + 1} />
+                    ))}
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
 
             {/* Featured Projects */}
             <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
