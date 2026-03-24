@@ -1,19 +1,42 @@
 
 
-## Improve Quanthaven Client Hierarchy Visibility
+## Restructure Experience Page into Two Tabs
 
-### Problem
-Client sub-cards look too similar to standalone entries. A skimming reader may not realize they are consulting engagements under the Quanthaven umbrella.
+### Overview
+Split the Experience page into two tabs: **Full-Time Experience** and **Consulting**, using the existing `Tabs` component. The full-time tab mirrors the resume; the consulting tab keeps the Quanthaven umbrella with the remaining non-resume clients.
 
-### Changes to `src/pages/Experience.tsx`
+### Tab 1: Full-Time Experience
+Four standalone `ExperienceCard` entries matching the resume:
 
-1. **Add a "Client Engagements" label** between the Quanthaven parent card and the client sub-cards — a small heading like "Client Engagements via Quanthaven Labs" with a `Users` icon, styled as a muted label with left-aligned positioning matching the client card indent.
+| Company | Role | Period |
+|---------|------|--------|
+| Hearthfire Holdings | Senior Business Intelligence Architect | 03/2025 – Present |
+| Top Hat CRE | Director, Investment Analytics | 01/2022 – 12/2024 |
+| OneMain Financial | Quantitative Analytics Lead | 01/2017 – 12/2021 |
+| Pro Capital, LLC | Senior Quantitative/Modeling Analyst | 01/2015 – 01/2017 |
 
-2. **Wrap client cards in a container** with a continuous left border connecting them visually to the parent — replace the per-card `border-l-2` with a single wrapper `div` that has `ml-4 md:ml-8 border-l-2 border-primary/30` and contains all client cards inside with `pl-4 md:pl-6 space-y-4`.
+Highlights updated to match the new resume wording (e.g., Hearthfire and Top Hat bullets differ slightly from the consulting versions).
 
-3. **Add a subtle "Consulting Client" badge** on each client card (top-right area, next to the date) to reinforce these are client relationships, not employers.
+### Tab 2: Consulting
+Quanthaven Labs umbrella with nested client sub-cards for engagements **not on the resume**:
+- Evalla Advisors
+- Voltage Venture Capital
+- GlassPoint
+- Harvard Business School
+- VisualDx
+- CDW
+- Source Renewables
 
-4. **Make the Quanthaven parent card slightly more prominent** — bump padding, add a subtle gradient or stronger border to differentiate it as the umbrella entity.
+Same visual pattern: umbrella card, left-border nesting, "Consulting Client" badges.
 
-These are all styling/layout tweaks within the single file — no data or structural changes needed.
+### Featured Projects
+Remains at the bottom, outside/below the tabs, visible regardless of active tab.
+
+### Technical Changes
+**Single file modified**: `src/pages/Experience.tsx`
+- Import `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent` from `@/components/ui/tabs`
+- Move Hearthfire and Top Hat CRE out of `quanthaven.clients` into the `fullTimeExperiences` array with updated highlights from the resume
+- Update Pro Capital highlights to match the new resume
+- Wrap the experience sections in `<Tabs defaultValue="full-time">` with two tab triggers
+- Featured Projects section sits outside the `Tabs` wrapper
 
