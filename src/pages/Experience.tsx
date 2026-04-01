@@ -26,7 +26,7 @@ const fullTimeExperiences: ExperienceItem[] = [
   {
     company: "Hearthfire Holdings",
     role: "Senior Business Intelligence Architect",
-    period: "03/2025 – Present",
+    period: "03/2025 – 12/2025",
     location: "Wilmington, DE",
     highlights: [
       "Designed and built secure web-based analytics portal with backend database infrastructure, delivering dynamic dashboards with interactive charts and real-time portfolio visualization for institutional investors",
