@@ -1,4 +1,5 @@
 import { Building2, Calendar, CheckCircle2, ExternalLink, Layers, Users } from "lucide-react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import Layout from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";

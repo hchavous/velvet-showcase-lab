@@ -1,4 +1,5 @@
 import { MouseEvent, useState } from "react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import Layout from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

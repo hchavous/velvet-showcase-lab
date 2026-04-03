@@ -1,4 +1,5 @@
 import * as React from "react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { Brain, GraduationCap, Target, Zap, ExternalLink, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";

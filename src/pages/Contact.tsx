@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import Layout from "@/components/layout/Layout";
 
 const Contact = () => {
