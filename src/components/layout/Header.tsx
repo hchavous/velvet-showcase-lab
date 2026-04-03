@@ -20,7 +20,7 @@ const Header = () => {
     event.stopPropagation();
 
     try {
-      const response = await fetch("/Haven_Chavous_Resume.docx", {
+      const response = await fetch("/Haven_Chavous_Resume.pdf", {
         credentials: "include",
       });
 
@@ -33,13 +33,13 @@ const Header = () => {
       const link = document.createElement("a");
 
       link.href = blobUrl;
-      link.download = "Haven_Chavous_Resume.docx";
+      link.download = "Haven_Chavous_Resume.pdf";
       document.body.appendChild(link);
       link.click();
       link.remove();
       URL.revokeObjectURL(blobUrl);
     } catch {
-      window.open("/Haven_Chavous_Resume.docx", "_blank", "noopener,noreferrer");
+      window.open("/Haven_Chavous_Resume.pdf", "_blank", "noopener,noreferrer");
     }
   };
 
@@ -79,8 +79,8 @@ const Header = () => {
               </Link>
             ))}
             <a
-              href="/Haven_Chavous_Resume.docx"
-              download="Haven_Chavous_Resume.docx"
+              href="/Haven_Chavous_Resume.pdf"
+              download="Haven_Chavous_Resume.pdf"
               onClick={(event) => {
                 void handleResumeDownload(event);
               }}
@@ -131,8 +131,8 @@ const Header = () => {
                 </Link>
               ))}
               <a
-                href="/Haven_Chavous_Resume.docx"
-                download="Haven_Chavous_Resume.docx"
+                href="/Haven_Chavous_Resume.pdf"
+                download="Haven_Chavous_Resume.pdf"
                 onClick={(event) => {
                   setIsMenuOpen(false);
                   void handleResumeDownload(event);
