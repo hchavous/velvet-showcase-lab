@@ -1,42 +1,44 @@
 
 
-## Restructure Experience Page into Two Tabs
+## Improve SEO for havenchavous.com
 
-### Overview
-Split the Experience page into two tabs: **Full-Time Experience** and **Consulting**, using the existing `Tabs` component. The full-time tab mirrors the resume; the consulting tab keeps the Quanthaven umbrella with the remaining non-resume clients.
+### What we'll do
+Add missing SEO signals so Google can properly index and rank your site for "haven chavous" searches.
 
-### Tab 1: Full-Time Experience
-Four standalone `ExperienceCard` entries matching the resume:
+### Changes
 
-| Company | Role | Period |
-|---------|------|--------|
-| Hearthfire Holdings | Senior Business Intelligence Architect | 03/2025 – Present |
-| Top Hat CRE | Director, Investment Analytics | 01/2022 – 12/2024 |
-| OneMain Financial | Quantitative Analytics Lead | 01/2017 – 12/2021 |
-| Pro Capital, LLC | Senior Quantitative/Modeling Analyst | 01/2015 – 01/2017 |
+**1. Sitemap** — `public/sitemap.xml`
+New file listing all 4 routes with `https://www.havenchavous.com` as the base URL.
 
-Highlights updated to match the new resume wording (e.g., Hearthfire and Top Hat bullets differ slightly from the consulting versions).
+**2. Robots.txt** — `public/robots.txt`
+Add `Sitemap: https://www.havenchavous.com/sitemap.xml` directive.
 
-### Tab 2: Consulting
-Quanthaven Labs umbrella with nested client sub-cards for engagements **not on the resume**:
-- Evalla Advisors
-- Voltage Venture Capital
-- GlassPoint
-- Harvard Business School
-- VisualDx
-- CDW
-- Source Renewables
+**3. Head meta updates** — `index.html`
+- Add `<link rel="canonical" href="https://www.havenchavous.com/">`.
+- Add `<meta property="og:url">`.
+- Add JSON-LD `Person` structured data (name, job title, url, sameAs links).
+- Fix `twitter:site` from `@Lovable` to remove it (or your handle if you have one).
 
-Same visual pattern: umbrella card, left-border nesting, "Consulting Client" badges.
+**4. Per-page meta** — new `src/hooks/usePageMeta.ts`
+Lightweight hook that sets `document.title` and meta description per route. Called in each page component:
+- **Index**: "Haven Chavous | Financial Modeling & AI Innovation"
+- **Experience**: "Experience | Haven Chavous"
+- **Contact**: "Contact | Haven Chavous"
+- **Excel Models**: "Excel Models | Haven Chavous"
 
-### Featured Projects
-Remains at the bottom, outside/below the tabs, visible regardless of active tab.
+### Files touched
+| File | Action |
+|------|--------|
+| `public/sitemap.xml` | Create |
+| `public/robots.txt` | Update |
+| `index.html` | Update |
+| `src/hooks/usePageMeta.ts` | Create |
+| `src/pages/Index.tsx` | Add hook call |
+| `src/pages/Experience.tsx` | Add hook call |
+| `src/pages/Contact.tsx` | Add hook call |
+| `src/pages/ExcelModels.tsx` | Add hook call |
 
-### Technical Changes
-**Single file modified**: `src/pages/Experience.tsx`
-- Import `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent` from `@/components/ui/tabs`
-- Move Hearthfire and Top Hat CRE out of `quanthaven.clients` into the `fullTimeExperiences` array with updated highlights from the resume
-- Update Pro Capital highlights to match the new resume
-- Wrap the experience sections in `<Tabs defaultValue="full-time">` with two tab triggers
-- Featured Projects section sits outside the `Tabs` wrapper
+### Manual steps (for you after deployment)
+- **Submit sitemap** to Google Search Console at `https://www.havenchavous.com/sitemap.xml`
+- **Add backlinks** from your LinkedIn, GitHub, quanthaven.ai, xlshortcuts.com profiles pointing to havenchavous.com
 
