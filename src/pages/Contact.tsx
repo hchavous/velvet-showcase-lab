@@ -3,6 +3,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import Layout from "@/components/layout/Layout";
 
 const Contact = () => {
+  usePageMeta("Contact | Haven Chavous", "Get in touch with Haven Chavous for consulting, collaboration, and career opportunities in finance and AI.");
   return (
     <Layout>
       <section className="py-20">

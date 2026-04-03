@@ -39,6 +39,7 @@ const featuredProjects = [
 ];
 
 const About = () => {
+  usePageMeta();
   const [carouselApi, setCarouselApi] = React.useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = React.useState(0);
 

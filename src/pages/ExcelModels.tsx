@@ -65,7 +65,7 @@ const handleModelDownload = async (
 
 const ExcelModels = () => {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
-
+  usePageMeta("Excel Models | Haven Chavous", "Downloadable financial models and dashboards — auto loan underwriting, multifamily returns, and budget tracking.");
   return (
     <Layout>
       <section className="container mx-auto px-4 py-20">

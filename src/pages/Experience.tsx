@@ -235,6 +235,7 @@ const ExperienceCard = ({ exp, index, isUmbrella }: { exp: ExperienceItem; index
 );
 
 const Experience = () => {
+  usePageMeta("Experience | Haven Chavous", "Professional experience in financial modeling, business intelligence, and AI-enhanced analytics.");
   return (
     <Layout>
       <section className="py-20">
