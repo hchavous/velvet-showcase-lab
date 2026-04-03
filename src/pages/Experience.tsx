@@ -1,4 +1,5 @@
 import { Building2, Calendar, CheckCircle2, ExternalLink, Layers, Users } from "lucide-react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import Layout from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -234,6 +235,7 @@ const ExperienceCard = ({ exp, index, isUmbrella }: { exp: ExperienceItem; index
 );
 
 const Experience = () => {
+  usePageMeta("Experience | Haven Chavous", "Professional experience in financial modeling, business intelligence, and AI-enhanced analytics.");
   return (
     <Layout>
       <section className="py-20">
