@@ -99,7 +99,7 @@ const quanthaven: ExperienceItem = {
     {
       client: "Voltage Venture Capital",
       industry: "Healthcare Venture Capital",
-      period: "10/2025 – Present",
+      period: "10/2025 – 01/2026",
       highlights: [
         "Constructed institutional-grade Excel financial models encompassing fund-level IRR analysis, multi-investor support with tiered fee structures, European waterfall mechanics, and multi-scenario cash flow projections",
         "Developed interactive web-based financial modeling application to support investor presentations and deal analysis workflows",
