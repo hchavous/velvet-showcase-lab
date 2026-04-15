@@ -10,6 +10,7 @@ import thumbnailAutoloan from "@/assets/thumbnail-autoloan.png";
 import thumbnailMultifamily from "@/assets/thumbnail-multifamily.png";
 import thumbnailBudget from "@/assets/thumbnail-budget.png";
 import thumbnailMfgEstimator from "@/assets/thumbnail-mfgestimator.png";
+import thumbnailSaas from "@/assets/thumbnail-saas.png";
 
 const models = [
   {
@@ -47,6 +48,15 @@ const models = [
       "Fully-loaded job cost estimator with material, labor, and machine time inputs, automatic cost rollup, markup/margin summary, and standard rate table.",
     file: "/models/Manufacturing_Job_Cost_Estimator.xlsx",
     filename: "Manufacturing_Job_Cost_Estimator.xlsx",
+  },
+  {
+    title: "SaaS Financial Plan",
+    category: "SaaS",
+    thumbnail: thumbnailSaas,
+    description:
+      "36-month SaaS financial plan with MRR/ARR forecasting by tier, headcount planning, OpEx breakdown, P&L, cash flow, balance sheet, and key metrics dashboard.",
+    file: "/models/SaaS_Financial_Plan.xlsx",
+    filename: "SaaS_Financial_Plan.xlsx",
   },
 ];
 
