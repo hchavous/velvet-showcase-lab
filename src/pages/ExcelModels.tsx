@@ -86,7 +86,7 @@ const ExcelModels = () => {
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto text-pretty">
               Downloadable financial models and dashboards as proof of concept and quality of work. All models are
-              password-protected to preserve formula integrity.
+              password-protected.  Feel free to reach out if you would like the editable (unlocked) version.
             </p>
           </div>
 
