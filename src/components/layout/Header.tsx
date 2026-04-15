@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Download, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -98,6 +99,7 @@ const Header = () => {
             >
               <Linkedin className="h-4 w-4" />
             </a>
+            <ThemeToggle />
           </nav>
 
           {/* Mobile Menu Button */}
@@ -152,6 +154,9 @@ const Header = () => {
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
               </a>
+              <div className="px-4 py-3">
+                <ThemeToggle />
+              </div>
             </div>
           </nav>
         )}
