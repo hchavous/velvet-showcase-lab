@@ -9,6 +9,7 @@ import { Download, Lock } from "lucide-react";
 import thumbnailAutoloan from "@/assets/thumbnail-autoloan.png";
 import thumbnailMultifamily from "@/assets/thumbnail-multifamily.png";
 import thumbnailBudget from "@/assets/thumbnail-budget.png";
+import thumbnailMfgEstimator from "@/assets/thumbnail-mfgestimator.png";
 
 const models = [
   {
@@ -37,6 +38,15 @@ const models = [
       "Fiscal year budget dashboard with income/expense tracking, savings goals, and budget vs. actual variance analysis.",
     file: "/models/Personal_Budget_Dashboard.xlsx",
     filename: "Personal_Budget_Dashboard.xlsx",
+  },
+  {
+    title: "Manufacturing Job Cost Estimator",
+    category: "Manufacturing",
+    thumbnail: thumbnailMfgEstimator,
+    description:
+      "Fully-loaded job cost estimator with material, labor, and machine time inputs, automatic cost rollup, markup/margin summary, and standard rate table.",
+    file: "/models/Manufacturing_Job_Cost_Estimator.xlsx",
+    filename: "Manufacturing_Job_Cost_Estimator.xlsx",
   },
 ];
 
