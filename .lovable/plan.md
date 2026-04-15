@@ -1,25 +1,26 @@
 
 
-## Add Manufacturing Estimator to Excel Models
+## Add SaaS Financial Plan to Excel Models
 
 ### Changes
 
 **1. Copy assets**
-- Copy `user-uploads://mfgestimator.png` to `src/assets/thumbnail-mfgestimator.png`
-- Copy `user-uploads://manufacturing_estimator_locked.xlsx` to `public/models/Manufacturing_Job_Cost_Estimator.xlsx`
+- Copy `user-uploads://saasthumbnail.png` to `src/assets/thumbnail-saas.png`
+- Copy `user-uploads://SaaS_Financial_Plan_Enterprise_Quanthaven.xlsx` to `public/models/SaaS_Financial_Plan.xlsx`
 
 **2. Update `src/pages/ExcelModels.tsx`**
 - Import the new thumbnail
-- Add a 4th entry to the `models` array:
-  - Title: "Manufacturing Job Cost Estimator"
-  - Category: "Manufacturing"
-  - Description: "Fully-loaded job cost estimator with material, labor, and machine time inputs, automatic cost rollup, markup/margin summary, and standard rate table."
+- Add a 5th entry to the `models` array:
+  - Title: "SaaS Financial Plan"
+  - Category: "SaaS"
+  - Thumbnail: the uploaded screenshot
+  - Description: "36-month SaaS financial plan with MRR/ARR forecasting by tier, headcount planning, OpEx breakdown, P&L, cash flow, balance sheet, and key metrics dashboard."
   - File/filename pointing to the new xlsx
 
 ### Files touched
 | File | Action |
 |------|--------|
-| `src/assets/thumbnail-mfgestimator.png` | Create (copy) |
-| `public/models/Manufacturing_Job_Cost_Estimator.xlsx` | Create (copy) |
+| `src/assets/thumbnail-saas.png` | Create (copy) |
+| `public/models/SaaS_Financial_Plan.xlsx` | Create (copy) |
 | `src/pages/ExcelModels.tsx` | Add import + model entry |
 
