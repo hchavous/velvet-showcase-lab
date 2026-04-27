@@ -103,13 +103,12 @@ const About = () => {
               <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
                 <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
                   <Layers className="h-6 w-6 text-primary" />
-                  Fintech: my stack
+                  Fintech expertise
                 </h2>
 
                 {/* Capstone */}
-                <div className="relative -mx-4 md:-mx-5 mb-0 rounded-md bg-primary text-primary-foreground py-4 px-6 text-center">
-                  <div className="text-xl md:text-2xl font-semibold leading-tight">Fintech</div>
-                  <div className="text-xs md:text-sm opacity-90 tracking-wide">my stack</div>
+                <div className="w-full mb-0 rounded-md bg-primary text-primary-foreground h-[60px] flex items-center justify-center px-6">
+                  <div className="text-2xl md:text-3xl font-bold tracking-tight">Fintech</div>
                 </div>
 
                 {/* Pillars */}
@@ -122,8 +121,8 @@ const About = () => {
                     { discipline: "Technical Chops", Icon: Code, skills: ["React", "Python", "AI workflows"] },
                   ].map(({ discipline, Icon, skills }) => (
                     <div key={discipline} className="flex flex-col items-center">
-                      <div className="w-full bg-muted/30 border border-border/50 rounded-b-md px-3 py-5 flex flex-col items-center gap-3 min-h-[160px]">
-                        <Icon className="h-6 w-6 text-primary" strokeWidth={2} />
+                      <div className="w-full bg-foreground/[0.06] border border-border/50 rounded-b-md px-3 py-7 flex flex-col items-center gap-4 min-h-[210px]">
+                        <Icon className="h-8 w-8 text-primary" strokeWidth={2} />
                         <div className="flex flex-col items-center gap-1.5">
                           {skills.map((s) => (
                             <span key={s} className="text-xs text-muted-foreground text-center">
