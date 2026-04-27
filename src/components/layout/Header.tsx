@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/experience", label: "Experience" },
   { href: "/excel-models", label: "Excel Models" },
+  { href: "/web-apps", label: "Web Apps" },
   { href: "/contact", label: "Contact" },
 ];
 
