@@ -8,6 +8,7 @@ import Experience from "./pages/Experience";
 
 import Contact from "./pages/Contact";
 import ExcelModels from "./pages/ExcelModels";
+import WebApps from "./pages/WebApps";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           
            <Route path="/contact" element={<Contact />} />
            <Route path="/excel-models" element={<ExcelModels />} />
+           <Route path="/web-apps" element={<WebApps />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
