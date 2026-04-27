@@ -1,6 +1,6 @@
 import * as React from "react";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { Brain, GraduationCap, Target, Zap, ExternalLink, Layers } from "lucide-react";
+import { Brain, GraduationCap, Target, Zap, ExternalLink, Layers, DollarSign, BarChart3, Sigma, Table, Code } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
@@ -94,6 +94,49 @@ const About = () => {
                       intersection of finance and innovation.
                     </p>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Fintech: My Stack */}
+            <div className="mb-16 animate-fade-in" style={{ animationDelay: "0.15s" }}>
+              <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
+                <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+                  <Layers className="h-6 w-6 text-primary" />
+                  Fintech: my stack
+                </h2>
+
+                {/* Capstone */}
+                <div className="relative -mx-4 md:-mx-5 mb-0 rounded-md bg-primary text-primary-foreground py-4 px-6 text-center">
+                  <div className="text-xl md:text-2xl font-semibold leading-tight">Fintech</div>
+                  <div className="text-xs md:text-sm opacity-90 tracking-wide">my stack</div>
+                </div>
+
+                {/* Pillars */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+                  {[
+                    { discipline: "Finance", Icon: DollarSign, skills: ["FP&A", "M&A", "Valuation"] },
+                    { discipline: "Analytics", Icon: BarChart3, skills: ["KPIs", "Cohorts", "Dashboards"] },
+                    { discipline: "Statistics", Icon: Sigma, skills: ["Regression", "Forecasting", "Risk modeling"] },
+                    { discipline: "Financial Modeling", Icon: Table, skills: ["DCF", "LBO", "Waterfalls"] },
+                    { discipline: "Technical Chops", Icon: Code, skills: ["React", "Python", "AI workflows"] },
+                  ].map(({ discipline, Icon, skills }) => (
+                    <div key={discipline} className="flex flex-col items-center">
+                      <div className="w-full bg-muted/30 border border-border/50 rounded-b-md px-3 py-5 flex flex-col items-center gap-3 min-h-[160px]">
+                        <Icon className="h-6 w-6 text-primary" strokeWidth={2} />
+                        <div className="flex flex-col items-center gap-1.5">
+                          {skills.map((s) => (
+                            <span key={s} className="text-xs text-muted-foreground text-center">
+                              {s}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mt-3 text-sm font-medium text-foreground text-center">
+                        {discipline}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
