@@ -107,25 +107,25 @@ const About = () => {
                 </h2>
 
                 {/* Capstone */}
-                <div className="w-full mb-0 rounded-md bg-primary text-primary-foreground h-[60px] flex items-center justify-center px-6">
+                <div className="w-full mb-3.5 rounded-md bg-primary text-primary-foreground h-[60px] flex items-center justify-center px-6">
                   <div className="text-2xl md:text-3xl font-bold tracking-tight">Fintech</div>
                 </div>
 
                 {/* Pillars */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                   {[
-                    { discipline: "Finance", Icon: DollarSign, skills: ["FP&A", "M&A", "Valuation"] },
-                    { discipline: "Analytics", Icon: BarChart3, skills: ["KPIs", "Cohorts", "Dashboards"] },
-                    { discipline: "Statistics", Icon: Sigma, skills: ["Regression", "Forecasting", "Risk modeling"] },
-                    { discipline: "Financial Modeling", Icon: Table, skills: ["DCF", "LBO", "Waterfalls"] },
-                    { discipline: "Technical Chops", Icon: Code, skills: ["React", "Python", "AI workflows"] },
+                    { discipline: "Finance", Icon: DollarSign, skills: ["FP&A", "M&A", "Valuation", "Underwriting"] },
+                    { discipline: "Analytics", Icon: BarChart3, skills: ["KPIs", "Cohorts", "Dashboards", "Reporting"] },
+                    { discipline: "Statistics", Icon: Sigma, skills: ["Regression", "Forecasting", "Risk modeling", "Segmentation"] },
+                    { discipline: "Financial Modeling", Icon: Table, skills: ["DCF", "LBO", "Waterfalls", "3-statement"] },
+                    { discipline: "Technical Chops", Icon: Code, skills: ["React", "Python", "AI workflows", "Automation"] },
                   ].map(({ discipline, Icon, skills }) => (
                     <div key={discipline} className="flex flex-col items-center">
-                      <div className="w-full bg-foreground/[0.06] border border-border/50 rounded-b-md px-3 py-7 flex flex-col items-center gap-4 min-h-[210px]">
+                      <div className="w-full bg-foreground/[0.06] border border-border/50 rounded-md px-3 py-7 flex flex-col items-center gap-4 min-h-[210px]">
                         <Icon className="h-8 w-8 text-primary" strokeWidth={2} />
                         <div className="flex flex-col items-center gap-1.5">
                           {skills.map((s) => (
-                            <span key={s} className="text-xs text-muted-foreground text-center">
+                            <span key={s} className="text-sm text-foreground/80 text-center">
                               {s}
                             </span>
                           ))}
