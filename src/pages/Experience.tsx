@@ -89,7 +89,7 @@ const quanthaven: ExperienceItem = {
     {
       client: "Evalla Advisors",
       industry: "Private Equity",
-      period: "01/2026 – Present",
+      period: "01/2026 – 04/2026",
       highlights: [
         "Delivering fund-level and deal-level financial modeling, including fully integrated 3-statement pro formas and reporting structures aligned with institutional PE standards",
         "Providing M&A due diligence analytics including churn analysis, client segmentation, and revenue quality assessment for active buyer processes",
