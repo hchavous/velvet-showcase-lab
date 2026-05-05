@@ -96,6 +96,43 @@ const About = () => {
               </div>
             </div>
 
+            {/* Industry Experience */}
+            <div className="mb-16 animate-fade-in" style={{ animationDelay: "0.18s" }}>
+              <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
+                <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+                  <Briefcase className="h-6 w-6 text-primary" />
+                  Industry Experience
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    { title: "Private Equity", Icon: Landmark, items: ["Fund modeling", "Waterfalls", "LP reporting", "Six-fund platform"] },
+                    { title: "Venture Capital", Icon: Rocket, items: ["Fund construction", "Follow-on reserves", "Scenario analysis", "Portfolio modeling"] },
+                    { title: "Real Estate", Icon: Building2, items: ["Acquisition underwriting", "Development modeling", "Self-storage analytics", "Cash-flow forecasting"] },
+                    { title: "Consumer Lending", Icon: CreditCard, items: ["Auto and personal loans", "Portfolio analytics", "Approval workflows", "Risk modeling"] },
+                    { title: "Corporate FP&A", Icon: BarChart3, items: ["Fortune 500 budgeting", "Forecasting", "Variance analysis", "Management reporting"] },
+                    { title: "M&A Advisory", Icon: Handshake, items: ["Buy-side and sell-side diligence", "Churn analysis", "Quality of earnings", "Transaction modeling"] },
+                    { title: "Renewable Energy", Icon: Sun, items: ["Solar project modeling", "CFO advisory support", "Excel-to-web conversion", "Financial verification"] },
+                  ].map(({ title, Icon, items }, i, arr) => (
+                    <div
+                      key={title}
+                      className={
+                        "p-5 rounded-xl bg-card border border-border/50 flex flex-col gap-3" +
+                        (i === 4 ? " lg:col-start-1" : "")
+                      }
+                    >
+                      <Icon className="h-6 w-6 text-primary" strokeWidth={2} />
+                      <h3 className="font-semibold text-foreground">{title}</h3>
+                      <div className="flex flex-col gap-1">
+                        {items.map((it) => (
+                          <span key={it} className="text-sm text-muted-foreground">{it}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {/* Philosophy */}
             <div className="mb-16 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               <div className="p-8 rounded-2xl bg-card/50 border border-border/50">
