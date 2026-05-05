@@ -1,5 +1,5 @@
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { Brain, GraduationCap, Target, Zap, Layers, DollarSign, BarChart3, Sigma, Table, Code } from "lucide-react";
+import { Brain, GraduationCap, Target, Zap, Layers, DollarSign, BarChart3, Sigma, Table, Code, Briefcase, Landmark, Rocket, Building2, CreditCard, Handshake, Sun } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import headshot from "@/assets/headshot.jpg";
 
@@ -64,7 +64,7 @@ const About = () => {
 
                 {/* Capstone */}
                 <div className="w-full mb-3.5 rounded-md bg-primary text-primary-foreground h-[60px] flex items-center justify-center px-6">
-                  <div className="text-2xl md:text-3xl font-bold tracking-tight">Fintech</div>
+                  <div className="text-2xl md:text-3xl font-bold tracking-tight">Capabilities</div>
                 </div>
 
                 {/* Pillars */}
