@@ -107,7 +107,7 @@ const quanthaven: ExperienceItem = {
     },
     {
       client: "GlassPoint",
-      industry: "Financial Advisory",
+      industry: "Renewable Energy",
       period: "10/2023 – Present",
       highlights: [
         "Rebuilt overall business forecast model and capital expenditure model for executive decision-making",
