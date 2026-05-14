@@ -28,7 +28,7 @@ const About = () => {
                   <div className="flex-shrink-0">
                     <div className="relative">
                       <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden ring-4 ring-primary/30 glow-sm">
-                        <img src={headshot} alt="Haven Chavous headshot" className="w-full h-full object-cover" />
+                        <img src={headshot} alt="Haven Chavous headshot" width={224} height={224} fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
                       </div>
                     </div>
                   </div>
