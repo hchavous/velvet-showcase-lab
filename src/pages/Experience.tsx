@@ -250,6 +250,7 @@ const Experience = () => {
               </p>
             </div>
 
+            <h2 className="sr-only">Roles and Engagements</h2>
             <Tabs defaultValue="full-time" className="mb-16">
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
                 <TabsTrigger value="full-time">Full-Time Experience</TabsTrigger>

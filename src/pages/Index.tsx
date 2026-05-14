@@ -14,7 +14,9 @@ const About = () => {
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="text-center mb-12 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Haven A. Chavous</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Haven A. Chavous — Finance &amp; AI Specialist
+              </h1>
               <p className="text-xl text-muted-foreground">Bridging traditional finance with modern AI solutions</p>
             </div>
 
@@ -26,7 +28,7 @@ const About = () => {
                   <div className="flex-shrink-0">
                     <div className="relative">
                       <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden ring-4 ring-primary/30 glow-sm">
-                        <img src={headshot} alt="Haven Chavous headshot" className="w-full h-full object-cover" />
+                        <img src={headshot} alt="Haven Chavous headshot" width={224} height={224} fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
                       </div>
                     </div>
                   </div>

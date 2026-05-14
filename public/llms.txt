@@ -1,0 +1,11 @@
+# Haven Chavous
+
+> Personal portfolio of Haven A. Chavous — financial modeling, AI-enhanced analytics, and Excel expertise with 15+ years of experience.
+
+## Pages
+
+- [Home](/): Overview, professional summary, capabilities, and industry experience.
+- [Experience](/experience): Full-time roles and consulting engagements via Quanthaven Labs.
+- [Excel Models](/excel-models): Downloadable financial models and dashboards.
+- [Web Apps](/web-apps): Production financial tools and platforms.
+- [Contact](/contact): Direct email and phone for consulting and collaboration.
