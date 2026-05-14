@@ -14,7 +14,9 @@ const About = () => {
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="text-center mb-12 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Haven A. Chavous</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Haven A. Chavous — Finance &amp; AI Specialist
+              </h1>
               <p className="text-xl text-muted-foreground">Bridging traditional finance with modern AI solutions</p>
             </div>
 

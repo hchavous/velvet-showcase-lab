@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.havenchavous.com/sitemap.xml
+Sitemap: https://havenchavous.com/sitemap.xml

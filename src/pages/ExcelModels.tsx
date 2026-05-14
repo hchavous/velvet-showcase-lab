@@ -107,8 +107,10 @@ const ExcelModels = () => {
                 className="bg-card/50 border-border/50 rounded-2xl overflow-hidden opacity-0 animate-fade-in-up flex flex-col"
                 style={{ animationDelay: `${0.15 + index * 0.1}s` }}
               >
-                <div
-                  className="aspect-[5/4] overflow-hidden border-b border-border/30 cursor-zoom-in"
+                <button
+                  type="button"
+                  aria-label={`Enlarge ${model.title} preview`}
+                  className="aspect-[5/4] overflow-hidden border-b border-border/30 cursor-zoom-in block w-full p-0 bg-transparent border-0"
                   onClick={() => setLightboxSrc(model.thumbnail)}
                 >
                   <img
@@ -117,7 +119,7 @@ const ExcelModels = () => {
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     loading="lazy"
                   />
-                </div>
+                </button>
 
                 <CardContent className="p-6 flex flex-col flex-1">
                   <h2 className="text-lg font-semibold mb-2 leading-snug">
