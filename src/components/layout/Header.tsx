@@ -126,21 +126,26 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border/50">
             <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={cn(
-                    "px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200",
-                    location.pathname === link.href
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive =
+                  location.pathname === link.href ||
+                  (link.href !== "/" && location.pathname.startsWith(link.href + "/"));
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={cn(
+                      "px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200",
+                      isActive
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <a
                 href="/Haven_Chavous_Resume.pdf"
                 download="Haven_Chavous_Resume.pdf"
