@@ -185,7 +185,7 @@ const SpectrumGraphic = () => (
       <text x={150} y={40} textAnchor="middle" fontSize="16" fontWeight="700" fill="hsl(var(--foreground))">
         Deterministic code wins
       </text>
-      <text x={650} y={40} textAnchor="middle" fontSize="16" fontWeight="700" fill="hsl(var(--primary))">
+      <text x={650} y={40} textAnchor="middle" fontSize="16" fontWeight="700" fill="hsl(var(--foreground))">
         AI earns its place
       </text>
 
