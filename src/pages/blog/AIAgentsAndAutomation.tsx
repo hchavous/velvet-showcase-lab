@@ -185,7 +185,7 @@ const SpectrumGraphic = () => (
       <text x={150} y={40} textAnchor="middle" fontSize="16" fontWeight="700" fill="hsl(var(--foreground))">
         Deterministic code wins
       </text>
-      <text x={650} y={40} textAnchor="middle" fontSize="16" fontWeight="700" fill="hsl(var(--primary))">
+      <text x={650} y={40} textAnchor="middle" fontSize="16" fontWeight="700" fill="hsl(var(--foreground))">
         AI earns its place
       </text>
 
@@ -224,7 +224,7 @@ const SpectrumGraphic = () => (
         "Structure messy client data",
       ].map((t, i) => (
         <g key={i}>
-          <rect x={530} y={150 + i * 42} width={240} height={32} rx={6} fill="hsl(var(--primary) / 0.12)" stroke="hsl(var(--primary))" />
+          <rect x={530} y={150 + i * 42} width={240} height={32} rx={6} fill="hsl(var(--primary) / 0.15)" stroke="hsl(var(--primary))" />
           <text x={650} y={171 + i * 42} textAnchor="middle" fontSize="13" fill="hsl(var(--foreground))">{t}</text>
         </g>
       ))}
