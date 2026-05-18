@@ -8,6 +8,8 @@ import Experience from "./pages/Experience";
 
 import Contact from "./pages/Contact";
 import ExcelModels from "./pages/ExcelModels";
+import Blog from "./pages/Blog";
+import AIAgentsAndAutomation from "./pages/blog/AIAgentsAndAutomation";
 import WebApps from "./pages/WebApps";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +28,8 @@ const App = () => (
            <Route path="/contact" element={<Contact />} />
            <Route path="/excel-models" element={<ExcelModels />} />
            <Route path="/web-apps" element={<WebApps />} />
+           <Route path="/blog" element={<Blog />} />
+           <Route path="/blog/ai-agents-and-automation" element={<AIAgentsAndAutomation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
