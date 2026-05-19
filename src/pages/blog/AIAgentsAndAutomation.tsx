@@ -364,6 +364,37 @@ const AIAgentsAndAutomation = () => {
               There is nothing wrong with this version. It is, in fact, the right version. The problem is that "I built a system where AI assists at the judgment-heavy steps and traditional code does everything else" is a less viral LinkedIn post than "I built an AI agent that does the whole workflow autonomously." The marketing pressure pushes builders to describe their systems in maximalist terms even when the underlying engineering is appropriately modest. Over time, that gap between description and reality is what is going to disappoint a lot of buyers, and it is going to make sober operators harder to distinguish from the noise.
             </P>
 
+            <H2>But what about agent frameworks?</H2>
+            <P>
+              A reasonable objection to everything I have written here is that agent frameworks have matured fast, and the cost argument I am making against the LLM-based version of this scraper does not survive contact with the frontier.
+            </P>
+            <P>That objection is half right.</P>
+            <P>
+              Tools like OpenClaw and Hermes Agent are real, capable, and rapidly maturing. They offer persistent memory, multi-step planning, tool orchestration, and local execution. The dollar cost of running an agent has dropped to near-zero for anyone willing to host a local LLM on consumer GPU hardware. The objection I made earlier about agent versions costing dollars per run loses some of its bite when the inference is free.
+            </P>
+            <P>
+              Anthropic's own product surface points the same direction. Claude Skills package reusable capabilities as folders the model loads when a task requires them. Claude Cowork is the desktop agent that orchestrates this kind of work for non-developers, with scheduled tasks, file system access, and multi-step execution built in. The vocabulary differs from the open-source frameworks, but the architectural premise is the same: agentic systems that put a model in the runtime loop for each decision.
+            </P>
+            <P>
+              So yes, you could in theory run the selfstoragerentalrates.com workflow as a local Hermes 3 model orchestrated by OpenClaw with a cron schedule, or as a Cowork scheduled task with a custom Skill packaging the parsing logic. Each path would technically work.
+            </P>
+            <P>You still should not build it that way.</P>
+            <P>
+              The reason is not cost. The reason is that the work I am describing is not the kind of work an agent framework is designed to do well. Agent frameworks orchestrate ongoing decision-making. They earn their place when the decisions vary per input or when the path through the system changes based on what comes in. They are infrastructure for situational judgment at run time.
+            </P>
+            <P>
+              The CubeSmart scrape has none of that property. It is 1,554 inputs that share the same markup, produced by the same operator, parsed into the same output schema. The decision that mattered was made once at build time: which selector to use, which schema to write into, which UI component to feed. After that, run time is pure execution. There is no judgment for an agent to apply 1,554 times in succession, because the answer was already determined the first time.
+            </P>
+            <P>
+              Running this through any agent framework would not actually be cheaper than the deterministic Python version, even at zero API cost. Local LLM inference still pays in compute time. Parsing 1,554 facility pages through a local Hermes 3 instance takes hours of GPU time, while the Python version takes the time it takes the network requests to come back. The framework also introduces a new class of failure mode: LLM nondeterminism. A deterministic parser breaks in a known way at a known location when CubeSmart changes their markup. An LLM-based parser, whether running in OpenClaw or Cowork, can silently misparse a unit tile, drop a field, or hallucinate a price tier that does not exist on the page. For a dataset that is supposed to be authoritative enough to sell, that second failure mode is unacceptable in a way the first is not.
+            </P>
+            <P>
+              The principle does not change because the tools got more sophisticated. AI components, agentic or otherwise, earn their place at points of unstructured judgment. Deterministic code earns its place at points of repeatable execution. The latest generation of agent tooling, whether open-source like OpenClaw and Hermes or commercial like Claude Skills and Cowork, is a more capable, more local, more orchestration-aware version of the same general technology. It is not, as far as I can tell, a refutation of the calculus.
+            </P>
+            <P>
+              The shape of work that genuinely benefits from agent frameworks is real and growing. Customer support triage requires a different decision per ticket. Lead qualification works through different information for each prospect. Document summarization handles novel inputs each time. These are the workflows the latest generation of agent tools are built for, and they earn their place there. But "do the same thing on 1,554 inputs every month" is not one of them.
+            </P>
+
             <H2>How to evaluate the next pitch</H2>
             <P>
               If you are evaluating an "AI agent" pitch as a buyer, a few diagnostic questions cut through the framing quickly.
