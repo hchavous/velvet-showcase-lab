@@ -26,7 +26,7 @@ interface ExperienceItem {
 const fullTimeExperiences: ExperienceItem[] = [
   {
     company: "Hearthfire Holdings",
-    role: "Senior Business Intelligence Architect",
+    role: "Director, Investment Analytics and Business Intelligence",
     period: "03/2025 – 12/2025",
     location: "Wilmington, DE",
     highlights: [
