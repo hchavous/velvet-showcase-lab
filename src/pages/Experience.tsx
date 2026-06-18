@@ -54,7 +54,7 @@ const fullTimeExperiences: ExperienceItem[] = [
   {
     company: "OneMain Financial",
     role: "Quantitative Analytics Lead",
-    period: "01/2017 – 06/2021",
+    period: "01/2017 – 05/2021",
     location: "Wilmington, DE",
     highlights: [
       "Led quantitative analysis for $1B+ in portfolio acquisitions using statistical modeling and machine learning techniques",
