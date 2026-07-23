@@ -27,7 +27,7 @@ const fullTimeExperiences: ExperienceItem[] = [
   {
     company: "Hearthfire Holdings",
     role: "Director, Investment Analytics and Business Intelligence",
-    period: "03/2025 – 12/2025",
+    period: "03/2025 – 11/2025",
     location: "Wilmington, DE",
     highlights: [
       "Designed and built secure web-based analytics portal with backend database infrastructure, delivering dynamic dashboards with interactive charts and real-time portfolio visualization for institutional investors",
@@ -54,7 +54,7 @@ const fullTimeExperiences: ExperienceItem[] = [
   {
     company: "OneMain Financial",
     role: "Quantitative Analytics Lead",
-    period: "01/2017 – 05/2021",
+    period: "01/2017 – 06/2020",
     location: "Wilmington, DE",
     highlights: [
       "Led quantitative analysis for $1B+ in portfolio acquisitions using statistical modeling and machine learning techniques",
