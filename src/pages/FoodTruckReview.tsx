@@ -5,6 +5,7 @@ import ReviewPasswordGate, { REVIEW_ACCESS_KEY } from "@/components/review/Revie
 import { Button } from "@/components/ui/button";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import originalAsset from "@/assets/food-truck/original.png.asset.json";
+import handoffAsset from "@/assets/food-truck/handoff-complete.zip.asset.json";
 
 const options = [
   { id: "original", navLabel: "Original", title: "Original Captivate graphic", src: originalAsset.url },
@@ -74,7 +75,7 @@ const FoodTruckReview = () => {
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
                   <Button asChild>
-                    <a href="/food-truck/GreenwayStreetEats_Handoff_Complete.zip" download>
+                    <a href={handoffAsset.url} download>
                       <Download /> Download complete handoff
                     </a>
                   </Button>
