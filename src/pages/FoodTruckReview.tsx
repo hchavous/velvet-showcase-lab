@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
+import { Download, ExternalLink, Monitor, Mail, Printer, PlayCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import ReviewPasswordGate, { REVIEW_ACCESS_KEY } from "@/components/review/ReviewPasswordGate";
+import { Button } from "@/components/ui/button";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import originalAsset from "@/assets/food-truck/original.png.asset.json";
-import fixV1Asset from "@/assets/food-truck/fix-v1.png.asset.json";
-import fixV2Asset from "@/assets/food-truck/fix-v2.png.asset.json";
-import fixV3Asset from "@/assets/food-truck/fix-v3.png.asset.json";
 
 const options = [
   { id: "original", navLabel: "Original", title: "Original Captivate graphic", src: originalAsset.url },
-  { id: "fix-v1", navLabel: "V1", title: "Fix V1", src: fixV1Asset.url },
-  { id: "fix-v2", navLabel: "V2", title: "Fix V2", src: fixV2Asset.url },
-  { id: "fix-v3", navLabel: "V3", title: "Fix V3", src: fixV3Asset.url },
+  { id: "fix-v1", navLabel: "V1", title: "Fix V1", version: "V1", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V1.png", poster: true },
+  { id: "fix-v2", navLabel: "V2", title: "Fix V2", version: "V2", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V2.png", poster: true },
+  { id: "fix-v3", navLabel: "V3", title: "Fix V3", version: "V3", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V3.png", poster: false },
+];
+
+const handoffItems = [
+  { icon: Monitor, label: "Captivate PNG", detail: "Elevator screens" },
+  { icon: Mail, label: "Email PDF 8.5×11", detail: "Tenant email" },
+  { icon: Printer, label: "Poster PDF", detail: "Print shop: trim 18×24; 0.375\" bleed (18.75×24.75 sheet) with crop marks" },
+  { icon: PlayCircle, label: "Rolling MP4", detail: "Web and review only; never print" },
 ];
 
 const FoodTruckReview = () => {
@@ -57,6 +63,38 @@ const FoodTruckReview = () => {
               </p>
             </header>
 
+            <aside className="mb-10 rounded-lg border border-border/70 bg-card p-6 shadow-sm md:p-8" aria-labelledby="handoff-title">
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                <div className="max-w-3xl">
+                  <p className="mb-2 text-xs font-semibold uppercase text-primary">Asset handoff</p>
+                  <h2 id="handoff-title" className="text-2xl font-semibold">How to use these files</h2>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">
+                    Choose one version, V1, V2, or V3, and use its matching Captivate, email, and poster files throughout.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
+                  <Button asChild>
+                    <a href="/food-truck/GreenwayStreetEats_Handoff_Complete.zip" download>
+                      <Download /> Download complete handoff
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <a href="/food-truck/INSTRUCTIONS.md" target="_blank" rel="noreferrer">
+                      <ExternalLink /> Instructions
+                    </a>
+                  </Button>
+                </div>
+              </div>
+              <div className="mt-7 grid gap-4 border-t border-border/60 pt-6 sm:grid-cols-2">
+                {handoffItems.map(({ icon: Icon, label, detail }) => (
+                  <div key={label} className="flex gap-3">
+                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                    <p className="text-sm leading-relaxed"><strong className="font-semibold">{label}</strong><span className="text-muted-foreground"> → {detail}</span></p>
+                  </div>
+                ))}
+              </div>
+            </aside>
+
             <nav aria-label="Food truck graphic options" className="sticky top-16 z-40 -mx-4 border-y border-border/60 bg-background/90 px-4 py-3 backdrop-blur-lg">
               <div className="grid grid-cols-4 gap-2">
                 {options.map((option) => (
@@ -86,6 +124,29 @@ const FoodTruckReview = () => {
                       loading={index === 0 ? "eager" : "lazy"}
                     />
                   </figure>
+                  {option.version && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <Button asChild variant="outline" size="sm">
+                        <a href={`/food-truck/GreenwayStreetEats_Captivate_1024x680_${option.version}.png`} download>
+                          <Download /> Captivate PNG
+                        </a>
+                      </Button>
+                      <Button asChild variant="outline" size="sm">
+                        <a href={`/food-truck/GreenwayStreetEats_Email_8.5x11_${option.version}.pdf`} download>
+                          <Download /> Email PDF
+                        </a>
+                      </Button>
+                      {option.poster ? (
+                        <Button asChild variant="outline" size="sm">
+                          <a href={`/food-truck/GreenwayStreetEats_Poster_18x24_BLEED_${option.version}.pdf`} download>
+                            <Download /> Poster BLEED PDF
+                          </a>
+                        </Button>
+                      ) : (
+                        <span className="inline-flex h-9 items-center px-1 text-sm text-muted-foreground">Poster and rolling MP4 coming soon</span>
+                      )}
+                    </div>
+                  )}
                 </section>
               ))}
             </div>
