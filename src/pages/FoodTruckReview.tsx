@@ -4,11 +4,10 @@ import Layout from "@/components/layout/Layout";
 import ReviewPasswordGate, { REVIEW_ACCESS_KEY } from "@/components/review/ReviewPasswordGate";
 import { Button } from "@/components/ui/button";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import originalAsset from "@/assets/food-truck/original.png.asset.json";
 import handoffAsset from "@/assets/food-truck/handoff-complete.zip.asset.json";
 
 const options = [
-  { id: "original", navLabel: "Original", title: "Original Captivate graphic", src: originalAsset.url },
+  { id: "original", navLabel: "Original", title: "Original Captivate graphic", src: "/food-truck/GreenwayStreetEats_Captivate_original.png" },
   { id: "fix-v1", navLabel: "V1", title: "Fix V1", version: "V1", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V1.png", poster: true },
   { id: "fix-v2", navLabel: "V2", title: "Fix V2", version: "V2", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V2.png", poster: true },
   { id: "fix-v3", navLabel: "V3", title: "Fix V3", version: "V3", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V3.png", poster: false },
