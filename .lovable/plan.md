@@ -1,56 +1,31 @@
-# Add Blog tab with first post
+# Kativate brand review page
 
 ## Scope
-Add a Blog section to the site with an index page at `/blog` and the first post at `/blog/ai-agents-and-automation`. Wire up routing and the header nav. Inline three theme-aware SVG diagrams in the post.
+Add a discreet, session-unlocked review page at `/kativate-review` inside the existing site. Keep every existing page and the main navigation unchanged, except for a subtle footer link.
 
-## Files to create
+## Page structure
+- Add a password screen using the exact password `Kabearie`, with a friendly error and `sessionStorage` persistence.
+- After unlock, show the supplied intro copy, a PDF download action, and a sticky direction navigator with all four options always one click away:
+  - A Classic Hospitality
+  - B Modern Luxe
+  - C Soft Garden
+  - D Ultra Modern Luxe
+- Build four clearly separated direction sections. Each will include the exact mood copy, named colors and hex values, palette board, large wordmark area, large monogram area, and the matching dramatic MP4 with muted autoplay, loop, inline playback, and controls.
+- Direction D will have separate light-ground and dark-ground presentation areas for both its wordmark and monogram.
+- Add polished placeholders for every logo that has not arrived yet. The attached A wordmark will be shown now; placeholders will state which remaining asset belongs there without implying final artwork.
+- Match the current warm dark/light theme, typography, cards, borders, and restrained accents. Make the sticky navigation and media layouts work on phones and desktops.
 
-### `src/pages/Blog.tsx`
-- Blog index, wrapped in `<Layout>`.
-- `usePageMeta("Blog | Haven Chavous", "Field notes on building real systems, real tools, and where AI actually earns its place.")`
-- Centered header: `<h1>Blog</h1>` + subtitle paragraph.
-- Posts data array (one entry today: `ai-agents-and-automation`, "May 2026", excerpt as specified).
-- Responsive grid of `Card`s matching ExcelModels styling (`bg-card/50 border-border/50 rounded-2xl`).
-- Each card wrapped in a `react-router-dom` `<Link>` to the post URL, with title, muted date line, excerpt, and "Read post →" footer.
-- Stagger entries with `animate-fade-in-up` and `animationDelay`, matching ExcelModels pattern.
+## Media
+- Add a dedicated `public/kativate/` folder containing the four palette images, four intro MP4s, attached A wordmark, and review PDF, as explicitly requested.
+- Use only the supplied MP4s for motion. No HTML logo animation will be added.
+- Give images and videos stable aspect ratios, meaningful alternative text, lazy loading where appropriate, and playback fallbacks.
 
-### `src/pages/blog/AIAgentsAndAutomation.tsx`
-- Wrapped in `<Layout>`.
-- `usePageMeta` with the specified post title and description.
-- Centered narrow container for article (max-w-3xl), inherits Source Serif 4 body font (no font override).
-- Title `<h1>` + small muted date/reading-time line ("May 2026 · 12 min read").
-- Section `<h2>` headings use `text-2xl font-semibold mt-12 mb-4`.
-- Body `<p>` use `text-foreground leading-relaxed mb-4` (text-foreground per spec).
-- All article copy rendered verbatim from the spec, with section headings:
-  1. (Opening, no heading)
-  2. The product
-  3. The marketing version  *(Graphic 2 at end of section)*
-  4. What the system actually does  *(Graphic 1 after the "...React front end at selfstoragerentalrates.com." paragraph)*
-  5. The underlying pattern  *(Graphic 3 after the opening paragraph)*
-  6. How to evaluate the next pitch
-  7. Why the calibration matters
-- Three inlined SVG figures wrapped in `<figure className="my-10">` with `<figcaption>` captions; SVGs use `role="img"` and `<title>`/`<desc>` for a11y.
-- SVGs use `hsl(var(--card))`, `hsl(var(--border))`, `hsl(var(--primary))`, `hsl(var(--foreground))`, `hsl(var(--muted-foreground))` so they adapt to dark/light theme.
-- JSX-camelCased attributes (`viewBox`, `strokeWidth`, `textAnchor`, `fontFamily`, etc.).
-- Unique marker ids per SVG (`arrow-pipeline`, `arrow-pitch`, `arrow-spectrum`) to avoid collisions.
+## Integration
+- Add the `/kativate-review` route before the catch-all route.
+- Add only a subtle `Kativate` footer link, not a header or main-navigation item.
+- Add page-specific title and description metadata and keep the review route out of the sitemap.
 
-## Files to modify
-
-### `src/App.tsx`
-Add imports and routes (before catch-all `*`):
-```tsx
-import Blog from "./pages/Blog";
-import AIAgentsAndAutomation from "./pages/blog/AIAgentsAndAutomation";
-// ...
-<Route path="/blog" element={<Blog />} />
-<Route path="/blog/ai-agents-and-automation" element={<AIAgentsAndAutomation />} />
-```
-
-### `src/components/layout/Header.tsx`
-Insert `{ href: "/blog", label: "Blog" }` into `navLinks` between Web Apps and Contact. No other changes.
-
-## Constraints respected
-- No edits to `src/index.css`, `useTheme.ts`, `Layout.tsx`, or any other existing page.
-- Existing routes remain intact; new routes placed before catch-all.
-- Typography inherits from globals; no `font-family` overrides on the article.
-- SVGs are inline (not `<img>`) so CSS variables resolve and theme toggling works automatically.
+## Technical notes
+- The password gate is intentionally lightweight client-side access control. It discourages casual viewing but does not provide server-grade protection.
+- The review page will be split into focused local components and data definitions so the follow-up logo upload can be wired in without restructuring the page.
+- After implementation, verify the password flow, session refresh behavior, all four navigation targets, PDF download, video loading, theme switching, and mobile/desktop layouts in the live preview.
