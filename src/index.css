@@ -106,7 +106,7 @@
   }
 
   .kativate-review-theme {
-    --background: 240 5% 98%;
+    --background: 36 12% 92%;
     --foreground: 240 6% 14%;
 
     --card: 0 0% 100%;
@@ -118,11 +118,11 @@
     --primary: 346 56% 27%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 94%;
+    --secondary: 37 13% 88%;
     --secondary-foreground: 240 6% 14%;
 
-    --muted: 240 5% 94%;
-    --muted-foreground: 240 4% 42%;
+    --muted: 37 13% 88%;
+    --muted-foreground: 240 4% 40%;
 
     --accent: 155 42% 21%;
     --accent-foreground: 0 0% 100%;
@@ -130,17 +130,17 @@
     --destructive: 0 63% 38%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5% 84%;
-    --input: 240 5% 84%;
+    --border: 37 9% 80%;
+    --input: 37 9% 80%;
     --ring: 346 56% 27%;
 
-    --sidebar-background: 240 5% 98%;
+    --sidebar-background: 36 12% 92%;
     --sidebar-foreground: 240 6% 14%;
     --sidebar-primary: 346 56% 27%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 5% 94%;
+    --sidebar-accent: 37 13% 88%;
     --sidebar-accent-foreground: 240 6% 14%;
-    --sidebar-border: 240 5% 84%;
+    --sidebar-border: 37 9% 80%;
     --sidebar-ring: 346 56% 27%;
   }
 }
