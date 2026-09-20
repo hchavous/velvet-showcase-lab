@@ -1,14 +1,16 @@
 import { ReactNode } from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 interface LayoutProps {
   children: ReactNode;
+  className?: string;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, className }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className={cn("min-h-screen bg-background text-foreground", className)}>
       <Header />
       <main className="pt-16">
         {children}
