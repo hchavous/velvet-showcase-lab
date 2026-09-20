@@ -1,6 +1,6 @@
 # Roadmap
 
-- [x] Build the password-gated Kativate review page at `/kativate-review`
-- [x] Add all supplied palettes, logos, videos, and PDF
-- [x] Add the discreet footer link without changing main navigation
-- [x] Verify password persistence, media, navigation, themes, and responsive layouts
+- [ ] Change the Kativate review password to `carebear`
+- [ ] Add the password-gated food truck review page with all four supplied graphics
+- [ ] Add the discreet footer link and route
+- [ ] Verify both review flows and responsive layout
