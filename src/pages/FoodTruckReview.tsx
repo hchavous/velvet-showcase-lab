@@ -8,9 +8,9 @@ import handoffAsset from "@/assets/food-truck/handoff-complete.zip.asset.json";
 
 const options = [
   { id: "original", navLabel: "Original", title: "Original Captivate graphic", src: "/food-truck/GreenwayStreetEats_Captivate_original.png" },
-  { id: "fix-v1", navLabel: "V1", title: "Fix V1", version: "V1", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V1.png", poster: true },
-  { id: "fix-v2", navLabel: "V2", title: "Fix V2", version: "V2", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V2.png", poster: true },
-  { id: "fix-v3", navLabel: "V3", title: "Fix V3", version: "V3", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V3.png", poster: false },
+  { id: "fix-v1", navLabel: "V1", title: "Fix V1", version: "V1", clip: "/food-truck/truck-roll-v1.mp4", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V1.png" },
+  { id: "fix-v2", navLabel: "V2", title: "Fix V2", version: "V2", clip: "/food-truck/truck-roll-v2.mp4", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V2.png" },
+  { id: "fix-v3", navLabel: "V3", title: "Fix V3", version: "V3", clip: "/food-truck/truck-roll-v3.mp4", src: "/food-truck/GreenwayStreetEats_Captivate_1024x680_V3.png" },
 ];
 
 const handoffItems = [
@@ -125,27 +125,44 @@ const FoodTruckReview = () => {
                     />
                   </figure>
                   {option.version && (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      <Button asChild variant="outline" size="sm">
-                        <a href={`/food-truck/GreenwayStreetEats_Captivate_1024x680_${option.version}.png`} download>
-                          <Download /> Captivate PNG
-                        </a>
-                      </Button>
-                      <Button asChild variant="outline" size="sm">
-                        <a href={`/food-truck/GreenwayStreetEats_Email_8.5x11_${option.version}.pdf`} download>
-                          <Download /> Email PDF
-                        </a>
-                      </Button>
-                      {option.poster ? (
+                    <>
+                      <div className="mt-8">
+                        <p className="mb-3 text-sm font-semibold">Rolling clip — web/review only, not for print</p>
+                        <div className="overflow-hidden rounded-lg border border-border/60 bg-card p-2 shadow-sm sm:p-3">
+                          <video
+                            src={option.clip}
+                            className="aspect-[128/86] h-auto w-full rounded-md bg-muted object-contain"
+                            controls
+                            muted
+                            playsInline
+                            preload="metadata"
+                            aria-label={`${option.title} rolling clip`}
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <Button asChild variant="outline" size="sm">
+                          <a href={`/food-truck/GreenwayStreetEats_Captivate_1024x680_${option.version}.png`} download>
+                            <Download /> Captivate PNG
+                          </a>
+                        </Button>
+                        <Button asChild variant="outline" size="sm">
+                          <a href={`/food-truck/GreenwayStreetEats_Email_8.5x11_${option.version}.pdf`} download>
+                            <Download /> Email PDF
+                          </a>
+                        </Button>
                         <Button asChild variant="outline" size="sm">
                           <a href={`/food-truck/GreenwayStreetEats_Poster_18x24_BLEED_${option.version}.pdf`} download>
                             <Download /> Poster BLEED PDF
                           </a>
                         </Button>
-                      ) : (
-                        <span className="inline-flex h-9 items-center px-1 text-sm text-muted-foreground">Poster and rolling MP4 coming soon</span>
-                      )}
-                    </div>
+                        <Button asChild variant="outline" size="sm">
+                          <a href={option.clip} download>
+                            <Download /> Rolling MP4
+                          </a>
+                        </Button>
+                      </div>
+                    </>
                   )}
                 </section>
               ))}
