@@ -264,7 +264,7 @@ const KativateReview = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout className="kativate-review-theme">
       {!unlocked ? <PasswordGate onUnlock={() => setUnlocked(true)} /> : (
         <div className="container mx-auto px-4 py-16 md:py-20">
           <div className="mx-auto max-w-6xl">
