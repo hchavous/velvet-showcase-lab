@@ -44,6 +44,26 @@
     --sidebar-accent-foreground: 43 33% 96%;
     --sidebar-border: 45 5% 18%;
     --sidebar-ring: 16 60% 58%;
+
+    --kativate-a-burgundy: 346 56% 27%;
+    --kativate-a-forest: 155 42% 21%;
+    --kativate-a-sage: 99 13% 67%;
+    --kativate-a-silver: 216 6% 79%;
+    --kativate-a-ivory: 36 24% 96%;
+    --kativate-b-wine: 351 59% 30%;
+    --kativate-b-emerald: 165 74% 21%;
+    --kativate-b-mist: 127 14% 85%;
+    --kativate-b-silver: 216 7% 74%;
+    --kativate-c-mulberry: 345 56% 23%;
+    --kativate-c-olive: 81 38% 30%;
+    --kativate-c-champagne: 34 29% 87%;
+    --kativate-c-silver: 210 7% 83%;
+    --kativate-c-cream: 36 29% 97%;
+    --kativate-d-wine: 346 66% 17%;
+    --kativate-d-emerald: 168 82% 13%;
+    --kativate-d-platinum: 216 11% 91%;
+    --kativate-d-graphite: 210 6% 63%;
+    --kativate-white: 0 0% 100%;
   }
 
   .light {
@@ -107,6 +127,26 @@
 }
 
 @layer utilities {
+  .bg-kativate-a-burgundy { background-color: hsl(var(--kativate-a-burgundy)); }
+  .bg-kativate-a-forest { background-color: hsl(var(--kativate-a-forest)); }
+  .bg-kativate-a-sage { background-color: hsl(var(--kativate-a-sage)); }
+  .bg-kativate-a-silver { background-color: hsl(var(--kativate-a-silver)); }
+  .bg-kativate-a-ivory { background-color: hsl(var(--kativate-a-ivory)); }
+  .bg-kativate-b-wine { background-color: hsl(var(--kativate-b-wine)); }
+  .bg-kativate-b-emerald { background-color: hsl(var(--kativate-b-emerald)); }
+  .bg-kativate-b-mist { background-color: hsl(var(--kativate-b-mist)); }
+  .bg-kativate-b-silver { background-color: hsl(var(--kativate-b-silver)); }
+  .bg-kativate-c-mulberry { background-color: hsl(var(--kativate-c-mulberry)); }
+  .bg-kativate-c-olive { background-color: hsl(var(--kativate-c-olive)); }
+  .bg-kativate-c-champagne { background-color: hsl(var(--kativate-c-champagne)); }
+  .bg-kativate-c-silver { background-color: hsl(var(--kativate-c-silver)); }
+  .bg-kativate-c-cream { background-color: hsl(var(--kativate-c-cream)); }
+  .bg-kativate-d-wine { background-color: hsl(var(--kativate-d-wine)); }
+  .bg-kativate-d-emerald { background-color: hsl(var(--kativate-d-emerald)); }
+  .bg-kativate-d-platinum { background-color: hsl(var(--kativate-d-platinum)); }
+  .bg-kativate-d-graphite { background-color: hsl(var(--kativate-d-graphite)); }
+  .bg-kativate-white { background-color: hsl(var(--kativate-white)); }
+
   .gradient-text {
     @apply bg-gradient-to-r from-[#d97757] via-[#bd5d3a] to-[#d97757] bg-clip-text text-transparent;
   }
