@@ -1,13 +1,10 @@
-import { FormEvent, useEffect, useState } from "react";
-import { Download, Eye, LockKeyhole } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Download } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import ReviewPasswordGate, { REVIEW_ACCESS_KEY } from "@/components/review/ReviewPasswordGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { cn } from "@/lib/utils";
-
-const ACCESS_KEY = "kativate-review-unlocked";
-const REVIEW_PASSWORD = "Kabearie";
 
 type Color = { name: string; hex: string; swatch: string };
 type Direction = {
@@ -189,63 +186,12 @@ const DirectionSection = ({ direction }: { direction: Direction }) => (
   </section>
 );
 
-const PasswordGate = ({ onUnlock }: { onUnlock: () => void }) => {
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (password === REVIEW_PASSWORD) {
-      sessionStorage.setItem(ACCESS_KEY, "true");
-      onUnlock();
-      return;
-    }
-    setError("That password did not work. Please try again.");
-  };
-
-  return (
-    <section className="container mx-auto flex min-h-[70vh] items-center justify-center px-4 py-20">
-      <div className="w-full max-w-md rounded-lg border border-border/60 bg-card/60 p-7 shadow-sm md:p-9">
-        <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
-          <LockKeyhole className="h-5 w-5" />
-        </div>
-        <p className="mb-2 text-xs font-semibold uppercase text-primary">Private review</p>
-        <h1 className="mb-3 text-3xl font-semibold">Kativate brand review</h1>
-        <p className="mb-7 text-muted-foreground">Enter the review password to continue.</p>
-        <form onSubmit={submit} className="space-y-4">
-          <div>
-            <label htmlFor="kativate-password" className="mb-2 block text-sm font-medium">Password</label>
-            <Input
-              id="kativate-password"
-              type="password"
-              value={password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-                if (error) setError("");
-              }}
-              aria-describedby={error ? "kativate-password-error" : undefined}
-              aria-invalid={Boolean(error)}
-              autoComplete="current-password"
-              autoFocus
-            />
-          </div>
-          {error && <p id="kativate-password-error" className="text-sm text-destructive" role="alert">{error}</p>}
-          <Button type="submit" className="w-full gap-2">
-            <Eye className="h-4 w-4" />
-            View brand directions
-          </Button>
-        </form>
-      </div>
-    </section>
-  );
-};
-
 const KativateReview = () => {
   usePageMeta(
     "Kativate Brand Review | Haven Chavous",
     "Private review of four early Kativate brand directions for Kateri Foley.",
   );
-  const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem(ACCESS_KEY) === "true");
+  const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem(REVIEW_ACCESS_KEY) === "true");
 
   useEffect(() => {
     let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
@@ -265,7 +211,14 @@ const KativateReview = () => {
 
   return (
     <Layout className="kativate-review-theme">
-      {!unlocked ? <PasswordGate onUnlock={() => setUnlocked(true)} /> : (
+      {!unlocked ? (
+        <ReviewPasswordGate
+          title="Kativate brand review"
+          buttonLabel="View brand directions"
+          inputId="kativate-password"
+          onUnlock={() => setUnlocked(true)}
+        />
+      ) : (
         <div className="container mx-auto px-4 py-16 md:py-20">
           <div className="mx-auto max-w-6xl">
             <header className="mb-12 max-w-3xl">
