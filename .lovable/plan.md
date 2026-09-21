@@ -1,11 +1,14 @@
-# Kativate Round 2 review tabs
+# Oktoberfest private review
 
 ## Scope
-- Add top-level First review and Post review / feedback tabs after the existing carebear unlock.
-- Preserve the full Round 1 A–D review unchanged inside the First review tab.
-- Default to the Post review tab and present the supplied summary, feedback-to-output callout, categorized galleries, and downloads.
+- Add `/oktoberfest-review` using the shared `carebear` gate, light review styling, private-page metadata, and a discreet footer link.
+- Lead with the requested second-opinion findings and verdict before any asset galleries.
+- Add sticky navigation and the Sept 30, Oct 1, and Run of Show review sections.
 
-## Assets and verification
-- Store all ten supplied images at the requested public/kativate/v2 filenames.
-- Verify the password gate, both tabs, all images and downloads, sticky navigation, and phone/desktop layouts.
-- Publish the completed update to havenchavous.com.
+## Assets and downloads
+- Store all supplied preview images at the requested `/oktoberfest/` paths.
+- Store the complete handoff ZIP through the project asset service and provide a primary download.
+- Wire all six requested PDF download paths now; the PDF files will be added when supplied next.
+
+## Verification
+- Check the password gate, shared session unlock, private indexing directive, footer route, previews, navigation, downloads, and phone/desktop layouts.
