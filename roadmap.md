@@ -9,3 +9,6 @@
 - [x] Add handoff guidance and V1/V2/V3 Captivate downloads
 - [x] Verify downloads, route, footer link, password, and mobile layout
 - [x] Add the V3 poster and three rolling MP4s to the review page
+- [x] Add Sunburst, Autumn, and Neutral background family tabs with supplied assets
+- [x] Verify all family previews, downloads, navigation, password access, and responsive layout
+- [x] Publish the completed food-truck review update
