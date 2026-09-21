@@ -16,4 +16,4 @@
 - [x] Add the password-gated Oktoberfest review route and discreet footer link
 - [x] Add the supplied Oktoberfest previews and downloadable handoff archive
 - [x] Verify access, navigation, downloads, metadata, and responsive layout
-- [ ] Add the six final PDFs when supplied
+- [x] Add the six final PDFs when supplied
