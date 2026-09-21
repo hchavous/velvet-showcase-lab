@@ -17,3 +17,7 @@
 - [x] Add the supplied Oktoberfest previews and downloadable handoff archive
 - [x] Verify access, navigation, downloads, metadata, and responsive layout
 - [x] Add the six final PDFs when supplied
+
+- [x] Add First review and Post review tabs to the Kativate review page
+- [x] Add and verify the supplied Round 2 gallery and downloads
+- [x] Publish the Kativate Round 2 review update
