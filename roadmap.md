@@ -20,4 +20,4 @@
 
 - [x] Add First review and Post review tabs to the Kativate review page
 - [x] Add and verify the supplied Round 2 gallery and downloads
-- [ ] Publish the Kativate Round 2 review update
+- [x] Publish the Kativate Round 2 review update
