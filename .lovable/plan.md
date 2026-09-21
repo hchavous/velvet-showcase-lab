@@ -1,16 +1,14 @@
-# Food truck background family tabs
+# Oktoberfest private review
 
 ## Scope
-- Keep the shared `carebear` password gate and all existing Sunburst content and downloads unchanged.
-- Add a top segmented control for Sunburst, Autumn, and Neutral after unlock.
-- Keep the handoff guidance visible and add the stakeholder note about alternative backgrounds.
+- Add `/oktoberfest-review` using the shared `carebear` gate, light review styling, private-page metadata, and a discreet footer link.
+- Lead with the requested second-opinion findings and verdict before any asset galleries.
+- Add sticky navigation and the Sept 30, Oct 1, and Run of Show review sections.
 
 ## Assets and downloads
-- Store the 25 MB Autumn/Neutral full pack through the project asset service and offer it as a download.
-- Store the six supplied Captivate images through the asset service, preserving their requested family and filename organization in the project pointers.
-- Autumn and Neutral each show large V1–V3 previews and per-image PNG downloads; their email and poster sets remain available in the full pack.
+- Store all supplied preview images at the requested `/oktoberfest/` paths.
+- Store the complete handoff ZIP through the project asset service and provide a primary download.
+- Wire all six requested PDF download paths now; the PDF files will be added when supplied next.
 
-## Interaction and verification
-- Switch visible content without changing routes, with a family-specific sticky section navigator.
-- Sunburst navigation remains Original, V1, V2, V3; Autumn and Neutral use V1, V2, V3.
-- Verify password access, all tabs, previews, downloads, responsive layout, then publish to havenchavous.com.
+## Verification
+- Check the password gate, shared session unlock, private indexing directive, footer route, previews, navigation, downloads, and phone/desktop layouts.
