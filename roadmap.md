@@ -18,6 +18,6 @@
 - [x] Verify access, navigation, downloads, metadata, and responsive layout
 - [x] Add the six final PDFs when supplied
 
-- [ ] Add First review and Post review tabs to the Kativate review page
-- [ ] Add and verify the supplied Round 2 gallery and downloads
+- [x] Add First review and Post review tabs to the Kativate review page
+- [x] Add and verify the supplied Round 2 gallery and downloads
 - [ ] Publish the Kativate Round 2 review update
