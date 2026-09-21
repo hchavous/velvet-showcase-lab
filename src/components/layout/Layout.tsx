@@ -28,6 +28,10 @@ const Layout = ({ children, className }: LayoutProps) => {
             <Link to="/food-truck-review" className="transition-colors hover:text-muted-foreground">
               Food Trucks
             </Link>
+            <span aria-hidden="true">·</span>
+            <Link to="/oktoberfest-review" className="transition-colors hover:text-muted-foreground">
+              Oktoberfest
+            </Link>
           </div>
         </div>
       </footer>
