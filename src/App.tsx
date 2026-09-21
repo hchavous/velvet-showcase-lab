@@ -14,6 +14,7 @@ import WebApps from "./pages/WebApps";
 import NotFound from "./pages/NotFound";
 import KativateReview from "./pages/KativateReview";
 import FoodTruckReview from "./pages/FoodTruckReview";
+import OktoberfestReview from "./pages/OktoberfestReview";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
            <Route path="/blog/ai-agents-and-automation" element={<AIAgentsAndAutomation />} />
             <Route path="/kativate-review" element={<KativateReview />} />
              <Route path="/food-truck-review" element={<FoodTruckReview />} />
+             <Route path="/oktoberfest-review" element={<OktoberfestReview />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

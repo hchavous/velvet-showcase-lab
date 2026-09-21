@@ -64,6 +64,10 @@
     --kativate-d-platinum: 216 11% 91%;
     --kativate-d-graphite: 210 6% 63%;
     --kativate-white: 0 0% 100%;
+    --review-success: 147 45% 34%;
+    --review-navy: 214 51% 27%;
+    --review-navy-foreground: 0 0% 100%;
+    --review-gold: 43 88% 67%;
   }
 
   .light {
