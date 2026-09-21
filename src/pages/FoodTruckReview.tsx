@@ -6,12 +6,6 @@ import { Button } from "@/components/ui/button";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import handoffAsset from "@/assets/food-truck/handoff-complete.zip.asset.json";
 import backgroundVariantsAsset from "@/assets/food-truck/background-variants.zip.asset.json";
-import autumnV1Asset from "@/assets/food-truck/autumn/GreenwayStreetEats_Captivate_1024x680_V1.png.asset.json";
-import autumnV2Asset from "@/assets/food-truck/autumn/GreenwayStreetEats_Captivate_1024x680_V2.png.asset.json";
-import autumnV3Asset from "@/assets/food-truck/autumn/GreenwayStreetEats_Captivate_1024x680_V3.png.asset.json";
-import neutralV1Asset from "@/assets/food-truck/neutral/GreenwayStreetEats_Captivate_1024x680_V1.png.asset.json";
-import neutralV2Asset from "@/assets/food-truck/neutral/GreenwayStreetEats_Captivate_1024x680_V2.png.asset.json";
-import neutralV3Asset from "@/assets/food-truck/neutral/GreenwayStreetEats_Captivate_1024x680_V3.png.asset.json";
 
 type Family = "sunburst" | "autumn" | "neutral";
 
@@ -23,17 +17,17 @@ const sunburstOptions = [
 ];
 
 const alternativeOptions = {
-  autumn: [autumnV1Asset, autumnV2Asset, autumnV3Asset].map((asset, index) => ({
-    id: `autumn-v${index + 1}`,
-    navLabel: `V${index + 1}`,
-    title: `Autumn V${index + 1}`,
-    src: asset.url,
+  autumn: [1, 2, 3].map((version) => ({
+    id: `autumn-v${version}`,
+    navLabel: `V${version}`,
+    title: `Autumn V${version}`,
+    src: `/food-truck/autumn/GreenwayStreetEats_Captivate_1024x680_V${version}.png`,
   })),
-  neutral: [neutralV1Asset, neutralV2Asset, neutralV3Asset].map((asset, index) => ({
-    id: `neutral-v${index + 1}`,
-    navLabel: `V${index + 1}`,
-    title: `Neutral V${index + 1}`,
-    src: asset.url,
+  neutral: [1, 2, 3].map((version) => ({
+    id: `neutral-v${version}`,
+    navLabel: `V${version}`,
+    title: `Neutral V${version}`,
+    src: `/food-truck/neutral/GreenwayStreetEats_Captivate_1024x680_V${version}.png`,
   })),
 };
 
