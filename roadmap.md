@@ -24,4 +24,4 @@
 
 - [x] Restore the original Kativate brand overview alongside the draft websites
 - [x] Verify overview, draft isolation, and back-and-forth navigation
-- [ ] Publish the combined Kativate review
+- [x] Publish the combined Kativate review
