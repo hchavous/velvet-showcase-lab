@@ -25,3 +25,7 @@
 - [x] Restore the original Kativate brand overview alongside the draft websites
 - [x] Verify overview, draft isolation, and back-and-forth navigation
 - [x] Publish the combined Kativate review
+
+- [x] Add Philadelphia skyline hero backdrops to the four Kativate draft websites
+- [x] Verify overview intros, skyline heroes per tab, and mobile layout
+- [x] Publish the Kativate skyline hero update
