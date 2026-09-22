@@ -118,12 +118,12 @@ const directions: Direction[] = [
     method: "We edit to the essential, choreograph with precision, and direct the room with the calm discretion of a luxury house.",
     palette: "/kativate/palette-d.png",
     wordmarks: [
-      { src: "/kativate/logo-d-wordmark-light.png", label: "D wordmark on light ground", ground: "light" },
-      { src: "/kativate/logo-d-wordmark-dark.png", label: "D wordmark on dark ground", ground: "dark" },
+      { src: "/kativate/logo-d-wordmark-light.png", label: "D wordmark on light ground" },
+      { src: "/kativate/logo-d-wordmark-dark.png", label: "D wordmark on dark ground" },
     ],
     monograms: [
-      { src: "/kativate/logo-d-mono-light.png", label: "D K monogram on light ground", ground: "light" },
-      { src: "/kativate/logo-d-mono-dark.png", label: "D K monogram on dark ground", ground: "dark" },
+      { src: "/kativate/logo-d-mono-light.png", label: "D K monogram on light ground" },
+      { src: "/kativate/logo-d-mono-dark.png", label: "D K monogram on dark ground" },
     ],
     video: "/kativate/kativate-d-ultra-modern-luxe-intro.mp4",
     services: [
