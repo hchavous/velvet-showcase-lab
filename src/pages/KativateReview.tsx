@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import ReviewPasswordGate, { REVIEW_ACCESS_KEY } from "@/components/review/ReviewPasswordGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { cn } from "@/lib/utils";
+
+type Color = { name: string; hex: string; swatch: string };
 type Direction = {
   id: string;
   letter: string;
   title: string;
   mood: string;
+  colors: Color[];
   themeClass: string;
   eyebrow: string;
   headline: string;
@@ -16,8 +20,8 @@ type Direction = {
   story: string;
   method: string;
   palette: string;
-  wordmarks: { src: string; label: string }[];
-  monograms: { src: string; label: string }[];
+  wordmarks: { src: string; label: string; ground?: "light" | "dark" }[];
+  monograms: { src: string; label: string; ground?: "light" | "dark" }[];
   video: string;
   services: { title: string; copy: string }[];
   work: { kicker: string; title: string; copy: string }[];
@@ -29,6 +33,13 @@ const directions: Direction[] = [
     letter: "A",
     title: "Classic Hospitality",
     mood: "Warm hotel / wedding energy. Safe for corporate and social events.",
+    colors: [
+      { name: "Burgundy", hex: "#6B1E2E", swatch: "bg-kativate-a-burgundy" },
+      { name: "Deep Forest", hex: "#1F4D3A", swatch: "bg-kativate-a-forest" },
+      { name: "Soft Sage", hex: "#A8B5A0", swatch: "bg-kativate-a-sage" },
+      { name: "Warm Silver", hex: "#C5C8CC", swatch: "bg-kativate-a-silver" },
+      { name: "Ivory", hex: "#F7F5F2", swatch: "bg-kativate-a-ivory" },
+    ],
     themeClass: "kativate-site-a",
     eyebrow: "Gather beautifully",
     headline: "Hospitality with a sense of occasion.",
@@ -56,6 +67,13 @@ const directions: Direction[] = [
     letter: "B",
     title: "Modern Luxe",
     mood: "Sharper and more contemporary. Strong for premium corporate and product covers.",
+    colors: [
+      { name: "Wine", hex: "#7A1F2B", swatch: "bg-kativate-b-wine" },
+      { name: "Emerald", hex: "#0E5C4A", swatch: "bg-kativate-b-emerald" },
+      { name: "Mist Green", hex: "#D5DFD6", swatch: "bg-kativate-b-mist" },
+      { name: "Cool Silver", hex: "#B8BCC2", swatch: "bg-kativate-b-silver" },
+      { name: "Pure White", hex: "#FFFFFF", swatch: "bg-kativate-white" },
+    ],
     themeClass: "kativate-site-b",
     eyebrow: "Ideas, impeccably delivered",
     headline: "Make the room move differently.",
@@ -83,6 +101,13 @@ const directions: Direction[] = [
     letter: "C",
     title: "Soft Garden",
     mood: "Softer and more botanical. Best if the brand leans social / lifestyle events.",
+    colors: [
+      { name: "Mulberry", hex: "#5C1A2A", swatch: "bg-kativate-c-mulberry" },
+      { name: "Olive Grove", hex: "#556B2F", swatch: "bg-kativate-c-olive" },
+      { name: "Champagne", hex: "#E8E0D5", swatch: "bg-kativate-c-champagne" },
+      { name: "Soft Silver", hex: "#D0D3D6", swatch: "bg-kativate-c-silver" },
+      { name: "Cream", hex: "#FAF8F5", swatch: "bg-kativate-c-cream" },
+    ],
     themeClass: "kativate-site-c",
     eyebrow: "Made to feel like you",
     headline: "Beautiful gatherings, grown with intention.",
@@ -110,6 +135,13 @@ const directions: Direction[] = [
     letter: "D",
     title: "Ultra Modern Luxe",
     mood: "Darker, cleaner high-fashion / five-star minimalism.",
+    colors: [
+      { name: "Deep Wine", hex: "#4A0F1C", swatch: "bg-kativate-d-wine" },
+      { name: "Emerald Black", hex: "#063D32", swatch: "bg-kativate-d-emerald" },
+      { name: "Platinum", hex: "#E6E8EB", swatch: "bg-kativate-d-platinum" },
+      { name: "Graphite Silver", hex: "#9AA0A6", swatch: "bg-kativate-d-graphite" },
+      { name: "Pure White", hex: "#FFFFFF", swatch: "bg-kativate-white" },
+    ],
     themeClass: "kativate-site-d",
     eyebrow: "Presence, without excess",
     headline: "The art of a flawless entrance.",
@@ -118,12 +150,12 @@ const directions: Direction[] = [
     method: "We edit to the essential, choreograph with precision, and direct the room with the calm discretion of a luxury house.",
     palette: "/kativate/palette-d.png",
     wordmarks: [
-      { src: "/kativate/logo-d-wordmark-dark.png", label: "D wordmark on dark ground" },
-      { src: "/kativate/logo-d-wordmark-light.png", label: "D wordmark on light ground" },
+      { src: "/kativate/logo-d-wordmark-dark.png", label: "D wordmark on dark ground", ground: "dark" },
+      { src: "/kativate/logo-d-wordmark-light.png", label: "D wordmark on light ground", ground: "light" },
     ],
     monograms: [
-      { src: "/kativate/logo-d-mono-dark.png", label: "D K monogram on dark ground" },
-      { src: "/kativate/logo-d-mono-light.png", label: "D K monogram on light ground" },
+      { src: "/kativate/logo-d-mono-dark.png", label: "D K monogram on dark ground", ground: "dark" },
+      { src: "/kativate/logo-d-mono-light.png", label: "D K monogram on light ground", ground: "light" },
     ],
     video: "/kativate/kativate-d-ultra-modern-luxe-intro.mp4",
     services: [
@@ -140,6 +172,57 @@ const directions: Direction[] = [
   },
 ];
 
+const LogoPanel = ({ src, label, ground }: { src: string; label: string; ground?: "light" | "dark" }) => (
+  <figure className="space-y-3">
+    <div className={cn("aspect-square overflow-hidden rounded-lg border border-border/60", ground === "dark" ? "bg-kativate-d-wine" : "bg-kativate-a-ivory")}>
+      <img src={src} alt={label} className="h-full w-full object-contain" loading="lazy" />
+    </div>
+    <figcaption className="text-center text-sm text-muted-foreground">{label}</figcaption>
+  </figure>
+);
+
+const DirectionSection = ({ direction, openDraft }: { direction: Direction; openDraft: (letter: string) => void }) => (
+  <section id={direction.id} className="scroll-mt-48 border-t border-border/60 py-16 md:py-24">
+    <div className="mb-10 grid gap-5 md:grid-cols-[auto_1fr] md:items-start">
+      <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary text-xl font-bold text-primary-foreground">{direction.letter}</div>
+      <div>
+        <p className="mb-2 text-xs font-semibold uppercase text-primary">Direction {direction.letter}</p>
+        <h2 className="mb-3 text-3xl font-semibold md:text-4xl">{direction.title}</h2>
+        <p className="max-w-2xl text-lg text-muted-foreground">{direction.mood}</p>
+      </div>
+    </div>
+
+    <div className="mb-12">
+      <h3 className="mb-5 text-lg font-semibold">Color system</h3>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        {direction.colors.map((color) => (
+          <div key={color.hex} className="overflow-hidden rounded-lg border border-border/60 bg-card">
+            <div className={cn("h-24 border-b border-border/40", color.swatch)} aria-hidden="true" />
+            <div className="p-3"><p className="text-sm font-semibold">{color.name}</p><p className="font-mono text-xs text-muted-foreground">{color.hex}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="mb-12">
+      <h3 className="mb-5 text-lg font-semibold">Palette board</h3>
+      <div className="overflow-hidden rounded-lg border border-border/60 bg-card"><img src={direction.palette} alt={`${direction.title} palette board`} className="aspect-video h-auto w-full object-cover" loading="lazy" /></div>
+    </div>
+
+    <div className="mb-12 grid gap-8 lg:grid-cols-2">
+      <div><h3 className="mb-5 text-lg font-semibold">Wordmark + mark</h3><div className={cn("grid gap-4", direction.wordmarks.length > 1 && "sm:grid-cols-2")}>{direction.wordmarks.map((asset) => <LogoPanel key={asset.src} {...asset} />)}</div></div>
+      <div><h3 className="mb-5 text-lg font-semibold">K monogram</h3><div className={cn("grid gap-4", direction.monograms.length > 1 && "sm:grid-cols-2")}>{direction.monograms.map((asset) => <LogoPanel key={asset.src} {...asset} />)}</div></div>
+    </div>
+
+    <div className="mb-8">
+      <h3 className="mb-5 text-lg font-semibold">Dramatic intro</h3>
+      <div className="overflow-hidden rounded-lg border border-border/60 bg-card"><video className="aspect-video w-full object-cover" src={direction.video} aria-label={`${direction.title} dramatic brand intro`} autoPlay muted loop playsInline controls preload="metadata">Your browser does not support video playback.</video></div>
+    </div>
+
+    <Button type="button" onClick={() => openDraft(direction.letter)} className="gap-2">Open draft website {direction.letter}<ArrowRight className="h-4 w-4" /></Button>
+  </section>
+);
+
 const SiteNav = ({ direction }: { direction: Direction }) => (
   <nav className="border-b border-border bg-background/95" aria-label={`${direction.title} draft site navigation`}>
     <div className="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-5 px-5 md:px-8">
@@ -155,7 +238,7 @@ const SiteNav = ({ direction }: { direction: Direction }) => (
   </nav>
 );
 
-const DraftSite = ({ direction }: { direction: Direction }) => (
+const DraftSite = ({ direction, showOverview }: { direction: Direction; showOverview: () => void }) => (
   <article className={`${direction.themeClass} bg-background text-foreground`} role="tabpanel" id={`panel-${direction.letter}`} aria-labelledby={`tab-${direction.letter}`}>
     <SiteNav direction={direction} />
 
@@ -242,7 +325,7 @@ const DraftSite = ({ direction }: { direction: Direction }) => (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:px-8">
         <div className="flex items-center gap-4"><img src={direction.monograms[0].src} alt="Kativate" className="h-10 w-10 object-contain" /><span>Draft brand site · for review only</span></div>
-        <div className="flex flex-wrap items-center gap-5"><span>Private draft review for Kateri Foley</span><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-2 hover:text-foreground"><Download className="h-4 w-4" /> Review PDF</a></div>
+        <div className="flex flex-wrap items-center gap-5"><span>Private draft review for Kateri Foley</span><Button type="button" variant="link" onClick={showOverview} className="h-auto p-0 text-muted-foreground">Brand overview</Button><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-2 hover:text-foreground"><Download className="h-4 w-4" /> Review PDF</a></div>
       </div>
     </footer>
   </article>
@@ -254,7 +337,19 @@ const KativateReview = () => {
     "Private review of four early Kativate brand directions for Kateri Foley.",
   );
   const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem(REVIEW_ACCESS_KEY) === "true");
+  const [mode, setMode] = useState<"overview" | "drafts">("overview");
   const [activeDirection, setActiveDirection] = useState("A");
+
+  const showOverview = () => {
+    setMode("overview");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const showDraft = (letter = "A") => {
+    setActiveDirection(letter);
+    setMode("drafts");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
@@ -283,7 +378,41 @@ const KativateReview = () => {
         />
       ) : (
         <div>
-            <nav aria-label="Kativate brand directions" className="sticky top-16 z-50 border-y border-border/60 bg-background/95 px-3 py-3 backdrop-blur-lg" role="tablist">
+          <nav aria-label="Kativate review mode" className="sticky top-16 z-[60] border-y border-border/60 bg-background/95 px-3 py-3 backdrop-blur-lg" role="tablist">
+            <div className="mx-auto grid max-w-2xl grid-cols-2 gap-2">
+              <Button type="button" role="tab" aria-selected={mode === "overview"} variant={mode === "overview" ? "default" : "outline"} onClick={showOverview}>Brand overview</Button>
+              <Button type="button" role="tab" aria-selected={mode === "drafts"} variant={mode === "drafts" ? "default" : "outline"} onClick={() => showDraft(activeDirection)}>Draft websites</Button>
+            </div>
+          </nav>
+
+          {mode === "overview" ? (
+            <div className="container mx-auto px-4 py-12 md:py-16" role="tabpanel">
+              <div className="mx-auto max-w-6xl">
+                <header className="mb-12 max-w-3xl">
+                  <p className="mb-3 text-xs font-semibold uppercase text-primary">Private brand review</p>
+                  <h1 className="mb-5 text-4xl font-semibold md:text-5xl">Kativate</h1>
+                  <p className="mb-7 text-lg leading-relaxed text-muted-foreground">Early brainstorm for Kateri Foley review. Nothing locked. Feedback welcome on palette mood, wordmark vibe, and monogram vibe.</p>
+                  <div className="flex flex-wrap gap-3">
+                    <Button asChild variant="outline" className="gap-2"><a href="/kativate/Kativate_Brand_Options_Review.pdf" download><Download className="h-4 w-4" />Download full review PDF</a></Button>
+                    <Button type="button" onClick={() => showDraft("A")} className="gap-2">View draft websites<ArrowRight className="h-4 w-4" /></Button>
+                  </div>
+                </header>
+
+                <nav aria-label="Kativate brand directions" className="sticky top-36 z-40 -mx-4 border-y border-border/60 bg-background/90 px-4 py-3 backdrop-blur-lg">
+                  <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+                    {directions.map((direction) => <a key={direction.id} href={`#${direction.id}`} className="rounded-md border border-border/60 bg-card/70 px-3 py-2 text-center text-xs font-medium transition-colors hover:border-primary/50 hover:text-primary sm:text-sm"><span className="font-bold">{direction.letter}</span> {direction.title}</a>)}
+                  </div>
+                </nav>
+
+                {directions.map((direction) => <DirectionSection key={direction.id} direction={direction} openDraft={showDraft} />)}
+              </div>
+            </div>
+          ) : (
+            <div role="tabpanel">
+              <div className="border-b border-border/60 bg-background px-3 py-3">
+                <div className="mx-auto max-w-7xl"><Button type="button" variant="ghost" onClick={showOverview} className="gap-2"><ArrowLeft className="h-4 w-4" />Back to brand overview</Button></div>
+              </div>
+              <nav aria-label="Kativate draft websites" className="sticky top-36 z-50 border-b border-border/60 bg-background/95 px-3 py-3 backdrop-blur-lg" role="tablist">
               <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 md:grid-cols-4">
                 {directions.map((direction) => (
                   <Button
@@ -304,9 +433,10 @@ const KativateReview = () => {
                   </Button>
                 ))}
               </div>
-              <div className="mx-auto mt-2 flex max-w-7xl justify-end"><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"><Download className="h-3.5 w-3.5" /> Full review PDF</a></div>
-            </nav>
-            {directions.filter((direction) => direction.letter === activeDirection).map((direction) => <DraftSite key={direction.id} direction={direction} />)}
+              </nav>
+              {directions.filter((direction) => direction.letter === activeDirection).map((direction) => <DraftSite key={direction.id} direction={direction} showOverview={showOverview} />)}
+            </div>
+          )}
         </div>
       )}
     </Layout>
