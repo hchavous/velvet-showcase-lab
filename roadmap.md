@@ -18,6 +18,6 @@
 - [x] Verify access, navigation, downloads, metadata, and responsive layout
 - [x] Add the six final PDFs when supplied
 
-- [ ] Rebuild Kativate review as four siloed tabbed draft websites
-- [ ] Verify password access, tab isolation, media, and mobile layout
+- [x] Rebuild Kativate review as four siloed tabbed draft websites
+- [x] Verify password access, tab isolation, media, and mobile layout
 - [ ] Publish the rebuilt Kativate review
