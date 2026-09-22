@@ -23,6 +23,7 @@ type Direction = {
   wordmarks: { src: string; label: string; ground?: "light" | "dark" }[];
   monograms: { src: string; label: string; ground?: "light" | "dark" }[];
   video: string;
+  heroVideo: string;
   services: { title: string; copy: string }[];
   work: { kicker: string; title: string; copy: string }[];
 };
@@ -50,6 +51,7 @@ const directions: Direction[] = [
     wordmarks: [{ src: "/kativate/logo-a-wordmark.png", label: "A wordmark" }],
     monograms: [{ src: "/kativate/logo-a-mono.png", label: "A K monogram" }],
     video: "/kativate/kativate-a-classic-hospitality-intro.mp4",
+    heroVideo: "/kativate/kativate-a-philly-skyline.mp4",
     services: [
       { title: "Corporate & executive", copy: "Polished gatherings with discreet, guest-first production." },
       { title: "Celebrations & weddings", copy: "Personal milestones shaped with warmth and timeless restraint." },
@@ -84,6 +86,7 @@ const directions: Direction[] = [
     wordmarks: [{ src: "/kativate/logo-b-wordmark.png", label: "B wordmark" }],
     monograms: [{ src: "/kativate/logo-b-mono.png", label: "B K monogram" }],
     video: "/kativate/kativate-b-modern-luxe-intro.mp4",
+    heroVideo: "/kativate/kativate-b-philly-skyline.mp4",
     services: [
       { title: "Executive experiences", copy: "Focused forums and leadership moments built for influence." },
       { title: "Launches & activations", copy: "Crisp brand experiences designed to earn attention." },
@@ -118,6 +121,7 @@ const directions: Direction[] = [
     wordmarks: [{ src: "/kativate/logo-c-wordmark.png", label: "C wordmark" }],
     monograms: [{ src: "/kativate/logo-c-mono.png", label: "C K monogram" }],
     video: "/kativate/kativate-c-soft-garden-intro.mp4",
+    heroVideo: "/kativate/kativate-c-philly-skyline.mp4",
     services: [
       { title: "Social celebrations", copy: "Joyful gatherings with personality in every layer." },
       { title: "Weddings & weekends", copy: "A natural, connected story across every setting." },
@@ -158,6 +162,7 @@ const directions: Direction[] = [
       { src: "/kativate/logo-d-mono-light.png", label: "D K monogram on light ground", ground: "light" },
     ],
     video: "/kativate/kativate-d-ultra-modern-luxe-intro.mp4",
+    heroVideo: "/kativate/kativate-d-philly-skyline.mp4",
     services: [
       { title: "Private occasions", copy: "Confidential, high-touch planning for singular moments." },
       { title: "Luxury brand events", copy: "Immersive environments with exacting creative control." },
@@ -243,10 +248,10 @@ const DraftSite = ({ direction, showOverview }: { direction: Direction; showOver
     <SiteNav direction={direction} />
 
     <section className="relative isolate min-h-[680px] overflow-hidden border-b border-border">
-      <video className="absolute inset-0 h-full w-full object-cover" src={direction.video} aria-label={`${direction.title} dramatic brand intro`} autoPlay muted loop playsInline controls preload="metadata">
+      <video className="absolute inset-0 h-full w-full object-cover" src={direction.heroVideo} aria-label={`${direction.title} Philadelphia skyline backdrop`} autoPlay muted loop playsInline controls preload="metadata">
         Your browser does not support video playback.
       </video>
-      <div className="absolute inset-0 bg-background/80" aria-hidden="true" />
+      <div className="absolute inset-0 bg-background/70" aria-hidden="true" />
       <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-end px-5 py-16 md:px-8 md:py-24">
         <div className="max-w-4xl">
           <img src={direction.wordmarks[0].src} alt={`${direction.title} Kativate wordmark`} className="mb-10 h-20 w-56 object-contain object-left md:h-28 md:w-80" />
