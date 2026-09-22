@@ -251,7 +251,7 @@ const DraftSite = ({ direction, showOverview }: { direction: Direction; showOver
       <video className="absolute inset-0 h-full w-full object-cover" src={direction.heroVideo} aria-label={`${direction.title} Philadelphia skyline backdrop`} autoPlay muted loop playsInline controls preload="metadata">
         Your browser does not support video playback.
       </video>
-      <div className="absolute inset-0 bg-background/70" aria-hidden="true" />
+      <div className="absolute inset-0 hero-veil" aria-hidden="true" />
       <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-end px-5 py-16 md:px-8 md:py-24">
         <div className="max-w-4xl">
           <img src={direction.wordmarks[0].src} alt={`${direction.title} Kativate wordmark`} className="mb-10 h-20 w-56 object-contain object-left md:h-28 md:w-80" />

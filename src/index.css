@@ -163,6 +163,7 @@
     --accent-foreground: 36 24% 96%;
     --border: 99 13% 75%;
     --ring: 346 56% 27%;
+    --hero-veil: 36 24% 96%;
   }
 
   .kativate-site-b {
@@ -180,6 +181,7 @@
     --accent-foreground: 0 0% 100%;
     --border: 216 7% 78%;
     --ring: 165 74% 21%;
+    --hero-veil: 0 0% 100%;
   }
 
   .kativate-site-c {
@@ -197,6 +199,7 @@
     --accent-foreground: 36 29% 97%;
     --border: 34 20% 80%;
     --ring: 81 38% 30%;
+    --hero-veil: 36 29% 97%;
   }
 
   .kativate-site-d {
@@ -214,6 +217,7 @@
     --accent-foreground: 168 82% 9%;
     --border: 168 32% 25%;
     --ring: 216 11% 91%;
+    --hero-veil: 220 10% 9%;
   }
 }
 
@@ -238,6 +242,7 @@
 }
 
 @layer utilities {
+  .hero-veil { background-color: hsl(var(--hero-veil) / 0.7); }
   .bg-kativate-a-burgundy { background-color: hsl(var(--kativate-a-burgundy)); }
   .bg-kativate-a-forest { background-color: hsl(var(--kativate-a-forest)); }
   .bg-kativate-a-sage { background-color: hsl(var(--kativate-a-sage)); }
