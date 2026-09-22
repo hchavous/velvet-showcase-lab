@@ -20,4 +20,4 @@
 
 - [x] Rebuild Kativate review as four siloed tabbed draft websites
 - [x] Verify password access, tab isolation, media, and mobile layout
-- [ ] Publish the rebuilt Kativate review
+- [x] Publish the rebuilt Kativate review
