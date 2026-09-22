@@ -147,6 +147,74 @@
     --sidebar-border: 37 9% 80%;
     --sidebar-ring: 346 56% 27%;
   }
+
+  .kativate-site-a {
+    --background: 36 24% 96%;
+    --foreground: 346 56% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 346 56% 20%;
+    --primary: 346 56% 27%;
+    --primary-foreground: 36 24% 96%;
+    --secondary: 99 13% 67%;
+    --secondary-foreground: 155 42% 18%;
+    --muted: 216 6% 88%;
+    --muted-foreground: 155 22% 28%;
+    --accent: 155 42% 21%;
+    --accent-foreground: 36 24% 96%;
+    --border: 99 13% 75%;
+    --ring: 346 56% 27%;
+  }
+
+  .kativate-site-b {
+    --background: 0 0% 100%;
+    --foreground: 351 59% 20%;
+    --card: 127 14% 96%;
+    --card-foreground: 351 59% 20%;
+    --primary: 351 59% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 127 14% 85%;
+    --secondary-foreground: 165 74% 16%;
+    --muted: 216 7% 90%;
+    --muted-foreground: 216 7% 36%;
+    --accent: 165 74% 21%;
+    --accent-foreground: 0 0% 100%;
+    --border: 216 7% 78%;
+    --ring: 165 74% 21%;
+  }
+
+  .kativate-site-c {
+    --background: 36 29% 97%;
+    --foreground: 345 56% 18%;
+    --card: 34 29% 92%;
+    --card-foreground: 345 56% 18%;
+    --primary: 345 56% 23%;
+    --primary-foreground: 36 29% 97%;
+    --secondary: 34 29% 87%;
+    --secondary-foreground: 81 38% 22%;
+    --muted: 210 7% 90%;
+    --muted-foreground: 81 20% 32%;
+    --accent: 81 38% 30%;
+    --accent-foreground: 36 29% 97%;
+    --border: 34 20% 80%;
+    --ring: 81 38% 30%;
+  }
+
+  .kativate-site-d {
+    --background: 168 82% 8%;
+    --foreground: 216 11% 91%;
+    --card: 346 66% 12%;
+    --card-foreground: 216 11% 91%;
+    --primary: 216 11% 91%;
+    --primary-foreground: 168 82% 9%;
+    --secondary: 346 66% 17%;
+    --secondary-foreground: 216 11% 91%;
+    --muted: 168 42% 14%;
+    --muted-foreground: 210 6% 68%;
+    --accent: 210 6% 63%;
+    --accent-foreground: 168 82% 9%;
+    --border: 168 32% 25%;
+    --ring: 216 11% 91%;
+  }
 }
 
 @layer base {
