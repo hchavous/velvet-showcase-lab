@@ -20,8 +20,8 @@ type Direction = {
   story: string;
   method: string;
   palette: string;
-  wordmarks: { src: string; label: string }[];
-  monograms: { src: string; label: string }[];
+  wordmarks: { src: string; label: string; ground?: "light" | "dark" }[];
+  monograms: { src: string; label: string; ground?: "light" | "dark" }[];
   video: string;
   services: { title: string; copy: string }[];
   work: { kicker: string; title: string; copy: string }[];
@@ -150,12 +150,12 @@ const directions: Direction[] = [
     method: "We edit to the essential, choreograph with precision, and direct the room with the calm discretion of a luxury house.",
     palette: "/kativate/palette-d.png",
     wordmarks: [
-      { src: "/kativate/logo-d-wordmark-dark.png", label: "D wordmark on dark ground" },
-      { src: "/kativate/logo-d-wordmark-light.png", label: "D wordmark on light ground" },
+      { src: "/kativate/logo-d-wordmark-dark.png", label: "D wordmark on dark ground", ground: "dark" },
+      { src: "/kativate/logo-d-wordmark-light.png", label: "D wordmark on light ground", ground: "light" },
     ],
     monograms: [
-      { src: "/kativate/logo-d-mono-dark.png", label: "D K monogram on dark ground" },
-      { src: "/kativate/logo-d-mono-light.png", label: "D K monogram on light ground" },
+      { src: "/kativate/logo-d-mono-dark.png", label: "D K monogram on dark ground", ground: "dark" },
+      { src: "/kativate/logo-d-mono-light.png", label: "D K monogram on light ground", ground: "light" },
     ],
     video: "/kativate/kativate-d-ultra-modern-luxe-intro.mp4",
     services: [
@@ -171,6 +171,57 @@ const directions: Direction[] = [
     ],
   },
 ];
+
+const LogoPanel = ({ src, label, ground }: { src: string; label: string; ground?: "light" | "dark" }) => (
+  <figure className="space-y-3">
+    <div className={cn("aspect-square overflow-hidden rounded-lg border border-border/60", ground === "dark" ? "bg-kativate-d-wine" : "bg-kativate-a-ivory")}>
+      <img src={src} alt={label} className="h-full w-full object-contain" loading="lazy" />
+    </div>
+    <figcaption className="text-center text-sm text-muted-foreground">{label}</figcaption>
+  </figure>
+);
+
+const DirectionSection = ({ direction, openDraft }: { direction: Direction; openDraft: (letter: string) => void }) => (
+  <section id={direction.id} className="scroll-mt-48 border-t border-border/60 py-16 md:py-24">
+    <div className="mb-10 grid gap-5 md:grid-cols-[auto_1fr] md:items-start">
+      <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary text-xl font-bold text-primary-foreground">{direction.letter}</div>
+      <div>
+        <p className="mb-2 text-xs font-semibold uppercase text-primary">Direction {direction.letter}</p>
+        <h2 className="mb-3 text-3xl font-semibold md:text-4xl">{direction.title}</h2>
+        <p className="max-w-2xl text-lg text-muted-foreground">{direction.mood}</p>
+      </div>
+    </div>
+
+    <div className="mb-12">
+      <h3 className="mb-5 text-lg font-semibold">Color system</h3>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        {direction.colors.map((color) => (
+          <div key={color.hex} className="overflow-hidden rounded-lg border border-border/60 bg-card">
+            <div className={cn("h-24 border-b border-border/40", color.swatch)} aria-hidden="true" />
+            <div className="p-3"><p className="text-sm font-semibold">{color.name}</p><p className="font-mono text-xs text-muted-foreground">{color.hex}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="mb-12">
+      <h3 className="mb-5 text-lg font-semibold">Palette board</h3>
+      <div className="overflow-hidden rounded-lg border border-border/60 bg-card"><img src={direction.palette} alt={`${direction.title} palette board`} className="aspect-video h-auto w-full object-cover" loading="lazy" /></div>
+    </div>
+
+    <div className="mb-12 grid gap-8 lg:grid-cols-2">
+      <div><h3 className="mb-5 text-lg font-semibold">Wordmark + mark</h3><div className={cn("grid gap-4", direction.wordmarks.length > 1 && "sm:grid-cols-2")}>{direction.wordmarks.map((asset) => <LogoPanel key={asset.src} {...asset} />)}</div></div>
+      <div><h3 className="mb-5 text-lg font-semibold">K monogram</h3><div className={cn("grid gap-4", direction.monograms.length > 1 && "sm:grid-cols-2")}>{direction.monograms.map((asset) => <LogoPanel key={asset.src} {...asset} />)}</div></div>
+    </div>
+
+    <div className="mb-8">
+      <h3 className="mb-5 text-lg font-semibold">Dramatic intro</h3>
+      <div className="overflow-hidden rounded-lg border border-border/60 bg-card"><video className="aspect-video w-full object-cover" src={direction.video} aria-label={`${direction.title} dramatic brand intro`} autoPlay muted loop playsInline controls preload="metadata">Your browser does not support video playback.</video></div>
+    </div>
+
+    <Button type="button" onClick={() => openDraft(direction.letter)} className="gap-2">Open draft website {direction.letter}<ArrowRight className="h-4 w-4" /></Button>
+  </section>
+);
 
 const SiteNav = ({ direction }: { direction: Direction }) => (
   <nav className="border-b border-border bg-background/95" aria-label={`${direction.title} draft site navigation`}>
