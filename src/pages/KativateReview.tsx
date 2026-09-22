@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import ReviewPasswordGate, { REVIEW_ACCESS_KEY } from "@/components/review/ReviewPasswordGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { cn } from "@/lib/utils";
+
+type Color = { name: string; hex: string; swatch: string };
 type Direction = {
   id: string;
   letter: string;
   title: string;
   mood: string;
+  colors: Color[];
   themeClass: string;
   eyebrow: string;
   headline: string;
@@ -29,6 +33,13 @@ const directions: Direction[] = [
     letter: "A",
     title: "Classic Hospitality",
     mood: "Warm hotel / wedding energy. Safe for corporate and social events.",
+    colors: [
+      { name: "Burgundy", hex: "#6B1E2E", swatch: "bg-kativate-a-burgundy" },
+      { name: "Deep Forest", hex: "#1F4D3A", swatch: "bg-kativate-a-forest" },
+      { name: "Soft Sage", hex: "#A8B5A0", swatch: "bg-kativate-a-sage" },
+      { name: "Warm Silver", hex: "#C5C8CC", swatch: "bg-kativate-a-silver" },
+      { name: "Ivory", hex: "#F7F5F2", swatch: "bg-kativate-a-ivory" },
+    ],
     themeClass: "kativate-site-a",
     eyebrow: "Gather beautifully",
     headline: "Hospitality with a sense of occasion.",
@@ -56,6 +67,13 @@ const directions: Direction[] = [
     letter: "B",
     title: "Modern Luxe",
     mood: "Sharper and more contemporary. Strong for premium corporate and product covers.",
+    colors: [
+      { name: "Wine", hex: "#7A1F2B", swatch: "bg-kativate-b-wine" },
+      { name: "Emerald", hex: "#0E5C4A", swatch: "bg-kativate-b-emerald" },
+      { name: "Mist Green", hex: "#D5DFD6", swatch: "bg-kativate-b-mist" },
+      { name: "Cool Silver", hex: "#B8BCC2", swatch: "bg-kativate-b-silver" },
+      { name: "Pure White", hex: "#FFFFFF", swatch: "bg-kativate-white" },
+    ],
     themeClass: "kativate-site-b",
     eyebrow: "Ideas, impeccably delivered",
     headline: "Make the room move differently.",
@@ -83,6 +101,13 @@ const directions: Direction[] = [
     letter: "C",
     title: "Soft Garden",
     mood: "Softer and more botanical. Best if the brand leans social / lifestyle events.",
+    colors: [
+      { name: "Mulberry", hex: "#5C1A2A", swatch: "bg-kativate-c-mulberry" },
+      { name: "Olive Grove", hex: "#556B2F", swatch: "bg-kativate-c-olive" },
+      { name: "Champagne", hex: "#E8E0D5", swatch: "bg-kativate-c-champagne" },
+      { name: "Soft Silver", hex: "#D0D3D6", swatch: "bg-kativate-c-silver" },
+      { name: "Cream", hex: "#FAF8F5", swatch: "bg-kativate-c-cream" },
+    ],
     themeClass: "kativate-site-c",
     eyebrow: "Made to feel like you",
     headline: "Beautiful gatherings, grown with intention.",
@@ -110,6 +135,13 @@ const directions: Direction[] = [
     letter: "D",
     title: "Ultra Modern Luxe",
     mood: "Darker, cleaner high-fashion / five-star minimalism.",
+    colors: [
+      { name: "Deep Wine", hex: "#4A0F1C", swatch: "bg-kativate-d-wine" },
+      { name: "Emerald Black", hex: "#063D32", swatch: "bg-kativate-d-emerald" },
+      { name: "Platinum", hex: "#E6E8EB", swatch: "bg-kativate-d-platinum" },
+      { name: "Graphite Silver", hex: "#9AA0A6", swatch: "bg-kativate-d-graphite" },
+      { name: "Pure White", hex: "#FFFFFF", swatch: "bg-kativate-white" },
+    ],
     themeClass: "kativate-site-d",
     eyebrow: "Presence, without excess",
     headline: "The art of a flawless entrance.",
