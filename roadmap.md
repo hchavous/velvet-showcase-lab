@@ -17,3 +17,7 @@
 - [x] Add the supplied Oktoberfest previews and downloadable handoff archive
 - [x] Verify access, navigation, downloads, metadata, and responsive layout
 - [x] Add the six final PDFs when supplied
+
+- [x] Rebuild Kativate review as four siloed tabbed draft websites
+- [x] Verify password access, tab isolation, media, and mobile layout
+- [x] Publish the rebuilt Kativate review
