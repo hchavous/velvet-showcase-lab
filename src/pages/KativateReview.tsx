@@ -325,7 +325,7 @@ const DraftSite = ({ direction, showOverview }: { direction: Direction; showOver
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:px-8">
         <div className="flex items-center gap-4"><img src={direction.monograms[0].src} alt="Kativate" className="h-10 w-10 object-contain" /><span>Draft brand site · for review only</span></div>
-        <div className="flex flex-wrap items-center gap-5"><span>Private draft review for Kateri Foley</span><button type="button" onClick={showOverview} className="transition-colors hover:text-foreground">Brand overview</button><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-2 hover:text-foreground"><Download className="h-4 w-4" /> Review PDF</a></div>
+        <div className="flex flex-wrap items-center gap-5"><span>Private draft review for Kateri Foley</span><Button type="button" variant="link" onClick={showOverview} className="h-auto p-0 text-muted-foreground">Brand overview</Button><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-2 hover:text-foreground"><Download className="h-4 w-4" /> Review PDF</a></div>
       </div>
     </footer>
   </article>

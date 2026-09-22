@@ -21,3 +21,7 @@
 - [x] Rebuild Kativate review as four siloed tabbed draft websites
 - [x] Verify password access, tab isolation, media, and mobile layout
 - [x] Publish the rebuilt Kativate review
+
+- [x] Restore the original Kativate brand overview alongside the draft websites
+- [ ] Verify overview, draft isolation, and back-and-forth navigation
+- [ ] Publish the combined Kativate review
