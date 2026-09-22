@@ -238,7 +238,7 @@ const SiteNav = ({ direction }: { direction: Direction }) => (
   </nav>
 );
 
-const DraftSite = ({ direction }: { direction: Direction }) => (
+const DraftSite = ({ direction, showOverview }: { direction: Direction; showOverview: () => void }) => (
   <article className={`${direction.themeClass} bg-background text-foreground`} role="tabpanel" id={`panel-${direction.letter}`} aria-labelledby={`tab-${direction.letter}`}>
     <SiteNav direction={direction} />
 
@@ -325,7 +325,7 @@ const DraftSite = ({ direction }: { direction: Direction }) => (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-5 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:px-8">
         <div className="flex items-center gap-4"><img src={direction.monograms[0].src} alt="Kativate" className="h-10 w-10 object-contain" /><span>Draft brand site · for review only</span></div>
-        <div className="flex flex-wrap items-center gap-5"><span>Private draft review for Kateri Foley</span><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-2 hover:text-foreground"><Download className="h-4 w-4" /> Review PDF</a></div>
+        <div className="flex flex-wrap items-center gap-5"><span>Private draft review for Kateri Foley</span><button type="button" onClick={showOverview} className="transition-colors hover:text-foreground">Brand overview</button><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-2 hover:text-foreground"><Download className="h-4 w-4" /> Review PDF</a></div>
       </div>
     </footer>
   </article>
@@ -337,7 +337,19 @@ const KativateReview = () => {
     "Private review of four early Kativate brand directions for Kateri Foley.",
   );
   const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem(REVIEW_ACCESS_KEY) === "true");
+  const [mode, setMode] = useState<"overview" | "drafts">("overview");
   const [activeDirection, setActiveDirection] = useState("A");
+
+  const showOverview = () => {
+    setMode("overview");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const showDraft = (letter = "A") => {
+    setActiveDirection(letter);
+    setMode("drafts");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
@@ -366,7 +378,41 @@ const KativateReview = () => {
         />
       ) : (
         <div>
-            <nav aria-label="Kativate brand directions" className="sticky top-16 z-50 border-y border-border/60 bg-background/95 px-3 py-3 backdrop-blur-lg" role="tablist">
+          <nav aria-label="Kativate review mode" className="sticky top-16 z-[60] border-y border-border/60 bg-background/95 px-3 py-3 backdrop-blur-lg" role="tablist">
+            <div className="mx-auto grid max-w-2xl grid-cols-2 gap-2">
+              <Button type="button" role="tab" aria-selected={mode === "overview"} variant={mode === "overview" ? "default" : "outline"} onClick={showOverview}>Brand overview</Button>
+              <Button type="button" role="tab" aria-selected={mode === "drafts"} variant={mode === "drafts" ? "default" : "outline"} onClick={() => showDraft(activeDirection)}>Draft websites</Button>
+            </div>
+          </nav>
+
+          {mode === "overview" ? (
+            <div className="container mx-auto px-4 py-12 md:py-16" role="tabpanel">
+              <div className="mx-auto max-w-6xl">
+                <header className="mb-12 max-w-3xl">
+                  <p className="mb-3 text-xs font-semibold uppercase text-primary">Private brand review</p>
+                  <h1 className="mb-5 text-4xl font-semibold md:text-5xl">Kativate</h1>
+                  <p className="mb-7 text-lg leading-relaxed text-muted-foreground">Early brainstorm for Kateri Foley review. Nothing locked. Feedback welcome on palette mood, wordmark vibe, and monogram vibe.</p>
+                  <div className="flex flex-wrap gap-3">
+                    <Button asChild variant="outline" className="gap-2"><a href="/kativate/Kativate_Brand_Options_Review.pdf" download><Download className="h-4 w-4" />Download full review PDF</a></Button>
+                    <Button type="button" onClick={() => showDraft("A")} className="gap-2">View draft websites<ArrowRight className="h-4 w-4" /></Button>
+                  </div>
+                </header>
+
+                <nav aria-label="Kativate brand directions" className="sticky top-36 z-40 -mx-4 border-y border-border/60 bg-background/90 px-4 py-3 backdrop-blur-lg">
+                  <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+                    {directions.map((direction) => <a key={direction.id} href={`#${direction.id}`} className="rounded-md border border-border/60 bg-card/70 px-3 py-2 text-center text-xs font-medium transition-colors hover:border-primary/50 hover:text-primary sm:text-sm"><span className="font-bold">{direction.letter}</span> {direction.title}</a>)}
+                  </div>
+                </nav>
+
+                {directions.map((direction) => <DirectionSection key={direction.id} direction={direction} openDraft={showDraft} />)}
+              </div>
+            </div>
+          ) : (
+            <div role="tabpanel">
+              <div className="border-b border-border/60 bg-background px-3 py-3">
+                <div className="mx-auto max-w-7xl"><Button type="button" variant="ghost" onClick={showOverview} className="gap-2"><ArrowLeft className="h-4 w-4" />Back to brand overview</Button></div>
+              </div>
+              <nav aria-label="Kativate draft websites" className="sticky top-36 z-50 border-b border-border/60 bg-background/95 px-3 py-3 backdrop-blur-lg" role="tablist">
               <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 md:grid-cols-4">
                 {directions.map((direction) => (
                   <Button
@@ -387,9 +433,10 @@ const KativateReview = () => {
                   </Button>
                 ))}
               </div>
-              <div className="mx-auto mt-2 flex max-w-7xl justify-end"><a href="/kativate/Kativate_Brand_Options_Review.pdf" download className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"><Download className="h-3.5 w-3.5" /> Full review PDF</a></div>
-            </nav>
-            {directions.filter((direction) => direction.letter === activeDirection).map((direction) => <DraftSite key={direction.id} direction={direction} />)}
+              </nav>
+              {directions.filter((direction) => direction.letter === activeDirection).map((direction) => <DraftSite key={direction.id} direction={direction} showOverview={showOverview} />)}
+            </div>
+          )}
         </div>
       )}
     </Layout>
