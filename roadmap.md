@@ -29,3 +29,8 @@
 - [x] Add Philadelphia skyline hero backdrops to the four Kativate draft websites
 - [x] Verify overview intros, skyline heroes per tab, and mobile layout
 - [x] Publish the Kativate skyline hero update
+- [x] Remove the green overlay tint on the Ultra Modern Luxe hero veil
+- [x] Save Kativate final assets, batch 1 (mono-light, mono-dark-wine, mono-dark-wine-platinum, mono-dark-emerald, wordmark-light) into public/kativate/final
+- [ ] Save Kativate final assets, batch 2 (awaiting files)
+- [ ] Build the Post feedback UI on /kativate-review (awaiting instructions)
+- [ ] Verify the Post feedback flow and publish
