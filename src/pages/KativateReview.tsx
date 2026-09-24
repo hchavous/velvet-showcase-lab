@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import ReviewPasswordGate, { REVIEW_ACCESS_KEY } from "@/components/review/ReviewPasswordGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { cn } from "@/lib/utils";
+import KativatePostFeedback from "@/components/review/KativatePostFeedback";
 
 type Color = { name: string; hex: string; swatch: string };
 type Direction = {
@@ -342,11 +343,16 @@ const KativateReview = () => {
     "Private review of four early Kativate brand directions for Kateri Foley.",
   );
   const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem(REVIEW_ACCESS_KEY) === "true");
-  const [mode, setMode] = useState<"overview" | "drafts">("overview");
+  const [mode, setMode] = useState<"overview" | "drafts" | "feedback">("overview");
   const [activeDirection, setActiveDirection] = useState("A");
 
   const showOverview = () => {
     setMode("overview");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const showFeedback = () => {
+    setMode("feedback");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -384,13 +390,16 @@ const KativateReview = () => {
       ) : (
         <div>
           <nav aria-label="Kativate review mode" className="sticky top-16 z-[60] border-y border-border/60 bg-background/95 px-3 py-3 backdrop-blur-lg" role="tablist">
-            <div className="mx-auto grid max-w-2xl grid-cols-2 gap-2">
-              <Button type="button" role="tab" aria-selected={mode === "overview"} variant={mode === "overview" ? "default" : "outline"} onClick={showOverview}>Brand overview</Button>
-              <Button type="button" role="tab" aria-selected={mode === "drafts"} variant={mode === "drafts" ? "default" : "outline"} onClick={() => showDraft(activeDirection)}>Draft websites</Button>
+            <div className="mx-auto grid max-w-3xl grid-cols-3 gap-2">
+              <Button type="button" role="tab" aria-selected={mode === "overview"} variant={mode === "overview" ? "default" : "outline"} onClick={showOverview} className="h-auto min-h-10 whitespace-normal px-2 text-xs sm:text-sm">Brand overview</Button>
+              <Button type="button" role="tab" aria-selected={mode === "drafts"} variant={mode === "drafts" ? "default" : "outline"} onClick={() => showDraft(activeDirection)} className="h-auto min-h-10 whitespace-normal px-2 text-xs sm:text-sm">Draft websites</Button>
+              <Button type="button" role="tab" aria-selected={mode === "feedback"} variant={mode === "feedback" ? "default" : "outline"} onClick={showFeedback} className="h-auto min-h-10 whitespace-normal px-2 text-xs sm:text-sm">Post feedback</Button>
             </div>
           </nav>
 
-          {mode === "overview" ? (
+          {mode === "feedback" ? (
+            <KativatePostFeedback />
+          ) : mode === "overview" ? (
             <div className="container mx-auto px-4 py-12 md:py-16" role="tabpanel">
               <div className="mx-auto max-w-6xl">
                 <header className="mb-12 max-w-3xl">
