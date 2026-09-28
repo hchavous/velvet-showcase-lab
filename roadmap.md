@@ -34,3 +34,4 @@
 - [ ] Save Kativate final assets, batch 2 (awaiting files)
 - [ ] Build the Post feedback UI on /kativate-review (awaiting instructions)
 - [ ] Verify the Post feedback flow and publish
+- [ ] Find and fix green background on main site (havenchavous.com) — restore dark neutral palette
