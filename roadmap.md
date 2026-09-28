@@ -34,3 +34,4 @@
 - [ ] Save Kativate final assets, batch 2 (awaiting files)
 - [ ] Build the Post feedback UI on /kativate-review (awaiting instructions)
 - [ ] Verify the Post feedback flow and publish
+- [x] Fixed green-tinted dark background on main site — neutralized to true dark grey
