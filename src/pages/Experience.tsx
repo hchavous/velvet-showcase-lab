@@ -1,4 +1,4 @@
-import { Building2, Calendar, CheckCircle2, ExternalLink, Layers, Users } from "lucide-react";
+import { Building2, Calendar, CheckCircle2, ExternalLink, Layers } from "lucide-react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import Layout from "@/components/layout/Layout";
 import { Badge } from "@/components/ui/badge";
@@ -7,147 +7,119 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-interface ClientEntry {
-  client: string;
-  industry: string;
-  period: string;
-  highlights: string[];
-}
-
 interface ExperienceItem {
   company: string;
   role: string;
   period: string;
   location: string;
-  highlights: string[];
-  clients?: ClientEntry[];
+  descriptor?: string;
+  summary?: string;
+  highlights: { label: string; text: string }[];
 }
 
 const fullTimeExperiences: ExperienceItem[] = [
   {
+    company: "Capital4Trade Network",
+    role: "Credit Underwriting Model Consultant (Contract)",
+    period: "May 2026 – Present",
+    location: "Miami, FL (Remote)",
+    descriptor: "Non-bank trade finance network providing receivables, payables, and supply chain financing to SME shippers",
+    highlights: [
+      { label: "Credit Methodology Design", text: "Designed the lender's cash-flow credit underwriting methodology on Plaid bank data, replacing a static working-capital-gap approach with a model that sizes credit from demonstrated repayment capacity" },
+      { label: "Scoring Model Architecture", text: "Designed a 19-metric scoring model across six signal groups with seven eligibility gates, data-depth confidence tiers, and score-to-limit logic with liquidity, capacity, and program caps, delivered as an interpretation framework, a calibrated model framework, and a developer-ready specification" },
+      { label: "Reference Implementation", text: "Built a formula-only Excel reference model (34,000+ formulas, zero errors, no macros) that independently reproduced the framework's worked calibration exactly, establishing two-way verification as the engagement's acceptance standard" },
+      { label: "Implementation Advisory", text: "Authored written rulings on 30+ developer implementation questions covering transaction classification, edge cases, refresh and exposure policy, MVP manual-review strategy, and Plaid-only decision thresholds, each with a production rule and flowcharts" },
+      { label: "Repeat Engagement", text: "Expanded into a second phase recalibrating the platform's financial-statement scoring model (MyCreditApp) for 6-to-11-month data coverage and missing-field handling: ratio annualization rules, confidence tiers, grade caps, and a wrong-score risk analysis on historical applicant data" },
+    ],
+  },
+  {
     company: "Hearthfire Holdings",
-    role: "Director, Investment Analytics and Business Intelligence",
-    period: "03/2025 – 11/2025",
+    role: "Senior Business Intelligence Architect",
+    period: "March 2025 – November 2025",
     location: "Wilmington, DE",
     highlights: [
-      "Designed and built secure web-based analytics portal with backend database infrastructure, delivering dynamic dashboards with interactive charts and real-time portfolio visualization for institutional investors",
-      "Developed AI-integrated document management platform featuring automated document summarization, intelligent search capabilities, and dynamic lending statistics visualizations",
-      "Transformed enterprise underwriting model from Excel to full-stack web application, maintaining complex financial logic while enhancing user experience through intuitive interface design and automated workflows",
-      "Engineered capital stack financing tools enabling multi-tier investment analysis, automated waterfall calculations, and scenario modeling across preferred equity, common equity, and debt structures",
-      "Developed Python-based data transformation pipelines to extract, process, and summarize complex datasets from multiple PDF and Excel sources into actionable analytics",
-      "Rebuilt existing Excel-based underwriting model to a more sophisticated, accurate, and user-friendly tool",
+      { label: "Growth Leadership", text: "Joined a self-storage investment firm at ~10 facilities and built the analytics and capital-raising infrastructure behind ~100% portfolio growth in under a year, including 10+ acquisitions valued at ~$15M+ each" },
+      { label: "Capital Formation Technology", text: "Raised $20M+ by designing and building a secure web-based investor portal with backend database infrastructure, dynamic dashboards, and real-time portfolio visualizations, replacing an Excel-only capital raise process" },
+      { label: "Underwriting Speed & Accuracy", text: "Cut underwriting model build time by 50% and improved valuation accuracy by rebuilding the models end-to-end, expanding the capital stack from 2 to 5 layers to show lenders the full cash flow waterfall, and training analysts on the new system" },
+      { label: "AI-Driven Automation", text: "Shortened financial analysis cycles by building an AI-integrated document management platform that scanned every loan document and generated a summary and key facts for each" },
+      { label: "Scenario & Waterfall Modeling", text: "Expanded scenario models from 2 to 6, integrated all into the portal, enabling the CFO to isolate any layer of debt, and automated waterfall calculations across preferred equity, common equity, and debt" },
+      { label: "CAPEX & Market Analytics", text: "Automated CAPEX mechanics with S-curves, built sensitivity analysis around rent, interest rates, and project costs, and guided acquisitions with multi-state rent comp analysis; contributed a featured expert article to the California Business Journal on AI integration" },
     ],
   },
   {
     company: "Top Hat CRE",
     role: "Director, Investment Analytics",
-    period: "01/2022 – 12/2024",
+    period: "January 2022 – December 2024",
     location: "Wilmington, DE",
     highlights: [
-      "Engineered comprehensive real estate investment models in Excel for institutional-grade underwriting, resulting in successful evaluation of 100+ commercial assets across multifamily, self-storage, and mixed-use sectors",
-      "Developed proprietary Python/HTML analytics platform for deal pipeline management, investment metrics tracking, and portfolio performance analysis",
-      "Automated institutional investor reporting workflows through Python scripting, reducing report generation time by 90% while enhancing data accuracy",
-      "Drove investment strategy through advanced financial modeling, sensitivity analysis, and risk assessment for institutional investors and board members",
-      "Managed complex fund modeling including IRR calculations, waterfall distributions, and investment performance metrics for institutional-quality assets",
+      { label: "Founding Finance Leadership", text: "Hired as the firm's first finance professional at 10 self-storage properties and led junior and senior analysts as the company grew more than 5x in three years, adding 50 properties and its first 5 apartment complexes" },
+      { label: "Reporting Automation", text: "Reduced institutional investor report generation time by 90% while improving accuracy and consistency by automating reporting workflows, producing the first cash flow, income, and consolidated statements" },
+      { label: "Analytics Platform Development", text: "Built a proprietary Python- and HTML-based analytics platform for deal pipeline management, investment metrics tracking, and portfolio analysis; built the rent comp database by scraping market rents with Python" },
+      { label: "Capital Stack & New Asset Modeling", text: "Expanded the capital stack from 1 to 3 layers, established S-curves for construction and occupancy, and created the company's first multifamily model" },
+    ],
+  },
+  {
+    company: "Source Renewables, LLC",
+    role: "Senior Quantitative Analyst",
+    period: "June 2020 – December 2021",
+    location: "Greenwich, CT (Remote)",
+    highlights: [
+      { label: "Project Finance Model Architecture", text: "Built the firm's renewable energy (solar) project finance model from scratch at the project level, establishing the cash flow, capital structure, and sensitivity framework used to evaluate and value its projects" },
+      { label: "Portfolio Roll-Up", text: "Designed a model-within-model structure that aggregated project-level models into a portfolio-level valuation, giving leadership one consolidated view of returns and exposure" },
+      { label: "Valuation & Securitization Support", text: "Developed the firm's portfolio valuation models and supported securitization analysis, providing the quantitative basis for capital markets discussions" },
     ],
   },
   {
     company: "OneMain Financial",
     role: "Quantitative Analytics Lead",
-    period: "01/2017 – 06/2020",
+    period: "January 2017 – May 2020",
     location: "Wilmington, DE",
     highlights: [
-      "Led quantitative analysis for $1B+ in portfolio acquisitions using statistical modeling and machine learning techniques",
-      "Implemented automated credit risk models in Excel achieving 90% accuracy in delinquency forecasting",
-      "Developed comprehensive profitability analysis framework incorporating risk-adjusted returns and portfolio optimization",
-      "Created predictive analytics models via Excel/Python to evaluate credit risk factors and borrower behavior patterns",
-      "Established enterprise-wide modeling standards for portfolio valuation and risk assessment",
+      { label: "Quantitative Foundation", text: "Brought financial discipline, standards, and methodology to a startup environment, providing statistical modeling, machine learning, and credit risk analytics for ~$100M in acquired loans" },
+      { label: "Machine Learning & Credit Risk", text: "Improved loan delinquency forecasting accuracy from 60% to 90% by building more fine-grained classification models across payment histories, credit scores, and delinquency patterns" },
+      { label: "Profitability & Modeling Standards", text: "Developed the company's first profitability frameworks and scalable enterprise modeling standards, incorporating risk-adjusted returns, portfolio optimization, and acquisition economics" },
+      { label: "Digital Platform Analytics", text: "Built the first analytics for the digital unsecured lending platform, including forecasting, probability, and user behavior modeling; implemented Looker as one of its first use cases" },
     ],
   },
   {
     company: "Pro Capital, LLC",
-    role: "Senior Quantitative/Modeling Analyst",
-    period: "01/2015 – 01/2017",
+    role: "Senior Quantitative and Modeling Analyst",
+    period: "January 2015 – January 2017",
     location: "Philadelphia, PA",
     highlights: [
-      "Sole source of financial modeling and analysis for a Private Equity Real Estate Investment firm managing six unique investment funds",
-      "Created complex five-year pro forma financials and multi-variable sensitivity analysis for each fund, anticipating changes in borrowing base, asset acquisition, and asset redemption",
-      "Engineered modeling breakthroughs to accurately forecast leverage based on targeted cash balance and automatically trigger fund sunset/redemption based on multiple variables",
-      "Presented fund performance to board members and investors on an ongoing basis; produced all presentation materials for the CEO",
-      "Created ad-hoc financial models and statistical analyses for lending banks, board members, and investors",
+      { label: "Portfolio Growth", text: "Joined a private equity real estate firm as the first person in the role, created all of its financial models, and managed 6 funds as the portfolio grew from $100M to $200M at 10% to 15% IRR" },
+      { label: "Portfolio Modeling Architecture", text: "Developed the firm's first tiered modeling system, quantifying performance at the asset, fund, and aggregated portfolio levels" },
+      { label: "Pro Forma Reporting & Automation", text: "Implemented the firm's first pro forma reporting approach, generating fund-level income statements per investor and 5-year pro formas with multivariable sensitivities, and automated leverage forecasting, fund sunset and redemption triggers, and Board presentation generation" },
+    ],
+  },
+  {
+    company: "Ashland, Inc.",
+    role: "Financial Analyst, Oil and Gas Technologies",
+    period: "June 2012 – December 2014",
+    location: "Wilmington, DE",
+    highlights: [
+      { label: "FP&A Ownership", text: "Managed FP&A, budgeting, and forecasting for the company's largest business unit at the time, generating $500M+ in annual revenue, with end-to-end cost and price transparency" },
+      { label: "Capital, Product & Modeling", text: "Conducted capital project investment analyses using NPV, IRR, payback, and sensitivity analysis; built full-process manufacturing models for the guar and CMC product lines with sensitivity on price, cost, unit mix, and volume; built the business unit's financial reporting system and oversaw annual budgets and forecasts" },
+    ],
+  },
+  {
+    company: "DuPont Corporation",
+    role: "Financial Analyst, Research and Development",
+    period: "January 2011 – January 2012",
+    location: "Des Moines, IA",
+    highlights: [
+      { label: "Budget Accountability & Forecasting", text: "Established accountability for a $700M R&D budget, helping save approximately $50M by building a detailed cost tracking system with R&D leadership; created the forecasting model for seed trait research projects and identified cost trends and outlier expenses" },
     ],
   },
 ];
 
 const quanthaven: ExperienceItem = {
-  company: "Quanthaven Labs, LLC",
-  role: "Founder & Principal Consultant",
-  period: "01/2022 – Present",
-  location: "Wilmington, DE",
+  company: "Quanthaven Labs LLC",
+  role: "Founder & Principal Consultant (part-time)",
+  period: "January 2019 – December 2025",
+  location: "",
   highlights: [],
-  clients: [
-    {
-      client: "Evalla Advisors",
-      industry: "Private Equity",
-      period: "01/2026 – 04/2026",
-      highlights: [
-        "Delivering fund-level and deal-level financial modeling, including fully integrated 3-statement pro formas and reporting structures aligned with institutional PE standards",
-        "Providing M&A due diligence analytics including churn analysis, client segmentation, and revenue quality assessment for active buyer processes",
-        "Architecting scalable Excel frameworks that translate complex financial inputs into structured, presentation-ready analytical outputs",
-      ],
-    },
-    {
-      client: "Voltage Venture Capital",
-      industry: "Healthcare Venture Capital",
-      period: "10/2025 – 01/2026",
-      highlights: [
-        "Constructed institutional-grade Excel financial models encompassing fund-level IRR analysis, multi-investor support with tiered fee structures, European waterfall mechanics, and multi-scenario cash flow projections",
-        "Developed interactive web-based financial modeling application to support investor presentations and deal analysis workflows",
-      ],
-    },
-    {
-      client: "GlassPoint",
-      industry: "Renewable Energy",
-      period: "10/2023 – Present",
-      highlights: [
-        "Rebuilt overall business forecast model and capital expenditure model for executive decision-making",
-        "Reconstructed balance sheet and integrated cash flow statement to create a fully linked 3-statement financial model",
-        "Developed web-based financial model demo to support client acquisition and investor engagement",
-      ],
-    },
-    {
-      client: "Harvard Business School",
-      industry: "Financial Modeling Curriculum",
-      period: "01/2023 – 12/2023",
-      highlights: [
-        "Created advanced financial modeling curriculum materials for graduate-level coursework",
-      ],
-    },
-    {
-      client: "VisualDx",
-      industry: "SaaS Analytics",
-      period: "01/2022 – 12/2023",
-      highlights: [
-        "Implemented SaaS revenue forecasting and analytics platform to support growth planning and investor reporting",
-      ],
-    },
-    {
-      client: "CDW",
-      industry: "FP&A Optimization",
-      period: "07/2022 – 12/2022",
-      highlights: [
-        "Automated FP&A workflows and enhanced performance analytics for enterprise technology services",
-      ],
-    },
-    {
-      client: "Source Renewables",
-      industry: "Renewable Energy",
-      period: "01/2022 – 12/2022",
-      highlights: [
-        "Developed renewable energy portfolio valuation models for investment analysis and project financing",
-      ],
-    },
-  ],
+  summary: "Financial modeling, investment analytics, and FP&A consulting for institutional and corporate clients, including Glasspoint, Inc. (CAPEX forecasting and manufacturing models, 2023 – 2025), Harvard Business School (financial modeling curriculum materials, 2023), VisualDx (SaaS revenue forecasting platform, 2022), and CDW (FP&A workflow automation, 2022).",
 };
 
 const featuredProjects = [
@@ -174,36 +146,6 @@ const featuredProjects = [
   },
 ];
 
-const ClientCard = ({ client, index }: { client: ClientEntry; index: number }) => (
-  <div className="animate-fade-in-up" style={{ animationDelay: `${0.05 * index}s` }}>
-    <div className="p-4 rounded-lg bg-secondary/30 border border-border/30 hover:border-primary/30 transition-all duration-300">
-      <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
-        <div>
-          <h4 className="font-semibold text-foreground">{client.client}</h4>
-          <span className="text-xs text-primary font-medium">{client.industry}</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <Badge variant="outline" className="text-[10px] px-1.5 py-0 text-muted-foreground border-primary/20">
-            Consulting Client
-          </Badge>
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Calendar className="h-3 w-3" />
-            <span>{client.period}</span>
-          </div>
-        </div>
-      </div>
-      <ul className="space-y-1 mt-2">
-        {client.highlights.map((h, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-            <CheckCircle2 className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
-            <span>{h}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-);
-
 const ExperienceCard = ({ exp, index, isUmbrella }: { exp: ExperienceItem; index: number; isUmbrella?: boolean }) => (
   <div className="animate-fade-in-up" style={{ animationDelay: `${0.1 * index}s` }}>
     <div className={`rounded-xl transition-all duration-300 hover:glow-sm ${isUmbrella ? 'p-8 bg-card/70 border-2 border-primary/40 hover:border-primary/60' : 'p-6 bg-card/50 border border-border/50 hover:border-primary/50'}`}>
@@ -216,16 +158,17 @@ const ExperienceCard = ({ exp, index, isUmbrella }: { exp: ExperienceItem; index
         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1 flex-wrap">
           <Calendar className="h-3 w-3" />
           <span>{exp.period}</span>
-          <span>•</span>
-          <span>{exp.location}</span>
+          {exp.location && <><span>•</span><span>{exp.location}</span></>}
         </div>
+        {exp.descriptor && <p className="text-sm italic text-muted-foreground mt-2">{exp.descriptor}</p>}
       </div>
+      {exp.summary && <p className="text-sm text-muted-foreground">{exp.summary}</p>}
       {exp.highlights.length > 0 && (
         <ul className="grid md:grid-cols-2 gap-2">
           {exp.highlights.map((highlight, hIndex) => (
             <li key={hIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-              <span>{highlight}</span>
+              <span><strong className="text-foreground font-semibold">{highlight.label}:</strong> {highlight.text}</span>
             </li>
           ))}
         </ul>
@@ -253,8 +196,8 @@ const Experience = () => {
             <h2 className="sr-only">Roles and Engagements</h2>
             <Tabs defaultValue="full-time" className="mb-16">
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-                <TabsTrigger value="full-time">Full-Time Experience</TabsTrigger>
-                <TabsTrigger value="consulting">Consulting</TabsTrigger>
+                <TabsTrigger value="full-time">Professional Experience</TabsTrigger>
+                <TabsTrigger value="consulting">Earlier Consulting</TabsTrigger>
               </TabsList>
 
               <TabsContent value="full-time">
@@ -268,15 +211,6 @@ const Experience = () => {
               <TabsContent value="consulting">
                 <div className="mb-8">
                   <ExperienceCard exp={quanthaven} index={0} isUmbrella />
-                  <div className="ml-4 md:ml-8 mt-4 border-l-2 border-primary/30 pl-4 md:pl-6 space-y-4">
-                    <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground py-2">
-                      <Users className="h-4 w-4 text-primary" />
-                      <span>Client Engagements via Quanthaven Labs</span>
-                    </div>
-                    {quanthaven.clients?.map((client, i) => (
-                      <ClientCard key={client.client} client={client} index={i + 1} />
-                    ))}
-                  </div>
                 </div>
               </TabsContent>
             </Tabs>
